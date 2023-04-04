@@ -15,7 +15,7 @@
                         </div>
                     </div>
                    <div class="slide">
-                       <div class="img"><img class="blur-up lazyload" data-src="assets/images/slideshow-banner/dome3-banner1.jpg" src="assets/images/slideshow-banner/dome3-banner1.jpg" alt="Back in Stock" title="Back in Stock" /></div>
+                       <div class="img"><img class="blur-up lazyload" data-src="assets/images/slideshow-banner/dome3-banner2.jpg" src="assets/images/slideshow-banner/dome3-banner2.jpg" alt="Back in Stock" title="Back in Stock" /></div>
                         <div class="details">
                             <div class="inner">
                                 <h3 class="collection-grid-item__title">Back in Stock</h3>
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                    <div class="slide">
-                        <div class="img"><img class="blur-up lazyload" data-src="assets/images/slideshow-banner/dome3-banner1.jpg" src="assets/images/slideshow-banner/dome3-banner1.jpg" alt="Weekend Fashion" title="Weekend Fashion" /></div>
+                        <div class="img"><img class="blur-up lazyload" data-src="assets/images/slideshow-banner/dome3-banner3.jpg" src="assets/images/slideshow-banner/dome3-banner3.jpg" alt="Weekend Fashion" title="Weekend Fashion" /></div>
                         <div class="details">
                             <div class="inner">
                                 <h3 class="collection-grid-item__title">Weekend Fashion</h3>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                    <div class="slide">
-                       <div class="img"><img class="blur-up lazyload" data-src="assets/images/slideshow-banner/dome3-banner1.jpg" src="assets/images/slideshow-banner/dome3-banner1.jpg" alt="Shop Denims" title="Shop Denims" /></div>
+                       <div class="img"><img class="blur-up lazyload" data-src="assets/images/slideshow-banner/dome3-banner4.jpg" src="assets/images/slideshow-banner/dome3-banner4.jpg" alt="Shop Denims" title="Shop Denims" /></div>
                         <div class="details">
                             <div class="inner">
                                 <h3 class="collection-grid-item__title">Shop Denims</h3>
@@ -75,7 +75,7 @@
                             <div class="inner">
                                 <a href="#">
                                     <span class="img">
-                                        <img class="blur-up lazyload" data-src="assets/images/collection-banner/demo3-collection-bnr1.jpg" src="assets/images/collection-banner/demo3-collection-bnr1.jpg" alt="Hot Occasion" title="Hot Occasion" />
+                                        <img class="blur-up lazyload" data-src="assets/images/collection-banner/demo3-collection-bnr2.jpg" src="assets/images/collection-banner/demo3-collection-bnr2.jpg" alt="Hot Occasion" title="Hot Occasion" />
                                     </span>
                                 </a>
                                 <div class="details w-50 center">

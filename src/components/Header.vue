@@ -53,208 +53,54 @@
                     <!--Desktop Menu-->
                     <nav class="grid__item" id="AccessibleNav">
                         <ul id="siteNav" class="site-nav medium center hidearrow">
-                            <li class="lvl1 parent megamenu mdropdown"><a href="#;">Home <i class="anm anm-angle-down-l"></i></a>
-                                <div class="megamenu style1">
+                            <li class="lvl1 parent megamenu mdropdown">
+                                <router-link to="/">Home <i class="anm anm-angle-down-l"></i></router-link>                             
+                            </li>
+                            <li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-angle-down-l"></i></a>
+                                <div class="megamenu style2">
                                     <ul class="grid mmWrapper">
-                                        <li class="grid__item large-up--one-whole">
+                                        <li class="grid__item one-whole">
                                             <ul class="grid">
-                                                <li class="grid__item lvl-1 col-md-6 col-lg-6">
-                                                	<a href="#" class="site-nav lvl-1 menu-title">Homepages</a>
+                                                <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Product Page</a>
                                                     <ul class="subLinks">
-                                                      <li class="lvl-2"><a href="index.html" class="site-nav lvl-2">Home 01</a></li>
-                                                      <li class="lvl-2"><a href="index-demo2.html" class="site-nav lvl-2">Home 02</a></li>
-                                                      <li class="lvl-2"><a href="index-demo3.html" class="site-nav lvl-2">Home 03</a></li>
-                                                      <li class="lvl-2"><a href="index-demo4.html" class="site-nav lvl-2">Home 04</a></li>
-                                                      <li class="lvl-2"><a href="index-demo5.html" class="site-nav lvl-2">Home 05</a></li>
-                                                      <li class="lvl-2"><a href="index-demo6.html" class="site-nav lvl-2">Home 06</a></li>
-                                                      <li class="lvl-2"><a href="index-demo7.html" class="site-nav lvl-2">Home 07</a></li>
-                                                      <li class="lvl-2"><a href="index-demo8.html" class="site-nav lvl-2">Home 08</a></li>
-                                                      <li class="lvl-2"><a href="index-demo9.html" class="site-nav lvl-2">Home 09</a></li>
-                                                      <li class="lvl-2"><a href="index-medical-demo.html" class="site-nav lvl-2">Medical <span class="lbl nm_label1">New</span></a></li>
+                                                        <li class="lvl-2"><a href="product-layout1.html" class="site-nav lvl-2">Product Layout1</a></li>
+                                                        <li class="lvl-2"><a href="product-layout2.html" class="site-nav lvl-2">Product Layout2</a></li>
+                                                        <li class="lvl-2"><a href="product-layout3.html" class="site-nav lvl-2">Product Layout3</a></li>
+                                                        <li class="lvl-2"><a href="product-layout4.html" class="site-nav lvl-2">Product Layout4</a></li>
+                                                        <li class="lvl-2"><a href="product-layout5.html" class="site-nav lvl-2">Product Layout5</a></li>
+                                                        <li class="lvl-2"><a href="product-layout6.html" class="site-nav lvl-2">Product Layout6</a></li>
+                                                        <li class="lvl-2"><a href="product-layout7.html" class="site-nav lvl-2">Product Layout7</a></li>
+                                                        <li class="lvl-2"><a href="product-accordian.html" class="site-nav lvl-2">Product Accordian</a></li>
+                                                        <li class="lvl-2"><a href="product-tabs-left.html" class="site-nav lvl-2">Product Tabs Left</a></li>
+                                                        <li class="lvl-2"><a href="product-tabs-center.html" class="site-nav lvl-2">Product Tabs Center</a></li>
                                                     </ul>
-                                                  </li>
-                                                <li class="grid__item lvl-1 col-md-6 col-lg-6">
-                                                	<a href="#" class="site-nav lvl-1 menu-title">Homepages</a>
-                                                    <ul class="subLinks">
-                                                    	<li class="lvl-2"><a href="index-demo10.html" class="site-nav lvl-2">Home 10</a></li>
-                                                        <li class="lvl-2"><a href="index-demo11.html" class="site-nav lvl-2">Home 11</a></li>
-                                                        <li class="lvl-2"><a href="index-demo12.html" class="site-nav lvl-2">Home 12</a></li>
-                                                        <li class="lvl-2"><a href="index-demo13.html" class="site-nav lvl-2">Home 13</a></li>
-                                                        <li class="lvl-2"><a href="index-demo14.html" class="site-nav lvl-2">Home 14</a></li>
-                                                        <li class="lvl-2"><a href="index-demo15.html" class="site-nav lvl-2">Home 15</a></li>
-                                                        <li class="lvl-2"><a href="index-demo16.html" class="site-nav lvl-2">Home 16</a></li>
-                                                        <li class="lvl-2"><a href="index-demo17.html" class="site-nav lvl-2">Home 17</a></li>
-                                                        <li class="lvl-2"><a href="index-demo18.html" class="site-nav lvl-2">Home 18</a></li>
-                                                        <li class="lvl-2"><a href="index-pet-store.html" class="site-nav lvl-2">Pet Store <span class="lbl nm_label1">New</span></a></li>
-                                                    </ul>
+                                                </li>
+                                                <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Top Brands</a>
+                                                    <div class="menu-brand-logo">
+                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
+                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
+                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
+                                                    </div>
+                                                    <div class="menu-brand-logo">
+                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
+                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
+                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-angle-down-l"></i></a>
-                                <div class="megamenu style4">
-                                    <ul class="grid grid--uniform mmWrapper">
-                                        <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Category Page</a>
-                                            <ul class="subLinks">
-                                                <li class="lvl-2"><a href="category-2columns.html" class="site-nav lvl-2">2 Columns with style1</a></li>
-                                                <li class="lvl-2"><a href="category-3columns.html" class="site-nav lvl-2">3 Columns with style2</a></li>
-                                                <li class="lvl-2"><a href="category-4columns.html" class="site-nav lvl-2">4 Columns with style3</a></li>
-                                                <li class="lvl-2"><a href="category-5columns.html" class="site-nav lvl-2">5 Columns with style4</a></li>
-                                                <li class="lvl-2"><a href="category-6columns.html" class="site-nav lvl-2">6 Columns with Fullwidth</a></li>
-                                                <li class="lvl-2"><a href="category-7columns.html" class="site-nav lvl-2">7 Columns</a></li>
-                                                <li class="lvl-2"><a href="category-empty.html" class="site-nav lvl-2">Category Empty</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Shop Page</a>
-                                            <ul class="subLinks">
-                                            	<li class="lvl-2"><a href="shop-list-view.html" class="site-nav lvl-2">List View</a></li>
-                                                <li class="lvl-2"><a href="shop-category-slideshow.html" class="site-nav lvl-2">Category Slideshow</a></li>
-                                                <li class="lvl-2"><a href="shop-left-sidebar.html" class="site-nav lvl-2">Left Sidebar</a></li>
-                                                <li class="lvl-2"><a href="shop-right-sidebar.html" class="site-nav lvl-2">Right Sidebar</a></li>
-                                                <li class="lvl-2"><a href="shop-fullwidth.html" class="site-nav lvl-2">Fullwidth/No Sidebar</a></li>
-                                                <li class="lvl-2"><a href="shop-no-sidebar.html" class="site-nav lvl-2">No Sidebar/No Filter</a></li>
-                                                <li class="lvl-2"><a href="shop-category-slideshow.html" class="site-nav lvl-2">With category description</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Shop Page</a>
-                                            <ul class="subLinks">
-                                                <li class="lvl-2"><a href="shop-left-sidebar.html" class="site-nav lvl-2">Simple Heading</a></li>
-                                                <li class="lvl-2"><a href="shop-small-heading.html" class="site-nav lvl-2">Small Heading</a></li>
-                                                <li class="lvl-2"><a href="shop-no-sidebar.html" class="site-nav lvl-2">Big Heading With Image</a></li>
-                                                <li class="lvl-2"><a href="shop-right-sidebar.html" class="site-nav lvl-2">Headings With Banner#1</a></li>
-                                                <li class="lvl-2"><a href="shop-heading-with-banner2.html" class="site-nav lvl-2">Headings With Banner#2</a></li>
-                                                <li class="lvl-2"><a href="swatches-style.html" class="site-nav lvl-2">Swatches Style</a></li>
-                                                <li class="lvl-2"><a href="shop-right-sidebar.html" class="site-nav lvl-2">Classic Pagination</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Shop Other Page</a>
-                                            <ul class="subLinks">
-                                              <li class="lvl-2"><a href="my-wishlist.html" class="site-nav lvl-2">My Wishlist</a></li>
-                                              <li class="lvl-2"><a href="cart-style1.html" class="site-nav lvl-2">Cart Page Style1</a></li>
-                                              <li class="lvl-2"><a href="cart-style2.html" class="site-nav lvl-2">Cart Page Style2</a></li>
-                                              <li class="lvl-2"><a href="checkout-style1.html" class="site-nav lvl-2">Checkout Page Style1</a></li>
-                                              <li class="lvl-2"><a href="checkout-style2.html" class="site-nav lvl-2">Checkout Page Style2</a></li>
-                                              <li class="lvl-2"><a href="compare-style1.html" class="site-nav lvl-2">Compare Page Style1</a></li>
-                                              <li class="lvl-2"><a href="compare-style2.html" class="site-nav lvl-2">Compare Page Style2</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <div class="row clear">
-                                    	<div class="col-md-4 col-lg-4">
-                                        	<a href="#;"><img src="assets/images/megamenu-banner4.jpg" data-src="assets/images/megamenu-banner4.jpg" alt=""/></a>
-                                        </div>
-                                        <div class="col-md-4 col-lg-4">
-                                        	<a href="#;"><img src="assets/images/megamenu-banner4.jpg" data-src="assets/images/megamenu-banner4.jpg" alt=""/></a>
-                                        </div>
-										<div class="col-md-4 col-lg-4">
-                                        	<a href="#;"><img src="assets/images/megamenu-banner4.jpg" data-src="assets/images/megamenu-banner4.jpg" alt=""/></a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <li class="lvl1 parent dropdown">
+                                <router-link to="/blog">Blog <i class="anm anm-angle-down-l"></i></router-link>                         
                             </li>
-                        <li class="lvl1 parent megamenu"><a href="#">Features <i class="anm anm-angle-down-l"></i></a>
-                            <div class="megamenu style2">
-                                <ul class="grid mmWrapper">
-                                    <li class="grid__item one-whole">
-                                        <ul class="grid">
-                                            <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Product Page</a>
-                                                <ul class="subLinks">
-                                                    <li class="lvl-2"><a href="product-layout1.html" class="site-nav lvl-2">Product Layout1</a></li>
-                                                    <li class="lvl-2"><a href="product-layout2.html" class="site-nav lvl-2">Product Layout2</a></li>
-                                                    <li class="lvl-2"><a href="product-layout3.html" class="site-nav lvl-2">Product Layout3</a></li>
-                                                    <li class="lvl-2"><a href="product-layout4.html" class="site-nav lvl-2">Product Layout4</a></li>
-                                                    <li class="lvl-2"><a href="product-layout5.html" class="site-nav lvl-2">Product Layout5</a></li>
-                                                    <li class="lvl-2"><a href="product-layout6.html" class="site-nav lvl-2">Product Layout6</a></li>
-                                                    <li class="lvl-2"><a href="product-layout7.html" class="site-nav lvl-2">Product Layout7</a></li>
-                                                    <li class="lvl-2"><a href="product-accordian.html" class="site-nav lvl-2">Product Accordian</a></li>
-                                                    <li class="lvl-2"><a href="product-tabs-left.html" class="site-nav lvl-2">Product Tabs Left</a></li>
-                                                    <li class="lvl-2"><a href="product-tabs-center.html" class="site-nav lvl-2">Product Tabs Center</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Product Page Types</a>
-                                                <ul class="subLinks">
-                                                  	<li class="lvl-2"><a href="product-standard.html" class="site-nav lvl-2">Standard Product</a></li>
-                                                    <li class="lvl-2"><a href="product-variable.html" class="site-nav lvl-2">Variable Product</a></li>
-                                                    <li class="lvl-2"><a href="product-grouped.html" class="site-nav lvl-2">Grouped Product</a></li>
-                                                    <li class="lvl-2"><a href="product-layout1.html" class="site-nav lvl-2">New Product</a></li>
-                                                    <li class="lvl-2"><a href="product-layout2.html" class="site-nav lvl-2">Sale Product</a></li>
-                                                    <li class="lvl-2"><a href="product-outofstock.html" class="site-nav lvl-2">Out Of Stock Product</a></li>
-                                                    <li class="lvl-2"><a href="product-external-affiliate.html" class="site-nav lvl-2">External / Affiliate Product</a></li>
-                                                    <li class="lvl-2"><a href="product-layout1.html" class="site-nav lvl-2">Variable Image</a></li>
-                                                    <li class="lvl-2"><a href="product-layout4.html" class="site-nav lvl-2">Variable Select</a></li>
-                                                    <li class="lvl-2"><a href="prodcut-360-degree-view.html" class="site-nav lvl-2">360 Degree view</a></li>
-                                                </ul>
-                                              </li>
-                                            <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Top Brands</a>
-                                            	<div class="menu-brand-logo">
-                                                    <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                    <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                    <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                </div>
-                                                <div class="menu-brand-logo">
-                                                    <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                    <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                    <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                </div>
-                                            </li>
-                                            <li class="grid__item lvl-1 col-md-3 col-lg-3 p-0">
-                                            	<a href="#"><img src="assets/images/megamenu-banner3.jpg" alt=""/></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="lvl1 parent dropdown"><a href="#">Lookbook <i class="anm anm-angle-down-l"></i></a>
-                        	<ul class="dropdown">
-                            	<li><a href="lookbook-2columns.html" class="site-nav">2 Columns</a></li>
-                                <li><a href="lookbook-3columns.html" class="site-nav">3 Columns</a></li>
-                                <li><a href="lookbook-4columns.html" class="site-nav">4 Columns</a></li>
-                                <li><a href="lookbook-5columns.html" class="site-nav">5 Columns + Fullwidth</a></li>
-                                <li><a href="lookbook-shop.html" class="site-nav">Lookbook Shop</a></li>
-                            </ul>
-                        </li>
-                        <li class="lvl1 parent dropdown"><a href="#">Pages <i class="anm anm-angle-down-l"></i></a>
-                          <ul class="dropdown">
-                          	<li><a href="login.html" class="site-nav">Login</a></li>
-                            <li><a href="my-account.html" class="site-nav">My Account</a></li>
-                            <li><a href="aboutus-style1.html" class="site-nav">About Us <i class="anm anm-angle-right-l"></i></a>
-                            	<ul class="dropdown">
-                                    <li><a href="aboutus-style1.html" class="site-nav">About Us Style1</a></li>
-                                    <li><a href="aboutus-style2.html" class="site-nav">About Us Style2</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-style1.html" class="site-nav">Contact Us <i class="anm anm-angle-right-l"></i></a>
-                            	<ul class="dropdown">
-                                    <li><a href="contact-style1.html" class="site-nav">Contact Us Style1</a></li>
-                                    <li><a href="contact-style2.html" class="site-nav">Contact Us Style2</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="faqs-style1.html" class="site-nav">FAQs <i class="anm anm-angle-right-l"></i></a>
-                            	<ul class="dropdown">
-                                    <li><a href="faqs-style1.html" class="site-nav">FAQs Style1</a></li>
-                                    <li><a href="faqs-style2.html" class="site-nav">FAQs Style2</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="cms.html" class="site-nav">CMS</a></li>
-                            <li><a href="error-404.html" class="site-nav">Error 404</a></li>
-                            <li><a href="coming-soon.html" class="site-nav">Coming soon <span class="lbl nm_label1">New</span> </a></li>
-                          </ul>
-                        </li>
-                        <li class="lvl1 parent dropdown"><a href="#">Blog <i class="anm anm-angle-down-l"></i></a>
-                          <ul class="dropdown">
-                            <li><a href="blog-left-sidebar.html" class="site-nav">Left Sidebar</a></li>
-                            <li><a href="blog-right-sidebar.html" class="site-nav">Right Sidebar</a></li>
-                            <li><a href="blog-fullwidth.html" class="site-nav">Fullwidth</a></li>
-                            <li><a href="blog-2columns.html" class="site-nav">2 Columns</a></li>
-                            <li><a href="blog-3columns.html" class="site-nav">3 Columns</a></li>
-                            <li><a href="blog-4columns.html" class="site-nav">4 Columns</a></li>
-                            <li><a href="blog-single-post.html" class="site-nav">Single Post</a></li>
-                          </ul>
-                        </li>
-                        
+                            <li class="lvl1 parent dropdown">
+                                <router-link to="/about">About <i class="anm anm-angle-down-l"></i></router-link>
+                            </li>                        
+                            <li class="lvl1 parent dropdown">
+                                <router-link to="/contact">Contact <i class="anm anm-angle-down-l"></i></router-link>                          
+                            </li>                        
                       </ul>
                     </nav>
                     <!--End Desktop Menu-->
@@ -440,20 +286,6 @@
                 <li><a href="product-accordian.html" class="site-nav">Product Accordian</a></li>
                 <li><a href="product-tabs-left.html" class="site-nav">Product Tabs Left</a></li>
                 <li><a href="product-tabs-center.html" class="site-nav last">Product Tabs Center</a></li>
-              </ul>
-            </li>
-            <li><a href="short-description.html" class="site-nav">Product Page Types <i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="product-standard.html" class="site-nav">Standard Product</a></li>
-                <li><a href="product-variable.html" class="site-nav">Variable Product</a></li>
-                <li><a href="product-grouped.html" class="site-nav">Grouped Product</a></li>
-                <li><a href="product-layout1.html" class="site-nav">New Product</a></li>
-                <li><a href="product-layout2.html" class="site-nav">Sale Product</a></li>
-                <li><a href="product-outofstock.html" class="site-nav">Out Of Stock Product</a></li>
-                <li><a href="product-external-affiliate.html" class="site-nav">External / Affiliate Product</a></li>
-                <li><a href="product-layout1.html" class="site-nav">Variable Image</a></li>
-                <li><a href="product-layout4.html" class="site-nav">Variable Select</a></li>
-                <li><a href="prodcut-360-degree-view.html" class="site-nav last">360 Degree view</a></li>
               </ul>
             </li>
           </ul>
