@@ -69,35 +69,48 @@
                         <!--End Product Button-->
                     </div>
                     <!-- end product image -->
+
                     <!--start product details -->
                     <div class="product-details text-center">
+                        
                         <!-- product name -->
                         <div class="product-name">
                             <a href="product-layout1.html">{{ product.title }}</a>
                         </div>
                         <!-- End product name -->
+                        
                         <!-- product price -->
                         <div class="product-price">
                             <span class="price">${{ product.price}}</span>
                         </div>
                         <!-- End product price -->
+                        
                         <!--Product Review-->
                         <div class="product-review">
-                            <i class="font-13 fa fa-star"></i>
-                            <i class="font-13 fa fa-star"></i>
-                            <i class="font-13 fa fa-star"></i>
-                            <i class="font-13 fa fa-star"></i>
-                            <i class="font-13 fa fa-star-o"></i>
+                            <star-rating
+                            v-model:rating="product.rating"
+                            active-color="#ffb503"
+                            inactive-color="#ffffff"
+                            :increment="0.1"
+                            :border-width="2"
+                            border-color="#ffb503"
+                            :star-size="14"
+                            :read-only="true"
+                            :show-rating="false"
+                            :rounded-corners="true"
+                            :padding="2"
+                            />
                         </div>
                         <!--End Product Review-->
+                        
                         <!--Color Variant -->
-                        <ul class="swatches">
+                        <!-- <ul class="swatches">
                             <li class="swatch small rounded navy"><span class="tooltip-label">Navy</span></li>
                             <li class="swatch small rounded green"><span class="tooltip-label">Green</span></li>
                             <li class="swatch small rounded gray"><span class="tooltip-label">Gray</span></li>
                             <li class="swatch small rounded aqua"><span class="tooltip-label">Aqua</span></li>
                             <li class="swatch small rounded orange"><span class="tooltip-label">Orange</span></li>
-                        </ul>
+                        </ul> -->
                         <!-- End Variant -->
                     </div>
                     <!-- End product details -->
@@ -111,7 +124,11 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating'
 export default {
+    components: {
+        StarRating
+    },
     updated(){
         $('.productSlider').slick({
             dots: false,
@@ -149,6 +166,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.vue-star-rating {
+    justify-content: space-around;
+}
 </style>
