@@ -63,16 +63,11 @@
                                             <ul class="grid">
                                                 <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Product Page</a>
                                                     <ul class="subLinks">
-                                                        <li class="lvl-2"><a href="product-layout1.html" class="site-nav lvl-2">Product Layout1</a></li>
-                                                        <li class="lvl-2"><a href="product-layout2.html" class="site-nav lvl-2">Product Layout2</a></li>
-                                                        <li class="lvl-2"><a href="product-layout3.html" class="site-nav lvl-2">Product Layout3</a></li>
-                                                        <li class="lvl-2"><a href="product-layout4.html" class="site-nav lvl-2">Product Layout4</a></li>
-                                                        <li class="lvl-2"><a href="product-layout5.html" class="site-nav lvl-2">Product Layout5</a></li>
-                                                        <li class="lvl-2"><a href="product-layout6.html" class="site-nav lvl-2">Product Layout6</a></li>
-                                                        <li class="lvl-2"><a href="product-layout7.html" class="site-nav lvl-2">Product Layout7</a></li>
-                                                        <li class="lvl-2"><a href="product-accordian.html" class="site-nav lvl-2">Product Accordian</a></li>
-                                                        <li class="lvl-2"><a href="product-tabs-left.html" class="site-nav lvl-2">Product Tabs Left</a></li>
-                                                        <li class="lvl-2"><a href="product-tabs-center.html" class="site-nav lvl-2">Product Tabs Center</a></li>
+                                                        <li class="lvl-2" 
+                                                        v-for="(cat, index) in $store.state.productCategories" 
+                                                        :key="index">
+                                                            <a href="#" class="site-nav lvl-2">{{ cat }}</a>
+                                                        </li>
                                                     </ul>
                                                 </li>
                                                 <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Top Brands</a>
@@ -155,17 +150,6 @@
                         	<p><a href="login.html" class="btn">Login</a></p>
                             <p class="text-center">New User? <a href="register.html" class="register">Create an Account</a></p>
                             <p class="text-center">Default welcome msg!</p>
-                        </div>
-                        <div class="currency-picker">
-                        	<span class="ttl">Select Currency</span>
-                            <ul id="currencies" class="cnrLangList">
-                            <li class="selected"><a href="#;">INR</a></li><li><a href="#;">GBP</a></li><li><a href="#;">CAD</a></li><li><a href="#;">USD</a></li><li><a href="#;">AUD</a></li><li><a href="#;">EUR</a></li><li><a href="#;">JPY</a></li></ul>
-                        </div>
-                        <div class="language-picker">
-                        	<span class="ttl">SELECT LANGUAGE</span>
-                            <ul id="language" class="cnrLangList">
-                                <li><a href="#">English</a></li><li><a href="#">French</a></li><li><a>German</a></li>
-                            </ul>
                         </div>
                    	</div>
                     <!--End Setting Dropdown-->
@@ -345,7 +329,6 @@
 
 <script>
 export default {
-
 }
 </script>
 

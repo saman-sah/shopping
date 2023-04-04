@@ -4,13 +4,9 @@
   <footer-component></footer-component>
 </template>
 <script>
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+import myMixin from './mixins';
 export default {
-  components: {
-    'header-component': Header,
-    'footer-component': Footer
-  },
+  mixins: [ myMixin ],
   mounted() {
     const mainJs= document.createElement("script");
     mainJs.setAttribute("src", "../assets/js/main.js");
