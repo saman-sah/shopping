@@ -1,17 +1,38 @@
 <!DOCTYPE html>
-<html lang="">
+<html class="no-js" lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Login - Avone Multipurpose eCommerce Bootstrap4 Html Template</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="./assets/css/plugins.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
   </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+  <body class="login-page">
+  <!-- <div id="pre-loader">
+      <img src="assets/images/loader.gif" alt="Loading..." />
+  </div> -->
+    <div class="page-wrapper">
+      <noscript>
+        <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      </noscript>
+      <div id="app"></div>
+      <!-- built files will be auto injected -->
+      <!--Scoll Top-->
+      <span id="site-scroll"><i class="icon anm anm-arw-up"></i></span>
+      <!--End Scoll Top-->
+      <!-- Including Jquery -->
+      <script src="./assets/js/vendor/jquery-3.3.1.min.js"></script>
+      <script src="./assets/js/vendor/js.cookie.js"></script>
+      <!-- Including Javascript -->
+      <script src="./assets/js/plugins.js"></script>
+      <script src="./assets/js/main.js"></script>
+    </div>
   </body>
 </html>
