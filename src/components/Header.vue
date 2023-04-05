@@ -56,7 +56,8 @@
                             <li class="lvl1 parent megamenu mdropdown">
                                 <router-link to="/">Home <i class="anm anm-angle-down-l"></i></router-link>                             
                             </li>
-                            <li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-angle-down-l"></i></a>
+                            <li class="lvl1 parent megamenu">
+                                <router-link to="/shop">Shop <i class="anm anm-angle-down-l"></i></router-link>
                                 <div class="megamenu style2">
                                     <ul class="grid mmWrapper">
                                         <li class="grid__item one-whole">
