@@ -167,7 +167,10 @@ export default {
 </script>
 
 <style scoped>
-.vue-star-rating {
-    justify-content: space-around;
-}
+    .vue-star-rating {
+        justify-content: space-around;    
+    }
+    .grid-products .item .product-image {
+        height: 230px;
+    }
 </style>

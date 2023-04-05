@@ -1,0 +1,470 @@
+<template>
+  <!--Sidebar-->
+            	<div class="col-12 col-sm-12 col-md-3 col-lg-3 sidebar filterbar">
+					<div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
+					<div class="sidebar_tags">
+						<!--Categories-->
+						<div class="sidebar_widget categories filter-widget">
+							<div class="widget-title"><h2>Categories</h2></div>
+							<div class="widget-content" style="">
+								<ul class="sidebar_categories">
+									<li class="level1 sub-level"><a href="#;" class="site-nav">Clothing</a>
+										<ul class="sublinks" style="display: none;">
+											<li class="level2"><a href="#;" class="site-nav">Men</a></li>
+											<li class="level2"><a href="#;" class="site-nav">Women</a></li>
+											<li class="level2"><a href="#;" class="site-nav">Child</a></li>
+											<li class="level2"><a href="#;" class="site-nav">View All Clothing</a></li>
+										</ul>
+									</li>
+									<li class="level1 sub-level"><a href="#;" class="site-nav">Jewellery</a>
+										<ul class="sublinks">
+											<li class="level2"><a href="#;" class="site-nav">Ring</a></li>
+											<li class="level2"><a href="#;" class="site-nav">Neckalses</a></li>
+											<li class="level2"><a href="#;" class="site-nav">Eaarings</a></li>
+											<li class="level2"><a href="#;" class="site-nav">View All Jewellery</a></li>
+										</ul>
+									</li>
+									<li class="lvl-1"><a href="#;" class="site-nav">Shoes</a></li>
+									<li class="lvl-1"><a href="#;" class="site-nav">Accessories</a></li>
+									<li class="lvl-1"><a href="#;" class="site-nav">Collections</a></li>
+									<li class="lvl-1"><a href="#;" class="site-nav">Sale</a></li>
+									<li class="lvl-1"><a href="#;" class="site-nav">Page</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--Categories-->
+						<!--Price Filter-->
+						<div class="sidebar_widget filterBox filter-widget">
+							<div class="widget-title">
+								<h2>Price</h2>
+							</div>
+							<form action="#" method="post" class="price-filter">
+								<div id="slider-range"></div>
+								<div class="row">
+									<div class="col-6">
+										<p class="no-margin"><input id="amount" type="text"></p>
+									</div>
+									<div class="col-6 text-right margin-25px-top">
+										<button class="btn btn-secondary btn--small">filter</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<!--End Price Filter-->
+						<!--Size Swatches-->
+						<div class="sidebar_widget filterBox filter-widget size-swacthes">
+							<div class="widget-title"><h2>Size</h2></div>
+							<div class="filter-color swacth-list">
+								<ul>
+									<li><span class="swacth-btn">X</span><span class="tooltip-label">X</span></li>
+									<li><span class="swacth-btn">XL</span><span class="tooltip-label">XL</span></li>
+									<li><span class="swacth-btn">XLL</span><span class="tooltip-label">XLL</span></li>
+									<li><span class="swacth-btn">M</span><span class="tooltip-label">M</span></li>
+									<li><span class="swacth-btn">L</span><span class="tooltip-label">L</span></li>
+									<li><span class="swacth-btn">S</span><span class="tooltip-label">S</span></li>
+									<li><span class="swacth-btn">XXL</span><span class="tooltip-label">XLL</span></li>
+									<li><span class="swacth-btn">XS</span><span class="tooltip-label">XS</span></li>
+								</ul>
+							</div>
+						</div>
+						<!--End Size Swatches-->
+						<!--Color Swatches-->
+						<div class="sidebar_widget filterBox filter-widget">
+							<div class="widget-title"><h2>Color</h2></div>
+							<div class="filter-color swacth-list clearfix">
+								<ul>
+									<li><span class="swacth-btn black"></span><span class="tooltip-label">Black</span></li>
+									<li><span class="swacth-btn white"></span><span class="tooltip-label">White</span></li>
+									<li><span class="swacth-btn red"></span><span class="tooltip-label">Red</span></li>
+									<li><span class="swacth-btn blue"></span><span class="tooltip-label">Blue</span></li>
+									<li><span class="swacth-btn pink"></span><span class="tooltip-label">Pink</span></li>
+									<li><span class="swacth-btn gray"></span><span class="tooltip-label">Gray</span></li>
+									<li><span class="swacth-btn green"></span><span class="tooltip-label">Green</span></li>
+									<li><span class="swacth-btn orange"></span><span class="tooltip-label">Orange</span></li>
+									<li><span class="swacth-btn yellow"></span><span class="tooltip-label">Yellow</span></li>
+									<li><span class="swacth-btn blueviolet"></span><span class="tooltip-label">Blue Violet</span></li>
+									<li><span class="swacth-btn brown"></span><span class="tooltip-label">Brown</span></li>
+									<li><span class="swacth-btn darkGoldenRod"></span><span class="tooltip-label">Dark Golden Red</span></li>
+									<li><span class="swacth-btn darkGreen"></span><span class="tooltip-label">Dark Green</span></li>
+									<li><span class="swacth-btn darkRed"></span><span class="tooltip-label">Dark Red</span></li>
+									<li><span class="swacth-btn khaki"></span><span class="tooltip-label">Khaki</span></li>
+									<li><span class="swacth-btn blue-red"></span><span class="tooltip-label">Blue/Red</span></li>
+									<li><span class="swacth-btn black-grey"></span><span class="tooltip-label">Black/Grey</span></li>
+									<li><span class="swacth-btn pink-black"></span><span class="tooltip-label">pink-Black</span></li>
+								</ul>
+							</div>
+						</div>
+						<!--End Color Swatches-->
+						<!--Brand-->
+						<div class="sidebar_widget filterBox filter-widget brand-filter">
+							<div class="widget-title"><h2>Brands</h2></div>
+							<ul>
+								<li>
+								  <input type="checkbox" value="allen-vela" id="check1">
+								  <label for="check1"><span><span></span></span>Allen Vela</label>
+								</li>
+								<li>
+								  <input type="checkbox" value="oxymat" id="check3">
+								  <label for="check3"><span><span></span></span>Oxymat</label>
+								</li>
+								<li>
+								  <input type="checkbox" value="vanelas" id="check4">
+								  <label for="check4"><span><span></span></span>Vanelas</label>
+								</li>
+								<li>
+								  <input type="checkbox" value="pagini" id="check5">
+								  <label for="check5"><span><span></span></span>Pagini</label>
+								</li>
+								<li>
+								  <input type="checkbox" value="monark" id="check6">
+								  <label for="check6"><span><span></span></span>Monark</label>
+								</li>
+							</ul>
+						</div>
+						<!--End Brand-->
+						<!--Popular Products-->
+						<div class="sidebar_widget sidePro">
+							<div class="widget-title"><h2>Popular Products</h2></div>
+							<div class="widget-content">
+								<div class="sideProSlider grid-products">
+									<div class="item">
+										<!-- start product image -->
+										<div class="product-image">
+											<!-- start product image -->
+											<a href="product-layout1.html" class="product-img">
+												<!-- image -->
+												<img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
+												<!-- End image -->
+												<!-- Hover image -->
+												<img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
+												<!-- End hover image -->
+											</a>
+											<!-- end product image -->
+											
+											<!--Product Button-->
+											<div class="button-set style1">
+												<ul>
+													<li>
+														<!--Cart Button-->
+														<form class="add" action="cart-variant1.html" method="post">
+															<button class="btn-icon btn btn-addto-cart" type="button" tabindex="0">
+																<i class="icon anm anm-cart-l"></i>
+																<span class="tooltip-label">Add to Cart</span>
+															</button>
+														</form>
+														<!--end Cart Button-->
+													</li>
+													<li>
+														<!--Quick View Button-->
+														<a href="javascript:void(0)" title="Quick View" class="btn-icon quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+															<i class="icon anm anm-search-plus-l"></i>
+															<span class="tooltip-label">Quick View</span>
+														</a>
+														<!--End Quick View Button-->
+													</li>
+													<li>
+														<!--Wishlist Button-->
+														<div class="wishlist-btn">
+															<a class="btn-icon wishlist add-to-wishlist" href="my-wishlist.html">
+																<i class="icon anm anm-heart-l"></i>
+																<span class="tooltip-label">Add To Wishlist</span>
+															</a>
+														</div>
+														<!--End Wishlist Button-->
+													</li>
+													<li>
+														<!--Compare Button-->
+														<div class="compare-btn">
+															<a class="btn-icon compare add-to-compare" href="compare-style2.html" title="Add to Compare">
+																<i class="icon icon-reload"></i>
+																<span class="tooltip-label">Add to Compare</span>
+															</a>
+														</div>
+														<!--End Compare Button-->
+													</li>
+												</ul>
+											</div>
+											<!--End Product Button-->
+										</div>
+										<!-- end product image -->
+										<!--start product details -->
+										<div class="product-details text-center">
+											<!-- product name -->
+											<div class="product-name">
+												<a href="product-layout1.html">Martha Knit Top</a>
+											</div>
+											<!-- End product name -->
+											<!-- product price -->
+											<div class="product-price">
+												<span class="price">$399.01</span>
+											</div>
+											<!-- End product price -->
+											<!--Product Review-->
+											<div class="product-review">
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star-o"></i>
+											</div>
+											<!--End Product Review-->
+											<!--Color Variant -->
+											<ul class="swatches">
+												<li class="swatch small rounded navy"><span class="tooltip-label">Navy</span></li>
+												<li class="swatch small rounded green"><span class="tooltip-label">Green</span></li>
+												<li class="swatch small rounded gray"><span class="tooltip-label">Gray</span></li>
+												<li class="swatch small rounded aqua"><span class="tooltip-label">Aqua</span></li>
+												<li class="swatch small rounded orange"><span class="tooltip-label">Orange</span></li>
+											</ul>
+											<!-- End Variant -->
+										</div>
+										<!-- End product details -->
+									</div>
+									<div class="item">
+									<!-- start product image -->
+									<div class="product-image">
+										<!-- start product image -->
+										<a href="product-layout1.html" class="product-img">
+											<!-- image -->
+											<img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
+											<!-- End image -->
+											<!-- Hover image -->
+											<img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
+											<!-- End hover image -->
+										</a>
+										<!-- end product image -->
+										<!--Product Button-->
+										<div class="button-set style1">
+											<ul>
+												<li>
+													<!--Cart Button-->
+													<form class="add" action="cart-variant1.html" method="post">
+														<button class="btn-icon btn btn-addto-cart" type="button" tabindex="0">
+															<i class="icon anm anm-cart-l"></i>
+															<span class="tooltip-label">Add to Cart</span>
+														</button>
+													</form>
+													<!--end Cart Button-->
+												</li>
+												<li>
+													<!--Quick View Button-->
+													<a href="javascript:void(0)" title="Quick View" class="btn-icon quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+														<i class="icon anm anm-search-plus-l"></i>
+														<span class="tooltip-label">Quick View</span>
+													</a>
+													<!--End Quick View Button-->
+												</li>
+												<li>
+													<!--Wishlist Button-->
+													<div class="wishlist-btn">
+														<a class="btn-icon wishlist add-to-wishlist" href="my-wishlist.html">
+															<i class="icon anm anm-heart-l"></i>
+															<span class="tooltip-label">Add To Wishlist</span>
+														</a>
+													</div>
+													<!--End Wishlist Button-->
+												</li>
+												<li>
+													<!--Compare Button-->
+													<div class="compare-btn">
+														<a class="btn-icon compare add-to-compare" href="compare-style2.html" title="Add to Compare">
+															<i class="icon icon-reload"></i>
+															<span class="tooltip-label">Add to Compare</span>
+														</a>
+													</div>
+													<!--End Compare Button-->
+												</li>
+											</ul>
+										</div>
+										<!--End Product Button-->
+									</div>
+									<!-- end product image -->
+									<!--start product details -->
+									<div class="product-details text-center">
+										<!-- product name -->
+										<div class="product-name">
+											<a href="product-layout1.html">Innerbloom Puffer Jacket</a>
+										</div>
+										<!-- End product name -->
+										<!-- product price -->
+										<div class="product-price">
+											<span class="price">$199.01</span>
+										</div>
+										<!-- End product price -->
+										<!--Product Review-->
+										<div class="product-review">
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+										</div>
+										<!--End Product Review-->
+										<!-- Color Variant -->
+										<ul class="swatches">
+											<li class="swatch small rounded black"><span class="tooltip-label">Black</span></li>
+											<li class="swatch small rounded navy"><span class="tooltip-label">Navy</span></li>
+											<li class="swatch small rounded purple"><span class="tooltip-label">Purple</span></li>
+										</ul>
+										<!-- End Variant -->
+									</div>
+									<!-- End product details -->
+								</div>
+									<div class="item">
+										<!-- start product image -->
+										<div class="product-image">
+											<!-- start product image -->
+											<a href="product-layout1.html" class="product-img">
+												<!-- image -->
+												<img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
+												<!-- End image -->
+												<!-- Hover image -->
+												<img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
+												<!-- End hover image -->
+											</a>
+											<!-- end product image -->
+											<!--Product Button-->
+											<div class="button-set style1">
+												<ul>
+													<li>
+														<!--Cart Button-->
+														<form class="add" action="cart-variant1.html" method="post">
+															<button class="btn-icon btn btn-addto-cart" type="button" tabindex="0">
+																<i class="icon anm anm-cart-l"></i>
+																<span class="tooltip-label">Add to Cart</span>
+															</button>
+														</form>
+														<!--end Cart Button-->
+													</li>
+													<li>
+														<!--Quick View Button-->
+														<a href="javascript:void(0)" title="Quick View" class="btn-icon quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+															<i class="icon anm anm-search-plus-l"></i>
+															<span class="tooltip-label">Quick View</span>
+														</a>
+														<!--End Quick View Button-->
+													</li>
+													<li>
+														<!--Wishlist Button-->
+														<div class="wishlist-btn">
+															<a class="btn-icon wishlist add-to-wishlist" href="my-wishlist.html">
+																<i class="icon anm anm-heart-l"></i>
+																<span class="tooltip-label">Add To Wishlist</span>
+															</a>
+														</div>
+														<!--End Wishlist Button-->
+													</li>
+													<li>
+														<!--Compare Button-->
+														<div class="compare-btn">
+															<a class="btn-icon compare add-to-compare" href="compare-style2.html" title="Add to Compare">
+																<i class="icon icon-reload"></i>
+																<span class="tooltip-label">Add to Compare</span>
+															</a>
+														</div>
+														<!--End Compare Button-->
+													</li>
+												</ul>
+											</div>
+											<!--End Product Button-->
+										</div>
+										<!-- end product image -->
+										<!--start product details -->
+										<div class="product-details text-center">
+											<!-- product name -->
+											<div class="product-name">
+												<a href="product-layout1.html">Button Up Top Black</a>
+											</div>
+											<!-- End product name -->
+											<!-- product price -->
+											<div class="product-price">
+												<span class="price">$99.01</span>
+											</div>
+											<!-- End product price -->
+											<!--Product Review-->
+											<div class="product-review">
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star-o"></i>
+												<i class="font-13 fa fa-star-o"></i>
+												<i class="font-13 fa fa-star-o"></i>
+											</div>
+											<!--End Product Review-->
+										   <!-- Color Variant -->
+											<ul class="swatches">
+												<li class="swatch small rounded red"><span class="tooltip-label">red</span></li>
+												<li class="swatch small rounded orange"><span class="tooltip-label">orange</span></li>
+												<li class="swatch small rounded yellow"><span class="tooltip-label">yellow</span></li>
+											</ul>
+											<!-- End Variant -->
+										</div>
+										<!-- End product details -->
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!--End Popular Products-->
+						<!--Banner-->
+						<div class="sidebar_widget static-banner">
+							<a href="#"><img src="assets/images/collection-side-banner.png" alt=""></a>
+						</div>
+						<!--Banner-->
+						<!--Information-->
+						<div class="sidebar_widget">
+							<div class="widget-title"><h2>GLOBAL TEXT BLOCK</h2></div>
+							<div class="widget-content"><p>Use this text to share information about your brand with your customers.</p><p>Describe a product, share announcements, or welcome customers to your store.</p></div>
+						</div>
+						<!--end Information-->
+						<!--Product Tags-->
+						<div class="sidebar_widget">
+						  <div class="widget-title">
+							<h2>Product Tags</h2>
+						  </div>
+						  <div class="widget-content">
+							<ul class="product-tags">
+							  <li><a href="#" title="Show products matching tag $100 - $400">$100 - $400</a></li>
+							  <li><a href="#" title="Show products matching tag $400 - $600">$400 - $600</a></li>
+							  <li><a href="#" title="Show products matching tag $600 - $800">$600 - $800</a></li>
+							  <li><a href="#" title="Show products matching tag Above $800">Above $800</a></li>
+							  <li><a href="#" title="Show products matching tag Allen Vela">Allen Vela</a></li>
+							  <li><a href="#" title="Show products matching tag Black">Black</a></li>
+							  <li><a href="#" title="Show products matching tag Blue">Blue</a></li>
+							  <li><a href="#" title="Show products matching tag Cantitate">Cantitate</a></li>
+							  <li><a href="#" title="Show products matching tag Famiza">Famiza</a></li>
+							  <li><a href="#" title="Show products matching tag Gray">Gray</a></li>
+							  <li><a href="#" title="Show products matching tag Green">Green</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag Hot">Hot</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag jean shop">jean shop</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag jesse kamm">jesse kamm</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag L">L</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag Lardini">Lardini</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag lareida">lareida</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag Lirisla">Lirisla</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag M">M</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag mini-dress">mini-dress</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag Monark">Monark</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag Navy">Navy</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag new">new</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag new arrivals">new arrivals</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag Orange">Orange</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag oxford">oxford</a></li>
+							  <li style="display: none;"><a href="#" title="Show products matching tag Oxymat">Oxymat</a></li>
+							</ul>
+							<span class="btn btn--small btnview">View all</span> </div>
+						</div>
+						<!--end Product Tags-->
+					</div>
+				</div>
+				<!--End Sidebar-->
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>

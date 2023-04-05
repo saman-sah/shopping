@@ -7,6 +7,7 @@ export default createStore({
     posts: {},
     products: {},
     productCategories:{},
+    singleProduct: null,
     productsByCategory:{},
     route_details:{},
     loading_products: true,
@@ -22,22 +23,32 @@ export default createStore({
 
   // ---------------   Mutations   --------------------
   mutations: {
-    loadPosts(state, data) {
+    LOAD_POSTS(state, data) {
       state.posts= data.posts;
       // console.log('state.posts');
       // console.log(state.posts);
     },
-    loadProducts(state, data) {
+    LOAD_PRODUCTS(state, data) {
       state.products= data.products;
+      state.products.forEach(product => {
+        var slug = product.title.toLowerCase().replace(/[^\w-]+/g, '-');
+        product.slug=slug
+      });
       console.log('state.products');
       console.log(state.products);
     },
-    loadProductsCategories(state, productCategories) {
+    LOAD_PRODUCTS_CATEGORIES(state, productCategories) {
       state.productCategories= productCategories;
       // console.log('state.productCategories');
       // console.log(state.productCategories);
     },
+    GET_SINGLE_PRODUCT(state, singleProduct) {
+      console.log(singleProduct);
+    },
   },
+
+
+
 
   // ---------------   Actions   --------------------
   actions: {
@@ -49,7 +60,7 @@ export default createStore({
         }
       })
       .then(response=> {
-        commit('loadPosts', response.data)
+        commit('LOAD_POSTS', response.data)
       })
     },
     loadProducts({commit}){
@@ -60,7 +71,7 @@ export default createStore({
         }
       })
       .then(response=> {
-        commit('loadProducts', response.data)
+        commit('LOAD_PRODUCTS', response.data)
       })
     },
     loadProductsCategories({commit}){
@@ -71,9 +82,19 @@ export default createStore({
         }
       })
       .then(response=> {
-        commit('loadProductsCategories', response.data)
+        commit('LOAD_PRODUCTS_CATEGORIES', response.data)
       })
     },
+    getSingleProduct({commit}, productId) {
+      axios.get('https://dummyjson.com/products/'+ productId,  {
+        headers: {
+          Accept: "application/json",
+        }
+      })
+      .then(response=> {
+        commit('GET_SINGLE_PRODUCT', response.data)
+      })
+    }
   },
 
 
