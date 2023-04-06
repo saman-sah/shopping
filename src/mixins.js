@@ -136,62 +136,6 @@ export default {
               // login failed
               console.log("login failed");
           }
-        },        
-        loadPosts() {
-          this.axios.get(this.base_url+'posts', {
-            headers: {
-              Accept: "application/json",
-            }
-          })
-          .then((response) => {
-            this.posts= response.data;
-            this.posts.forEach(post => {
-              var slug = post.title.toLowerCase().replace(/[^\w-]+/g, '-');
-              post.slug=slug
-            });   
-          })
-          .catch((err)=>{
-            console.log(err.message);
-          })
-          
-          
-        },
-        loadProducts(catSlug) {
-          this.loading_products=true;
-          if(catSlug){
-
-          }
-          
-          this.axios.get(this.base_url+'products', {
-            headers: {
-              Accept: "application/json",
-            }
-          })
-          .then((response) => {
-            this.products= response.data;
-            this.products.forEach(product => {
-              var slug = product.title.toLowerCase().replace(/[^\w-]+/g, '-');
-              product.slug=slug
-            });
-            if(catSlug) {
-              this.products= _.filter(this.products, ['category', catSlug])
-            }
-            
-            this.updateKey++;
-            this.loading_products=false;
-          })
-          
-        },
-        loadProductsCategories() {
-          this.axios.get(this.base_url+'product_categories', {
-            headers: {
-              Accept: "application/json",
-            }
-          })
-          .then((response) => {
-            this.productCategories= response.data;
-          })
-          
         },
       },
 }

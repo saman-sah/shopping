@@ -6,7 +6,7 @@
         <div class="product-image">
             <!-- start product image -->
             <router-link 
-            :to="'/product/'+ product.slug"
+            :to="'/product/'+product.id+'/'+ product.slug"
             @click="getSingleProduct(product.id)" 
             class="product-img">
                 <!-- image -->
