@@ -33,6 +33,9 @@ export default createStore({
       state.products.forEach(product => {
         var slug = product.title.toLowerCase().replace(/[^\w-]+/g, '-');
         product.slug=slug
+        var discount= (product.discountPercentage* product.price) / 100;
+        var total= product.price - discount;
+        product.totalPrice= total.toFixed(2);
       });
       console.log('state.products');
       console.log(state.products);
@@ -43,6 +46,13 @@ export default createStore({
       // console.log(state.productCategories);
     },
     GET_SINGLE_PRODUCT(state, singleProduct) {
+      var slug = singleProduct.title.toLowerCase().replace(/[^\w-]+/g, '-');
+      singleProduct.slug=slug
+      var discount= (singleProduct.discountPercentage* singleProduct.price) / 100;
+      var total= singleProduct.price - discount;
+      singleProduct.discount= discount.toFixed(2);
+      singleProduct.totalPrice= total.toFixed(2);
+      state.singleProduct= singleProduct;
       console.log(singleProduct);
     },
   },
@@ -86,6 +96,8 @@ export default createStore({
       })
     },
     getSingleProduct({commit}, productId) {
+      console.log('getSingleProduct Actionnnnnnn');
+      console.log(productId);
       axios.get('https://dummyjson.com/products/'+ productId,  {
         headers: {
           Accept: "application/json",

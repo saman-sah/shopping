@@ -1,5 +1,5 @@
 <template>
-    <div id="page-content">        
+    <div id="page-content">  
         <!--Body Container-->
         <!--Breadcrumbs-->
         <div class="breadcrumbs-wrapper">
@@ -8,61 +8,21 @@
             </div>
         </div>
         <!--End Breadcrumbs-->
-        <div class="container">
+        <div class="container" v-if="singleProduct">
             <div class="product-detail-container product-single-style2">
 				<div class="product-single">
 					<div class="row">
                         <div class="col-lg-7 col-md-7 col-sm-12 col-12">
                                 <div class="product-details-img">
-                                    <div class="zoompro-wrap product-zoom-right pl-20">
+                                    <div v-for="(image, index) in singleProduct.images"
+                                    :key="index"
+                                    class="zoompro-wrap product-zoom-right pl-20">
                                         <div class="zoompro-span">
-                                            <img class="zoompro" src="assets/images/product-images/product1.jpg" data-zoom-image="assets/images/product-images/product1.jpg" alt="" />
-                                        </div>
-                                    </div>                                    
-                                    <div class="zoompro-wrap product-zoom-right pl-20">
-                                        <div class="zoompro-span">
-                                            <img class="zoompro" src="assets/images/product-images/product1.jpg" data-zoom-image="assets/images/product-images/product1.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="zoompro-wrap product-zoom-right pl-20">
-                                        <div class="zoompro-span">
-                                            <img class="zoompro" src="assets/images/product-images/product9-2.jpg" data-zoom-image="assets/images/product-images/product9-2.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="zoompro-wrap product-zoom-right pl-20">
-                                        <div class="zoompro-span">
-                                            <img class="zoompro" src="assets/images/product-images/product9-3.jpg" data-zoom-image="assets/images/product-images/product9-3.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="zoompro-wrap product-zoom-right pl-20">
-                                        <div class="zoompro-span">
-                                            <img class="zoompro" src="assets/images/product-images/product9-4.jpg" data-zoom-image="assets/images/product-images/product9-4.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="zoompro-wrap product-zoom-right pl-20">
-                                        <div class="zoompro-span">
-                                            <img class="zoompro" src="assets/images/product-images/product9-5.jpg" data-zoom-image="assets/images/product-images/product9-5.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="zoompro-wrap product-zoom-right pl-20">
-                                        <div class="zoompro-span">
-                                            <img class="zoompro" src="assets/images/product-images/product9-6.jpg" data-zoom-image="assets/images/product-images/product9-6.jpg" alt="" />
-                                        </div>
-                                        <div class="product-buttons">
-                                            <a href="#" class="btn prlightbox" title="Zoom">
-												<i class="icon anm anm-expand-l-arrows" aria-hidden="true"></i>
-												<span class="tooltip-label">Zoom Image</span>
-											</a>
+                                            <img class="zoompro" :src="image" :data-zoom-image="image" alt="" />
                                         </div>
                                     </div>
                                     <div class="lightboximages">
-                                        <a href="assets/images/product-images/product1.jpg" data-size="1000x1280"></a>
-                                        <a href="assets/images/product-images/product1.jpg" data-size="1000x1280"></a>
-                                        <a href="assets/images/product-images/product9-2.jpg" data-size="1000x1280"></a>
-                                        <a href="assets/images/product-images/product9-3.jpg" data-size="1000x1280"></a>
-                                        <a href="assets/images/product-images/product9-4.jpg" data-size="1000x1280"></a>
-                                        <a href="assets/images/product-images/product9-5.jpg" data-size="1000x1280"></a>
-                                        <a href="assets/images/product-images/product9-6.jpg" data-size="1000x1280"></a>
+                                        <a href="../assets/images/product-images/product1.jpg" data-size="1000x1280"></a>
                                     </div>
                                     
                                     <div class="social-sharing">
@@ -88,83 +48,64 @@
                         <div class="col-lg-5 col-md-5 col-sm-12 col-12">
                             <div class="product-sticky-style">
                                 <div class="product-single__meta">
-                                    <h1 class="product-single__title">Product Layout Style3</h1>
+                                    <h1 class="product-single__title">{{ singleProduct.title}}</h1>
                                     <div class="prInfoRow">
-                                        <div class="product-review"><a class="reviewLink" href="#tab2"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><span class="spr-badge-caption">6 reviews</span></a></div>
+                                        <div class="product-review">
+                                            <a class="reviewLink" href="#tab2">
+                                                <star-rating
+                                                v-model:rating="singleProduct.rating"
+                                                active-color="#ffb503"
+                                                inactive-color="#ffffff"
+                                                :increment="0.1"
+                                                :border-width="2"
+                                                border-color="#ffb503"
+                                                :star-size="14"
+                                                :read-only="true"
+                                                :show-rating="false"
+                                                :rounded-corners="true"
+                                                :padding="2"
+                                                />
+                                                <span class="spr-badge-caption">6 reviews</span>
+                                            </a>
+                                        </div>
                                         <div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div>
-                                        <div class="product-stock"> <span class="instock ">In Stock</span> <span class="outstock hide">Unavailable</span> </div>
+                                        <div class="product-stock"> 
+                                            <span v-if="singleProduct.stock > 0" class="instock">In Stock</span> 
+                                            <span v-else class="outstock hide">Unavailable</span> 
+                                        </div>
                                     </div>
                                     <p class="product-single__price product-single__price-product-template">
-                                        <span class="visually-hidden">Regular price</span>
-                                        <s id="ComparePrice-product-template"><span class="money">$600.00</span></s>
-                                        <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
-                                            <span id="ProductPrice-product-template"><span class="money">$500.00</span></span>
+                                        <template v-if="singleProduct.discountPercentage > 0">
+                                            <span class="visually-hidden">Regular price</span>
+                                            <s id="ComparePrice-product-template">
+                                                <span class="money">${{ singleProduct.price }}</span>
+                                            </s>
+                                            <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
+                                                <span id="ProductPrice-product-template">
+                                                    <span class="money">${{ singleProduct.totalPrice }}</span>
+                                                </span>
+                                            </span>
+                                        </template>
+                                        <template v-else>
+                                            <span class="visually-hidden">Regular price</span>
+                                            <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
+                                                <span id="ProductPrice-product-template"><span class="money">${{ singleProduct.totalPrice }}</span></span>
+                                            </span>
+                                        </template>
+                                        <span v-if="singleProduct.discountPercentage > 0" class="discount-badge"> 
+                                            <span class="devider">|</span>&nbsp;
+                                            <span>You Save&nbsp;</span>
+                                            <span class="product-single__save-amount">
+                                                <span class="money">${{ singleProduct.discount }}</span>
+                                            </span>
+                                            <span class="off">(<span>{{ singleProduct.discountPercentage }}</span>%)</span>
                                         </span>
-                                        <span class="discount-badge"> <span class="devider">|</span>&nbsp;
-                                            <span>You Save</span>
-                                            <span class="product-single__save-amount"><span class="money">$100.00</span></span>
-                                            <span class="off">(<span>16</span>%)</span>
-                                        </span>  
+                                          
                                     </p>
                                 </div>
                                 <div class="product-single__description rte">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </div>
-                                <form method="post" action="" class="product-form product-form-product-template hidedropdown">
-                                    <div class="swatch clearfix swatch-0 option1">
-                                        <div class="product-form__item">
-                                            <label class="label">Color:<span class="required">*</span> <span class="slVariant">Red</span></label>
-                                            <div class="swatch-element color">
-                                                <input class="swatchInput" id="swatch-black" type="radio" name="option-0" value="Black">
-                                                <label class="swatchLbl small black" for="swatch-black" title="Black"></label>
-                                            </div>
-                                            <div class="swatch-element color">
-                                                <input class="swatchInput" id="swatch-blue" type="radio" name="option-0" value="blue">
-                                                <label class="swatchLbl small blue" for="swatch-blue" title="Blue"></label>
-                                            </div>
-                                            <div class="swatch-element color">
-                                                <input class="swatchInput" id="swatch-red" type="radio" name="option-0" value="Blue">
-                                                <label class="swatchLbl small red" for="swatch-red" title="Red"></label>
-                                            </div>
-                                            <div class="swatch-element color">
-                                                <input class="swatchInput" id="swatch-pink" type="radio" name="option-0" value="Pink">
-                                                <label class="swatchLbl color small pink" for="swatch-pink" title="Pink"></label>
-                                            </div>
-                                            <div class="swatch-element color">
-                                                <input class="swatchInput" id="swatch-orange" type="radio" name="option-0" value="Orange">
-                                                <label class="swatchLbl color small orange" for="swatch-orange" title="Orange"></label>
-                                            </div>
-                                            <div class="swatch-element color">
-                                                <input class="swatchInput" id="swatch-yellow" type="radio" name="option-0" value="Yellow">
-                                                <label class="swatchLbl color small yellow" for="swatch-yellow" title="Yellow"></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swatch clearfix swatch-1 option2" data-option-index="1">
-                                        <div class="product-form__item">
-                                          <label class="label">Size:<span class="required">*</span> <span class="slVariant">XS</span> <a href="#sizechart" class="sizelink btn-link"><i class="anm anm-ruler"></i> Size Guide</a></label>
-                                          <div data-value="XS" class="swatch-element xs available">
-                                            <input class="swatchInput" id="swatch-1-xs" type="radio" name="option-1" value="XS">
-                                            <label class="swatchLbl medium" for="swatch-1-xs" title="XS">XS</label>
-                                          </div>
-                                          <div data-value="S" class="swatch-element s available">
-                                            <input class="swatchInput" id="swatch-1-s" type="radio" name="option-1" value="S">
-                                            <label class="swatchLbl medium" for="swatch-1-s" title="S">S</label>
-                                          </div>
-                                          <div data-value="M" class="swatch-element m available">
-                                            <input class="swatchInput" id="swatch-1-m" type="radio" name="option-1" value="M">
-                                            <label class="swatchLbl medium" for="swatch-1-m" title="M">M</label>
-                                          </div>
-                                          <div data-value="L" class="swatch-element l available">
-                                            <input class="swatchInput" id="swatch-1-l" type="radio" name="option-1" value="L">
-                                            <label class="swatchLbl medium" for="swatch-1-l" title="L">L</label>
-                                          </div>
-                                          <div data-value="XL" class="swatch-element xl available">
-                                            <input class="swatchInput" id="swatch-1-xl" type="radio" name="option-1" value="XL">
-                                            <label class="swatchLbl medium" for="swatch-1-xl" title="XL">XL</label>
-                                          </div>
-                                        </div>
-                                    </div>
+                                    {{ singleProduct.description }}                                </div>
+                                <form method="post" action="" class="product-form product-form-product-template hidedropdown">                                                                      
                                     <p class="infolinks">
                                         <a class="wishlist add-to-wishlist" href="my-wishlist.html" title="Add to Wishlist"><i class="icon anm anm-heart-l" aria-hidden="true"></i> <span>Add to Wishlist</span></a>
                                         <a href="#ShippingInfo" class="mfp btn shippingInfo"><i class="anm anm-paper-l-plane"></i> Delivery &amp; Returns</a>
@@ -201,7 +142,7 @@
                                 <div class="userViewMsg" data-user="20" data-time="11000">
                                     <i class="fa fa-users" aria-hidden="true"></i> <strong class="uersView">14</strong> People are Looking for this Product
                                 </div>
-                                <div class="trustseal-img"><img src="assets/images/checkout-cards.png" alt=""></div>
+                                <!-- <div class="trustseal-img"><img src="assets/images/checkout-cards.png" alt=""></div> -->
                                 <div class="type-product">
                                     <span>Type:</span> <a href="#">Dress</a>
                                 </div>
@@ -238,7 +179,7 @@
                                     <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                                    <img data-src="assets/images/detail-img.jpg" src="assets/images/detail-img.jpg" alt="" />
+                                    <!-- <img data-src="assets/images/detail-img.jpg" src="assets/images/detail-img.jpg" alt="" /> -->
                                 </div>
                             </div>
                         </div>
@@ -412,10 +353,10 @@
                             <!-- start product image -->
                             <a href="product-layout1.html" class="product-img">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/product-images/product-detail1.jpg" src="assets/images/product-images/product-detail1.jpg" alt="image" title="product">
+                                <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product-detail1.jpg" src="../assets/images/product-images/product-detail1.jpg" alt="image" title="product"> -->
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/product-images/product-detail1.jpg" src="assets/images/product-images/product-detail1.jpg" alt="image" title="product">
+                                <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product-detail1.jpg" src="../assets/images/product-images/product-detail1.jpg" alt="image" title="product"> -->
                                 <!-- End hover image -->
                                 <!-- product label -->
                                 <div class="product-labels rectangular"><span class="lbl pr-label1">new</span></div>
@@ -497,10 +438,10 @@
                             <!-- start product image -->
                             <a href="product-layout1.html" class="product-img">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/product-images/product-detail1.jpg" src="assets/images/product-images/product-detail1.jpg" alt="image" title="product">
+                                <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product-detail1.jpg" src="../assets/images/product-images/product-detail1.jpg" alt="image" title="product"> -->
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/product-images/product-detail1.jpg" src="assets/images/product-images/product-detail1.jpg" alt="image" title="product">
+                                <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product-detail1.jpg" src="../assets/images/product-images/product-detail1.jpg" alt="image" title="product"> -->
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -580,10 +521,10 @@
                             <!-- start product image -->
                             <a href="product-layout1.html" class="product-img">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                 <!-- End hover image -->
                                 <!-- product label -->
                                 <div class="product-labels rectangular"><span class="lbl pr-label2">Hot</span></div>
@@ -667,10 +608,10 @@
                             <!-- start product image -->
                             <a href="product-layout1.html" class="product-img">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image"/>
+                                <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"/> -->
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" />
+                                <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" /> -->
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -752,10 +693,10 @@
                             <!-- start product image -->
                             <a href="product-layout1.html" class="product-img">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image"/>
+                                <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"/> -->
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image" />
+                                <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image" /> -->
                                 <!-- End hover image -->
                                 <!-- product label -->
                                 <div class="product-labels"><span class="lbl on-sale">Sale</span></div>
@@ -839,10 +780,10 @@
                             <!-- start product image -->
                             <a href="product-layout1.html" class="product-img">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -923,10 +864,10 @@
                             <!-- start product image -->
                             <a href="product-layout1.html" class="product-img">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -1017,10 +958,10 @@
                                 <!-- start product image -->
                                 <a href="product-layout1.html" class="product-img">
                                     <!-- image -->
-                                    <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image" title="product">
+                                    <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image" title="product"> -->
                                     <!-- End image -->
                                     <!-- Hover image -->
-                                    <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image" title="product">
+                                    <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image" title="product"> -->
                                     <!-- End hover image -->
                                 </a>
                                 <!-- end product image -->
@@ -1047,10 +988,10 @@
                                 <!-- start product image -->
                                 <a href="product-layout1.html" class="product-img">
                                     <!-- image -->
-                                    <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                    <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                     <!-- End image -->
                                     <!-- Hover image -->
-                                    <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                    <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                     <!-- End hover image -->
                                 </a>
                                 <!-- end product image -->
@@ -1078,10 +1019,10 @@
                                 <!-- start product image -->
                                 <a href="product-layout1.html" class="product-img">
                                     <!-- image -->
-                                    <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                    <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                     <!-- End image -->
                                     <!-- Hover image -->
-                                    <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                    <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                     <!-- End hover image -->
                                 </a>
                                 <!-- end product image -->
@@ -1109,10 +1050,10 @@
                                 <!-- start product image -->
                                 <a href="product-layout1.html" class="product-img">
                                     <!-- image -->
-                                    <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image"/>
+                                    <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"/> -->
                                     <!-- End image -->
                                     <!-- Hover image -->
-                                    <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image" />
+                                    <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image" /> -->
                                     <!-- End hover image -->
                                 </a>
                                 <!-- end product image -->
@@ -1141,10 +1082,10 @@
                                 <!-- start product image -->
                                 <a href="product-layout1.html" class="product-img">
                                     <!-- image -->
-                                    <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image"/>
+                                    <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"/> -->
                                     <!-- End image -->
                                     <!-- Hover image -->
-                                    <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image" />
+                                    <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image" /> -->
                                     <!-- End hover image -->
                                 </a>
                                 <!-- end product image -->
@@ -1172,10 +1113,10 @@
                                 <!-- start product image -->
                                 <a href="product-layout1.html" class="product-img">
                                     <!-- image -->
-                                    <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                    <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                     <!-- End image -->
                                     <!-- Hover image -->
-                                    <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                    <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                     <!-- End hover image -->
                                 </a>
                                 <!-- end product image -->
@@ -1203,10 +1144,10 @@
                             <!-- start product image -->
                             <a href="product-layout1.html" class="product-img">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                <!-- <img class="primary blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="image">
+                                <!-- <img class="hover blur-up lazyload" data-src="../assets/images/product-images/product1.jpg" src="../assets/images/product-images/product1.jpg" alt="image"> -->
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -1238,10 +1179,10 @@
             <span class="details">Sunset Sleep Scarf Top<br>
                 <span class="price">$49</span>
             </span>
-            <span class="img"><img src="assets/images/product-images/60x77.jpg" alt="" /></span>
+            <!-- <span class="img"><img src="../assets/images/product-images/60x77.jpg" alt="" /></span> -->
         </a>
         <a href="#" class="product-nav next-pro" title="Next Product">
-            <span class="img"><img src="assets/images/product-images/60x77.jpg" alt=""></span>
+            <!-- <span class="img"><img src="../assets/images/product-images/60x77.jpg" alt=""></span> -->
             <span class="details">Toledo Mules shoes<br>
                 <span class="price">$588</span>
             </span>
@@ -1252,11 +1193,237 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { mapGetters } from "vuex";
+import { mapMutations } from "vuex";
+import { mapActions } from 'vuex'
+import StarRating from 'vue-star-rating'
 export default {
+    components: {
+        StarRating
+    },
+    mounted() {
+        console.log(this.singleProduct);
+        var productId=this.$route.params.id
+        if(this.singleProduct == null) {
+            this.getSingleProduct(productId)
+        }
+        	/*-----------------------------------
+	  28. Tabs With Accordian Responsive
+	-------------------------------------*/
+	$(".tab_content").hide();
+	$(".tab_content:first").show();	
+	/* if in tab mode */
+	$("ul.tabs li").on('click', function () {
+		$(".tab_content").hide();
+		var activeTab = $(this).attr("rel"); 
+		$("#"+activeTab).fadeIn();		
+		
+		$("ul.tabs li").removeClass("active");
+		$(this).addClass("active");
+		
+		$(".tab_drawer_heading").removeClass("d_active");
+		$(".tab_drawer_heading[rel^='"+activeTab+"']").addClass("d_active");
+		
+		$('.productSlider').slick('refresh');
+		$('.productSlider-style2').slick('refresh');
+	});
+	/* if in drawer mode */
+	$(".tab_drawer_heading").on('click', function () {
+		$(".tab_content").hide();
+		var d_activeTab = $(this).attr("rel"); 
+		$("#"+d_activeTab).fadeIn();
+		
+		$(".tab_drawer_heading").removeClass("d_active");
+		$(this).addClass("d_active");
+		
+		$("ul.tabs li").removeClass("d_active");
+		$("ul.tabs li[rel^='"+d_activeTab+"']").addClass("d_active");
+		
+		$('.productSlider').slick('refresh');
+		$('.productSlider-style2').slick('refresh');
+	});
+	$('ul.tabs li').last().addClass("tab_last");
+	
+	/*-----------------------------------
+	  End Tabs With Accordian Responsive
+	-------------------------------------*/
 
+	/*----------------------------------
+	  29. Product Tabs
+	------------------------------------*/
+	$(".tab-content").hide();
+	$(".tab-content:first").show();
+	/* if in tab mode */
+	$(".product-tabs li").on('click', function () {
+		$(".tab-content").hide();
+		var activeTab = $(this).attr("rel"); 
+		$("#"+activeTab).fadeIn();		
+		
+		$(".product-tabs li").removeClass("active");
+		$(this).addClass("active");
+		
+		$(this).fadeIn();
+      	if($(window).width()<767) {
+			var tabposition = $(this).offset();
+          	$("html, body").animate({ scrollTop: tabposition.top-70 }, 700);
+        } else{
+          	$("html, body").animate({ scrollTop: tabposition.top-90 }, 700);
+        }
+	});
+    
+    $('.product-tabs li:first-child').addClass("active");
+	$('.tab-container h3:first-child + .tab-content').show();
+	
+	/* if in drawer mode */
+	$(".acor-ttl").on("click", function() {
+		$(".tab-content").hide();
+		var activeTab = $(this).attr("rel"); 
+		$("#"+activeTab).fadeIn();
+		
+		$(".acor-ttl").removeClass("active");
+		$(this).addClass("active");
+		if($(window).width()<767) {
+		  var tabposition = $(this).offset();
+		  $("html, body").animate({ scrollTop: tabposition.top }, 700);
+		}
+	});
+	
+	/* Below 767 Accordian style */
+	$(".tabs-ac-style").on("click", function() {
+		$(".tab-content").hide();
+		var activeTab = $(this).attr("rel"); 
+		$("#"+activeTab).fadeIn();
+		
+		$(".tabs-ac-style").removeClass("active");
+		$(this).addClass("active");
+
+      	$(this).fadeIn();
+		if($(window).width()<767) {
+		  var tabposition = $(this).offset();
+		  $("html, body").animate({ scrollTop: tabposition.top }, 700);
+		}
+	});
+    },
+    updated() {
+        	/*-----------------------------------
+	  28. Tabs With Accordian Responsive
+	-------------------------------------*/
+	$(".tab_content").hide();
+	$(".tab_content:first").show();	
+	/* if in tab mode */
+	$("ul.tabs li").on('click', function () {
+		$(".tab_content").hide();
+		var activeTab = $(this).attr("rel"); 
+		$("#"+activeTab).fadeIn();		
+		
+		$("ul.tabs li").removeClass("active");
+		$(this).addClass("active");
+		
+		$(".tab_drawer_heading").removeClass("d_active");
+		$(".tab_drawer_heading[rel^='"+activeTab+"']").addClass("d_active");
+		
+		$('.productSlider').slick('refresh');
+		$('.productSlider-style2').slick('refresh');
+	});
+	/* if in drawer mode */
+	$(".tab_drawer_heading").on('click', function () {
+		$(".tab_content").hide();
+		var d_activeTab = $(this).attr("rel"); 
+		$("#"+d_activeTab).fadeIn();
+		
+		$(".tab_drawer_heading").removeClass("d_active");
+		$(this).addClass("d_active");
+		
+		$("ul.tabs li").removeClass("d_active");
+		$("ul.tabs li[rel^='"+d_activeTab+"']").addClass("d_active");
+		
+		$('.productSlider').slick('refresh');
+		$('.productSlider-style2').slick('refresh');
+	});
+	$('ul.tabs li').last().addClass("tab_last");
+	
+	/*-----------------------------------
+	  End Tabs With Accordian Responsive
+	-------------------------------------*/
+
+	/*----------------------------------
+	  29. Product Tabs
+	------------------------------------*/
+	$(".tab-content").hide();
+	$(".tab-content:first").show();
+	/* if in tab mode */
+	$(".product-tabs li").on('click', function () {
+		$(".tab-content").hide();
+		var activeTab = $(this).attr("rel"); 
+		$("#"+activeTab).fadeIn();		
+		
+		$(".product-tabs li").removeClass("active");
+		$(this).addClass("active");
+		
+		$(this).fadeIn();
+      	if($(window).width()<767) {
+			var tabposition = $(this).offset();
+          	$("html, body").animate({ scrollTop: tabposition.top-70 }, 700);
+        } else{
+          	$("html, body").animate({ scrollTop: tabposition.top-90 }, 700);
+        }
+	});
+    
+    $('.product-tabs li:first-child').addClass("active");
+	$('.tab-container h3:first-child + .tab-content').show();
+	
+	/* if in drawer mode */
+	$(".acor-ttl").on("click", function() {
+		$(".tab-content").hide();
+		var activeTab = $(this).attr("rel"); 
+		$("#"+activeTab).fadeIn();
+		
+		$(".acor-ttl").removeClass("active");
+		$(this).addClass("active");
+		if($(window).width()<767) {
+		  var tabposition = $(this).offset();
+		  $("html, body").animate({ scrollTop: tabposition.top }, 700);
+		}
+	});
+	
+	/* Below 767 Accordian style */
+	$(".tabs-ac-style").on("click", function() {
+		$(".tab-content").hide();
+		var activeTab = $(this).attr("rel"); 
+		$("#"+activeTab).fadeIn();
+		
+		$(".tabs-ac-style").removeClass("active");
+		$(this).addClass("active");
+
+      	$(this).fadeIn();
+		if($(window).width()<767) {
+		  var tabposition = $(this).offset();
+		  $("html, body").animate({ scrollTop: tabposition.top }, 700);
+		}
+	});
+    },
+    computed: {
+        ...mapState([
+            'singleProduct'
+        ]),
+        // Getters into computed
+        ...mapGetters([
+        ])
+    },
+    methods: {
+        ...mapMutations({
+            
+        }),
+        ...mapActions({
+            getSingleProduct: 'getSingleProduct'
+        })
+    },
 }
 </script>
 
-<style>
-
+<style scoped>
+    .product-detail-container .prInfoRow .product-review > a {
+        display: flex;
+    }
 </style>
