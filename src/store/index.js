@@ -7,8 +7,10 @@ export default createStore({
     posts: {},
     products: {},
     productCategories:{},
-    singleProduct: null,
-    productsByCategory:{},
+    toggle_quickview_modal: false,
+    quickviewProduct: null,
+    singleProduct: null,  
+    body: document.getElementById('ss_shopping_body'),       
     route_details:{},
     loading_products: true,
     show_login_modal: false,
@@ -35,10 +37,11 @@ export default createStore({
         product.slug=slug
         var discount= (product.discountPercentage* product.price) / 100;
         var total= product.price - discount;
+        product.discount= discount.toFixed(2);
         product.totalPrice= total.toFixed(2);
       });
       console.log('state.products');
-      console.log(state.products);
+      console.log(state.products);      
     },
     LOAD_PRODUCTS_CATEGORIES(state, productCategories) {
       state.productCategories= productCategories;
@@ -55,6 +58,22 @@ export default createStore({
       state.singleProduct= singleProduct;
       console.log(singleProduct);
     },
+    SET_QUICKVIEW_PRODUCT(state, product) {
+      console.log('setquick vue product');
+      console.log(product);
+      state.quickviewProduct= product;      
+    },
+    SHOW_QUICKVIE_MODAL(state) {
+      console.log('toggle_quickview_modal');
+      state.toggle_quickview_modal= !state.toggle_quickview_modal
+      console.log(state.toggle_quickview_modal);
+      state.body.classList.add('overflowhidden-body');
+    },
+    CLOSE_QUICKVIE_MODAL(state) {
+      state.toggle_quickview_modal= false;
+      state.quickviewProduct= null;
+      state.body.classList.remove('overflowhidden-body');
+    }
   },
 
 

@@ -62,7 +62,7 @@
                     </div>
                     <!--End Toolbar-->
                     <!--Product Grid-->
-                    <div v-if="$store.state.products" class="product-load-more">
+                    <div v-if="products" class="product-load-more">
                         <div class="grid-products grid--view-items">
                             <div class="row">
                                 <shop-product></shop-product>                       
@@ -81,19 +81,24 @@
 				<!--End Main Content-->
 			</div>
         
-        </div><!--End Body Container-->
-        
+        </div><!--End Body Container-->        
     </div><!--End Page Wrapper-->
 </template>
 
 <script>
+import { mapState } from "vuex";
 import ShopSidebar from '../components/shop/ShopSidebar.vue'
 import ShopProduct from '../components/shop/ShopProduct.vue'
 export default {
     components: {
         'shop-sidebar': ShopSidebar,
-        'shop-product': ShopProduct,
-    }
+        'shop-product': ShopProduct,       
+    },
+    computed: {
+        ...mapState([
+            'products',
+        ]),
+    },
 }
 </script>
 

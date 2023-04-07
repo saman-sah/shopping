@@ -1,5 +1,5 @@
 <template>
-    <div v-for="(product, index) in $store.state.products"
+    <div v-for="(product, index) in products"
     :key="index"
     class="col-6 col-sm-6 col-md-4 col-lg-4 item">
         <!-- start product image -->
@@ -36,7 +36,7 @@
                     </li>
                     <li>
                         <!--Quick View Button-->
-                        <a href="#quickView-modal" title="Quick View" class="btn-icon quick-view-popup">
+                        <a @click="showQuickViewModal(product)" href="javascript:void(0);" title="Quick View" class="btn-icon quick-view-popup">
                             <i class="icon anm anm-search-plus-l"></i>
                             <span class="tooltip-label">Quick View</span>
                         </a>
@@ -103,8 +103,16 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions,mapMutations,mapGetters, mapState } from "vuex";
 export default {
+    computed: {
+        ...mapState([
+            'products',
+        ]),
+        ...mapGetters([
+            
+        ])
+    },
     mounted() {
         $(".product-load-more .item").slice(0, 18).show();
         $(".loadMore").on('click', function (e) {
@@ -125,9 +133,17 @@ export default {
         });
     },
     methods: {
+        ...mapMutations({
+            showQuickviewModal: 'SHOW_QUICKVIE_MODAL',
+            setQuickviewProduct :'SET_QUICKVIEW_PRODUCT'
+        }),
         ...mapActions({
             getSingleProduct: 'getSingleProduct'
         }),
+        showQuickViewModal(product) {
+            this.showQuickviewModal();
+            this.setQuickviewProduct(product);
+        },
     },
 }
 </script>
