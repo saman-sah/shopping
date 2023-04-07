@@ -1,7 +1,8 @@
 <template>
-<header-component></header-component>
+  <header-component></header-component>
   <router-view/>
   <footer-component></footer-component>
+  <guci-view-product v-if="toggle_quickview_modal" />
 </template>
 <script>
 import myMixin from './mixins';

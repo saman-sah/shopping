@@ -1530,12 +1530,12 @@ white-space:nowrap; -ms-transform:translateX(-50%); -webkit-transform:translateX
 .grid-products .item .brands p { margin:0; }
 .grid-products .item .brands .label { font-weight:600; }
 
-#quickView-modal { max-width:800px; margin:50px auto; background-color:#fff; position:relative; padding:25px;}
+#quickView-modal { max-width:800px; margin:50px auto; background-color:#fff;  padding:25px; position: fixed; left: 50%; transform: translate(-50%, 0); z-index: 999; top: 50px; height: 515px;}
 .loading .loadingBox { display:block; position:fixed; }
 .loadingBox { display:none; padding:20px; background-color:#fff; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.3); position:fixed; z-index:1050; top:50%; left:50%; -ms-transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%); transform:translate(-50%, -50%); }
 .loadingBox .anm { font-size:40px; opacity:0.9; }
 .loading .modalOverly { display:block; }
-.modalOverly { display:none; position:fixed; bottom:0; left:0; right:0; top:0; z-index:666; background-color:rgba(0,0,0,0.6); -ms-transition:all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1); -webkit-transition:all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1); transition:all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1); }
+.modalOverly { position:fixed; bottom:0; left:0; right:0; top:0; z-index:666; background-color:rgba(0,0,0,0.6); -ms-transition:all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1); -webkit-transition:all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1); transition:all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1); }
 .anm-spin { animation:anm-spin 1.5s infinite linear; -webkit-animation:anm-spin 1.5s infinite linear; -ms-animation:anm-spin 1.5s infinite linear; }
 @-webkit-keyframes anm-spin {
  0% { -webkit-transform:rotate(0deg); transform:rotate(0deg); }
@@ -1562,7 +1562,7 @@ white-space:nowrap; -ms-transform:translateX(-50%); -webkit-transform:translateX
 #quickView-modal .product-brand { text-transform:uppercase; }
 #quickView-modal .product-title { font-size:20px; font-weight:700; letter-spacing:0; margin:0 0 10px; }
 #quickView-modal .product-info .product-stock { color:#447900; font-weight:600; text-transform:uppercase; margin-bottom:4px; }
-#quickView-modal .product-review { margin-bottom:15px; }
+#quickView-modal .product-review { margin-bottom:15px; display: flex; }
 #quickView-modal .product-review .rating { display:inline-block; vertical-align:middle; padding-right:5px; }
 #quickView-modal .product-review .reviews { display:inline-block; vertical-align:middle; }
 #quickView-modal .pricebox { margin:10px 0; }

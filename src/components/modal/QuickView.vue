@@ -1,82 +1,38 @@
 <template>
     <!--Quickview Popup-->
 	<div class="loadingBox"><div class="anm-spin"><i class="anm anm-spinner4"></i></div></div>
-	<div class="modalOverly"></div>
-    <div id="quickView-modal" class="mfp-with-anim mfp-hide">
+	<div class="modalOverly" @click.self="closeQuickviewModal"></div>
+    <div id="quickView-modal" class="mfp-with-anim">
 		<button title="Close (Esc)" type="button" class="mfp-close">×</button>
-		<div class="row">
-			<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="row quickview-row">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-6 left-section-images">
 				<div id="slider">
 					<!-- model thumbnail -->
 					<div id="myCarousel" class="carousel slide">
 						<!-- image slide carousel items -->
 						<div class="carousel-inner">
-							<!-- slide 1 -->
-							<div class="item carousel-item active" data-slide-number="0">
-								<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
+							<!-- slides-->
+							<div v-for="(imageSrc, index) in quickviewProduct.images"
+							:key="index+100"
+							:class="['item', 'carousel-item', { 'active': index==0}]" :data-slide-number="index">
+								<img :data-src="imageSrc" :src="imageSrc" alt="" title="">
 							</div>
-							<!-- End slide 1 -->
-							<!-- slide 2 -->
-							<div class="item carousel-item" data-slide-number="1">
-								<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
-							</div>
-							<!-- End slide 3 -->
-							<!-- slide 2 -->
-							<div class="item carousel-item" data-slide-number="2">
-								<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
-							</div>
-							<!-- End slide 3 -->
-							<!-- slide 4 -->
-							<div class="item carousel-item" data-slide-number="3">
-								<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
-							</div>
-							<!-- End slide 4 -->
-							<!-- slide 5 -->
-							<div class="item carousel-item" data-slide-number="4">
-								<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
-							</div>
-							<!-- End slide 4 -->
+							<!-- End slides -->
 						</div>
 						<!-- End image slide carousel items -->
 						<!-- model thumbnail image -->
 						<div class="model-thumbnail-img">
 							<!-- model thumbnail slide -->
 							<ul class="carousel-indicators list-inline">
-								<!-- slide 1 -->
-								<li class="list-inline-item active">
-									<a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#myCarousel">
-										<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
+								<!-- slides -->
+								<li v-for="(imageSrc, index) in quickviewProduct.images"
+								:key="index"
+								 class="list-inline-item active">
+									<a :id="'carousel-selector-'+index" class="selected" :data-slide-to="index" data-target="#myCarousel">
+										<img :data-src="imageSrc" :src="imageSrc" alt="" title="">
 									</a>
 								</li>
-								<!-- End slide 1 -->
-								<!-- slide 2 -->
-								<li class="list-inline-item">
-									<a id="carousel-selector-1" data-slide-to="1" data-target="#myCarousel">
-										<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
-									</a>
-								</li>
-								<!-- End slide 2 -->
-								<!-- slide 3 -->
-								<li class="list-inline-item">
-									<a id="carousel-selector-2" class="selected" dataslide-to="2" data-target="#myCarousel">
-										<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
-									</a>
-								</li>
-								<!-- End slide 3 -->
-								<!-- slide 4 -->
-								<li class="list-inline-item">
-									<a id="carousel-selector-3" data-slide-to="3" data-target="#myCarousel">
-										<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
-									</a>
-								</li>
-								<!-- End slide 4 -->
-								<!-- slide 5 -->
-								<li class="list-inline-item">
-									<a id="carousel-selector-4" data-slide-to="4" data-target="#myCarousel">
-										<img data-src="assets/images/product-images/product1.jpg" src="assets/images/product-images/product1.jpg" alt="" title="">
-									</a>
-								</li>
-								<!-- End slide 5 -->
+								<!-- End slides -->
 							</ul>
 							<!-- End model thumbnail slide -->
 							<!-- arrow button -->
@@ -88,76 +44,45 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-6">
-				<div class="product-brand"><a href="#">Charcoal</a></div>
-				<h2 class="product-title">Product Quick View Popup</h2>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-6 right-section-details">
+				<!-- <div class="product-brand"><a href="#">Charcoal</a></div> -->
+				<h2 class="product-title">{{ quickviewProduct.title }}</h2>
 				<div class="product-review">
 					<div class="rating">
-						<i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i>
-					</div>
-					<div class="reviews"><a href="#">5 Reviews</a></div>
+						<div class="product-review">
+                            <star-rating
+                            v-model:rating="quickviewProduct.rating"
+                            active-color="#ffb503"
+                            inactive-color="#ffffff"
+                            :increment="0.1"
+                            :border-width="2"
+                            border-color="#ffb503"
+                            :star-size="14"
+                            :read-only="true"
+                            :show-rating="false"
+                            :rounded-corners="true"
+                            :padding="2"
+                            />
+                        </div>					</div>
+					<div class="reviews"><span>5 Reviews</span></div>
 				</div>
 				<div class="product-info">
-					<div class="product-stock"> <span class="instock">In Stock</span> <span class="outstock hide">Unavailable</span> </div>
+					<div class="product-stock"> 
+						<span v-if="quickviewProduct.stock > 0" class="instock">In Stock</span> 
+						<span v-else class="outstock">Unavailable</span> 
+					</div>
 					<div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div>
 				</div>
-				<div class="pricebox">
-					<span class="price old-price">$900.00</span>
-					<span class="price">$800.00</span>
+				<div v-if="quickviewProduct.discountPercentage > 0" class="pricebox">
+					<span class="price old-price">{{ quickviewProduct.discount }}</span>
+					<span class="price">{{ quickviewProduct.totalPrice }}</span>
 				</div>
-				<div class="sort-description">Avone Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as fashion.. </div>
+				<div v-else class="pricebox">
+					<span class="price">{{ quickviewProduct.price }}</span>
+				</div>
+				<div class="sort-description">{{ quickviewProduct.description }}</div>
 				<form method="post" action="#" id="product_form--option" class="product-form">
 					<div class="product-options">
-						<div class="swatch clearfix swatch-0 option1">
-                            <div class="product-form__item">
-                                <label class="label">Color:<span class="required">*</span> <span class="slVariant">Red</span></label>
-                                <div class="swatch-element color">
-                                    <input class="swatchInput" id="swatch-black" type="radio" name="option-0" value="Black">
-                                    <label class="swatchLbl small black" for="swatch-black" title="Black"></label>
-                                </div>
-                                <div class="swatch-element color">
-                                    <input class="swatchInput" id="swatch-blue" type="radio" name="option-0" value="blue">
-                                    <label class="swatchLbl small blue" for="swatch-blue" title="Blue"></label>
-                                </div>
-                                <div class="swatch-element color">
-                                    <input class="swatchInput" id="swatch-red" type="radio" name="option-0" value="Blue">
-                                    <label class="swatchLbl small red" for="swatch-red" title="Red"></label>
-                                </div>
-                                <div class="swatch-element color">
-                                    <input class="swatchInput" id="swatch-pink" type="radio" name="option-0" value="Pink">
-                                    <label class="swatchLbl color small pink" for="swatch-pink" title="Pink"></label>
-                                </div>
-                                <div class="swatch-element color">
-                                    <input class="swatchInput" id="swatch-orange" type="radio" name="option-0" value="Orange">
-                                    <label class="swatchLbl color small orange" for="swatch-orange" title="Orange"></label>
-                                </div>
-                                <div class="swatch-element color">
-                                    <input class="swatchInput" id="swatch-yellow" type="radio" name="option-0" value="Yellow">
-                                    <label class="swatchLbl color small yellow" for="swatch-yellow" title="Yellow"></label>
-                                </div>
-                            </div>
-                        </div>
-						<div class="swatch clearfix swatch-1 option2">
-							<div class="product-form__item">
-							  <label class="label">Size:<span class="required">*</span> <span class="slVariant">XS</span></label>
-							  <div class="swatch-element xs">
-								<input class="swatchInput" id="swatch-1-xs" type="radio" name="option-1" value="XS">
-								<label class="swatchLbl medium" for="swatch-1-xs" title="XS">XS</label>
-							  </div>
-							  <div class="swatch-element s">
-								<input class="swatchInput" id="swatch-1-s" type="radio" name="option-1" value="S">
-								<label class="swatchLbl medium" for="swatch-1-s" title="S">S</label>
-							  </div>
-							  <div class="swatch-element m">
-								<input class="swatchInput" id="swatch-1-m" type="radio" name="option-1" value="M">
-								<label class="swatchLbl medium" for="swatch-1-m" title="M">M</label>
-							  </div>
-							  <div class="swatch-element l">
-								<input class="swatchInput" id="swatch-1-l" type="radio" name="option-1" value="L">
-								<label class="swatchLbl medium" for="swatch-1-l" title="L">L</label>
-							  </div>
-							</div>
-						</div>
 						<div class="product-action clearfix">
 							<div class="quantity">
 								<div class="wrapQtyBtn">
@@ -196,11 +121,66 @@
 </template>
 
 <script>
+import { mapActions,mapMutations,mapGetters, mapState } from "vuex";
+import StarRating from 'vue-star-rating'
 export default {
-
+	components: {
+		StarRating
+	},
+	computed: {
+        ...mapState([
+            'quickviewProduct',
+        ]),
+    },
+	methods: {
+        ...mapMutations({
+            closeQuickviewModal: 'CLOSE_QUICKVIE_MODAL'
+        }),
+    },
 }
 </script>
 
-<style>
+<style scoped>
+#slider,
+#myCarousel,
+.item.carousel-item,
+.left-section-images,
+.right-section-details,
+.quickview-row {
+	height: 100%;
+}
+.carousel-inner {
+    height: 75%;
+}
+.carousel-item  img {
+	height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 
+/* Thumbnail Images */
+.model-thumbnail-img {
+    height: 20%;
+}
+.model-thumbnail-img .carousel-indicators {
+	height: 100%;
+}
+.model-thumbnail-img .carousel-indicators > li {
+    width: auto;
+    height: 100%;
+}
+.model-thumbnail-img .carousel-indicators > li > a {
+    width: 100%;
+    height: 100%;
+	display: block;
+}
+.model-thumbnail-img .carousel-indicators > li > a > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#quickView-modal .sort-description {
+    height: 135px;
+	overflow-y: auto;
+}
 </style>
