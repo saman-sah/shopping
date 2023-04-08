@@ -11,6 +11,8 @@ export default createStore({
     quickviewProduct: null,
     singleProduct: null,  
     filterProductText: '',
+    productsBrand:[],
+    selectedBrandProducts:[],
     body: document.getElementById('ss_shopping_body'),       
     route_details:{},
     loading_products: true,
@@ -31,6 +33,7 @@ export default createStore({
     },
     LOAD_PRODUCTS(state, data) {
       state.products= data.products;
+      var brands=[];
       state.products.forEach(product => {
         var slug = product.title.toLowerCase().replace(/[^\w-]+/g, '-');
         product.slug=slug
@@ -38,9 +41,9 @@ export default createStore({
         var total= product.price - discount;
         product.discount= discount.toFixed(2);
         product.totalPrice= total.toFixed(2);
-      });
-      console.log('state.products');
-      console.log(state.products);      
+        brands.push(product.brand)
+      });   
+      state.productsBrand = [...new Set(brands)];  
     },
     LOAD_PRODUCTS_CATEGORIES(state, productCategories) {
       state.productCategories= productCategories;
@@ -71,6 +74,10 @@ export default createStore({
       console.log('state.filterProductText');
       console.log(state.filterProductText);
     },
+    SELECTED_BRAND_PRODUCTS(state, brand) {
+      state.selectedBrandProducts=brand;
+      console.log(state.selectedBrandProducts);
+    }
   },
 
 
