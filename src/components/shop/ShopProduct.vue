@@ -111,7 +111,8 @@ export default {
     computed: {
         ...mapState([
             'products',
-            'filterProductText'
+            'filterProductText',
+            'selectedBrandProducts'
         ]),
         ...mapGetters([
             
@@ -124,10 +125,12 @@ export default {
             // Prdcts= this.products.filter((element)=>{
             //     prices.push(element.price);
             // })
+
+
+
+            // Filter By Search Text
             let txt =this.filterProductText.toLowerCase();
-            // let txt ='mac';
             if(txt== ''){
-                console.log('txt== ---');
                 Prdcts= this.products
             }else {
                 for (let i = 0; i < this.products.length; i++) {
@@ -151,9 +154,10 @@ export default {
             }
         
 
-
-
-
+            // Filter By Brands
+            if(this.selectedBrandProducts.length !=0) {
+                return Prdcts.filter(prdct=>  this.selectedBrandProducts.includes(prdct.brand))                
+            }
 
 
         

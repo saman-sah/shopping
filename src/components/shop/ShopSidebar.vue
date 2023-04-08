@@ -8,27 +8,18 @@
 							<div class="widget-title"><h2>Categories</h2></div>
 							<div class="widget-content" style="">
 								<ul class="sidebar_categories">
-									<li class="level1 sub-level"><a href="#;" class="site-nav">Clothing</a>
-										<ul class="sublinks" style="display: none;">
-											<li class="level2"><a href="#;" class="site-nav">Men</a></li>
-											<li class="level2"><a href="#;" class="site-nav">Women</a></li>
-											<li class="level2"><a href="#;" class="site-nav">Child</a></li>
-											<li class="level2"><a href="#;" class="site-nav">View All Clothing</a></li>
-										</ul>
+									<li class="lvl-1">
+										<router-link to="/shop"  @click="loadProducts" class="site-nav">
+											All Categories
+										</router-link>
 									</li>
-									<li class="level1 sub-level"><a href="#;" class="site-nav">Jewellery</a>
-										<ul class="sublinks">
-											<li class="level2"><a href="#;" class="site-nav">Ring</a></li>
-											<li class="level2"><a href="#;" class="site-nav">Neckalses</a></li>
-											<li class="level2"><a href="#;" class="site-nav">Eaarings</a></li>
-											<li class="level2"><a href="#;" class="site-nav">View All Jewellery</a></li>
-										</ul>
+									<li v-for="(category, index) in productCategories" 
+                                    :key="index" 
+									class="lvl-1">
+										<router-link :to="'/shop/'+category" @click="getProductsofCategory(category)" class="site-nav">
+											{{ category }}
+										</router-link>
 									</li>
-									<li class="lvl-1"><a href="#;" class="site-nav">Shoes</a></li>
-									<li class="lvl-1"><a href="#;" class="site-nav">Accessories</a></li>
-									<li class="lvl-1"><a href="#;" class="site-nav">Collections</a></li>
-									<li class="lvl-1"><a href="#;" class="site-nav">Sale</a></li>
-									<li class="lvl-1"><a href="#;" class="site-nav">Page</a></li>
 								</ul>
 							</div>
 						</div>
@@ -51,73 +42,15 @@
 							</form>
 						</div>
 						<!--End Price Filter-->
-						<!--Size Swatches-->
-						<div class="sidebar_widget filterBox filter-widget size-swacthes">
-							<div class="widget-title"><h2>Size</h2></div>
-							<div class="filter-color swacth-list">
-								<ul>
-									<li><span class="swacth-btn">X</span><span class="tooltip-label">X</span></li>
-									<li><span class="swacth-btn">XL</span><span class="tooltip-label">XL</span></li>
-									<li><span class="swacth-btn">XLL</span><span class="tooltip-label">XLL</span></li>
-									<li><span class="swacth-btn">M</span><span class="tooltip-label">M</span></li>
-									<li><span class="swacth-btn">L</span><span class="tooltip-label">L</span></li>
-									<li><span class="swacth-btn">S</span><span class="tooltip-label">S</span></li>
-									<li><span class="swacth-btn">XXL</span><span class="tooltip-label">XLL</span></li>
-									<li><span class="swacth-btn">XS</span><span class="tooltip-label">XS</span></li>
-								</ul>
-							</div>
-						</div>
-						<!--End Size Swatches-->
-						<!--Color Swatches-->
-						<div class="sidebar_widget filterBox filter-widget">
-							<div class="widget-title"><h2>Color</h2></div>
-							<div class="filter-color swacth-list clearfix">
-								<ul>
-									<li><span class="swacth-btn black"></span><span class="tooltip-label">Black</span></li>
-									<li><span class="swacth-btn white"></span><span class="tooltip-label">White</span></li>
-									<li><span class="swacth-btn red"></span><span class="tooltip-label">Red</span></li>
-									<li><span class="swacth-btn blue"></span><span class="tooltip-label">Blue</span></li>
-									<li><span class="swacth-btn pink"></span><span class="tooltip-label">Pink</span></li>
-									<li><span class="swacth-btn gray"></span><span class="tooltip-label">Gray</span></li>
-									<li><span class="swacth-btn green"></span><span class="tooltip-label">Green</span></li>
-									<li><span class="swacth-btn orange"></span><span class="tooltip-label">Orange</span></li>
-									<li><span class="swacth-btn yellow"></span><span class="tooltip-label">Yellow</span></li>
-									<li><span class="swacth-btn blueviolet"></span><span class="tooltip-label">Blue Violet</span></li>
-									<li><span class="swacth-btn brown"></span><span class="tooltip-label">Brown</span></li>
-									<li><span class="swacth-btn darkGoldenRod"></span><span class="tooltip-label">Dark Golden Red</span></li>
-									<li><span class="swacth-btn darkGreen"></span><span class="tooltip-label">Dark Green</span></li>
-									<li><span class="swacth-btn darkRed"></span><span class="tooltip-label">Dark Red</span></li>
-									<li><span class="swacth-btn khaki"></span><span class="tooltip-label">Khaki</span></li>
-									<li><span class="swacth-btn blue-red"></span><span class="tooltip-label">Blue/Red</span></li>
-									<li><span class="swacth-btn black-grey"></span><span class="tooltip-label">Black/Grey</span></li>
-									<li><span class="swacth-btn pink-black"></span><span class="tooltip-label">pink-Black</span></li>
-								</ul>
-							</div>
-						</div>
-						<!--End Color Swatches-->
 						<!--Brand-->
 						<div class="sidebar_widget filterBox filter-widget brand-filter">
 							<div class="widget-title"><h2>Brands</h2></div>
-							<ul>
-								<li>
-								  <input type="checkbox" value="allen-vela" id="check1">
-								  <label for="check1"><span><span></span></span>Allen Vela</label>
-								</li>
-								<li>
-								  <input type="checkbox" value="oxymat" id="check3">
-								  <label for="check3"><span><span></span></span>Oxymat</label>
-								</li>
-								<li>
-								  <input type="checkbox" value="vanelas" id="check4">
-								  <label for="check4"><span><span></span></span>Vanelas</label>
-								</li>
-								<li>
-								  <input type="checkbox" value="pagini" id="check5">
-								  <label for="check5"><span><span></span></span>Pagini</label>
-								</li>
-								<li>
-								  <input type="checkbox" value="monark" id="check6">
-								  <label for="check6"><span><span></span></span>Monark</label>
+							<ul v-if="productsBrand && productsBrand.length">
+								<li v-for="(brand, index) in productsBrand" :key="index+1">
+								  <input type="checkbox" :value="brand" v-model="selectedBrandProducts" :id="'check'+ index">
+								  <label :for="'check'+ index"><span><span></span></span>
+								  	{{ brand}}
+								  </label>
 								</li>
 							</ul>
 						</div>
@@ -405,63 +338,35 @@
 						</div>
 
 						<!--End Popular Products-->
-						<!--Banner-->
-						<div class="sidebar_widget static-banner">
-							<a href="#"><img src="assets/images/collection-side-banner.png" alt=""></a>
-						</div>
-						<!--Banner-->
-						<!--Information-->
-						<div class="sidebar_widget">
-							<div class="widget-title"><h2>GLOBAL TEXT BLOCK</h2></div>
-							<div class="widget-content"><p>Use this text to share information about your brand with your customers.</p><p>Describe a product, share announcements, or welcome customers to your store.</p></div>
-						</div>
-						<!--end Information-->
-						<!--Product Tags-->
-						<div class="sidebar_widget">
-						  <div class="widget-title">
-							<h2>Product Tags</h2>
-						  </div>
-						  <div class="widget-content">
-							<ul class="product-tags">
-							  <li><a href="#" title="Show products matching tag $100 - $400">$100 - $400</a></li>
-							  <li><a href="#" title="Show products matching tag $400 - $600">$400 - $600</a></li>
-							  <li><a href="#" title="Show products matching tag $600 - $800">$600 - $800</a></li>
-							  <li><a href="#" title="Show products matching tag Above $800">Above $800</a></li>
-							  <li><a href="#" title="Show products matching tag Allen Vela">Allen Vela</a></li>
-							  <li><a href="#" title="Show products matching tag Black">Black</a></li>
-							  <li><a href="#" title="Show products matching tag Blue">Blue</a></li>
-							  <li><a href="#" title="Show products matching tag Cantitate">Cantitate</a></li>
-							  <li><a href="#" title="Show products matching tag Famiza">Famiza</a></li>
-							  <li><a href="#" title="Show products matching tag Gray">Gray</a></li>
-							  <li><a href="#" title="Show products matching tag Green">Green</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag Hot">Hot</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag jean shop">jean shop</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag jesse kamm">jesse kamm</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag L">L</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag Lardini">Lardini</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag lareida">lareida</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag Lirisla">Lirisla</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag M">M</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag mini-dress">mini-dress</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag Monark">Monark</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag Navy">Navy</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag new">new</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag new arrivals">new arrivals</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag Orange">Orange</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag oxford">oxford</a></li>
-							  <li style="display: none;"><a href="#" title="Show products matching tag Oxymat">Oxymat</a></li>
-							</ul>
-							<span class="btn btn--small btnview">View all</span> </div>
-						</div>
-						<!--end Product Tags-->
+						
 					</div>
 				</div>
 				<!--End Sidebar-->
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
-
+	computed: {
+        ...mapState([
+            'productCategories',
+			'productsBrand',
+        ]),
+		selectedBrandProducts: {
+            get () {
+                return this.$store.state.selectedBrandProducts
+            },
+            set (value) {
+                this.$store.commit('SELECTED_BRAND_PRODUCTS', value)
+            }
+        }
+    },
+    methods: {
+        ...mapActions({
+            getProductsofCategory: 'getProductsofCategory',
+            loadProducts: 'loadProducts'
+        }),
+    },
 }
 </script>
 
