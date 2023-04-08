@@ -246,7 +246,16 @@
 
 <script>
 export default {
-
+  mounted() {
+    $(".blog--grid-load-more .article").slice(0, 5).show();
+      $(".loadMorepost").on('click', function (e) {
+          e.preventDefault();
+          $(".blog--grid-load-more .article:hidden").slice(0, 1).slideDown();
+          if ($(".blog--grid-load-more .article:hidden").length == 0) {
+              $(".loadmore-post").html('<div class="btn loadMorepost">No more Blog Post</div>');
+          }
+      });
+    },
 }
 </script>
 
