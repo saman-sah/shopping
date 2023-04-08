@@ -1,5 +1,5 @@
 <template>
-    <div v-for="(product, index) in products"
+    <div v-for="(product, index) in filteredProducts"
     :key="index"
     class="col-6 col-sm-6 col-md-4 col-lg-4 item">
         <!-- start product image -->
@@ -76,27 +76,26 @@
             <!-- End product name -->
             <!-- product price -->
             <div class="product-price">
-                <span class="price">$399.01</span>
+                <span class="price">{{ product.totalPrice }}</span>
             </div>
             <!-- End product price -->
             <!--Product Review-->
             <div class="product-review">
-                <i class="font-13 fa fa-star"></i>
-                <i class="font-13 fa fa-star"></i>
-                <i class="font-13 fa fa-star"></i>
-                <i class="font-13 fa fa-star"></i>
-                <i class="font-13 fa fa-star-o"></i>
+                <star-rating
+                    v-model:rating="product.rating"
+                    active-color="#ffb503"
+                    inactive-color="#ffffff"
+                    :increment="0.1"
+                    :border-width="2"
+                    border-color="#ffb503"
+                    :star-size="14"
+                    :read-only="true"
+                    :show-rating="false"
+                    :rounded-corners="true"
+                    :padding="2"
+                    />
             </div>
             <!--End Product Review-->
-            <!--Color Variant -->
-            <ul class="swatches">
-                <li class="swatch small rounded navy"><span class="tooltip-label">Navy</span></li>
-                <li class="swatch small rounded green"><span class="tooltip-label">Green</span></li>
-                <li class="swatch small rounded gray"><span class="tooltip-label">Gray</span></li>
-                <li class="swatch small rounded aqua"><span class="tooltip-label">Aqua</span></li>
-                <li class="swatch small rounded orange"><span class="tooltip-label">Orange</span></li>
-            </ul>
-            <!-- End Variant -->
         </div>
         <!-- End product details -->
     </div> 
@@ -104,17 +103,106 @@
 
 <script>
 import { mapActions,mapMutations,mapGetters, mapState } from "vuex";
+import StarRating from 'vue-star-rating'
 export default {
+    components: {
+        StarRating
+    },
     computed: {
         ...mapState([
             'products',
+            'filterProductText'
         ]),
         ...mapGetters([
             
-        ])
+        ]),
+        filteredProducts() {
+            var count= 0;
+            var Prdcts= [];
+            // var prices= [];  
+            var productsTitles= [];
+            // Prdcts= this.products.filter((element)=>{
+            //     prices.push(element.price);
+            // })
+            let txt =this.filterProductText.toLowerCase();
+            // let txt ='mac';
+            if(txt== ''){
+                console.log('txt== ---');
+                Prdcts= this.products
+            }else {
+                for (let i = 0; i < this.products.length; i++) {
+                    if(count < 30) {
+                        if((this.products[i].title).toLowerCase().indexOf(txt)== 0) {
+                            Prdcts.push(this.products[i]);
+                            productsTitles.push(this.products[i].title)
+                            count++
+                        }
+                    }          
+                }
+                for (let i=0; i<this.products.length; i++){
+                    const found = productsTitles.some(el => el === this.products[i].title);
+                    if(count < 30){
+                        if (~(this.products[i].title).toLowerCase().indexOf(txt) && !found){
+                            Prdcts.push(this.products[i]);
+                            count++;
+                        }
+                    }
+                }
+            }
+        
+
+
+
+
+
+
+        
+            // let max_pr_price= Math.max(...prices)
+            // this.range_min_price=0;
+            // if(this.range_max_price!= max_pr_price){          
+            // this.range_max_price= Math.max(...prices)
+            // }
+            // if(this.selected_min_price== null || this.selected_max_price== null){
+            // this.selected_min_price= this.range_min_price;
+            // this.selected_max_price= this.range_max_price
+            // }
+            // // if(this.selected_min_price!= this.range_min_price || this.selected_max_price!= this.range_max_price){
+            // Prdcts= Prdcts.filter((element)=>{
+            //     if(element.price >= this.selected_min_price && element.price <= this.selected_max_price) {
+            //     return true
+            //     }
+                
+            // })
+            // }      
+            console.log('products---------------------------------------------------');  
+            console.log(Prdcts);  
+            return Prdcts;
+      }
     },
     mounted() {
-        $(".product-load-more .item").slice(0, 18).show();
+        $(".product-load-more .item").slice(0, 21).show();
+        $(".loadMore").on('click', function (e) {
+            e.preventDefault();
+            $(".product-load-more .item:hidden").slice(0, 4).slideDown();
+            if ($(".product-load-more .item:hidden").length == 0) {
+                $(".infinitpagin").html('<div class="btn loadMore">no more products</div>');
+            }
+        });
+  
+        $(".product-load-more .list-product").slice(0, 7).show();
+        $(".loadMore").on('click', function (e) {
+            e.preventDefault();
+            $(".product-load-more .list-product:hidden").slice(0, 5).slideDown();
+            if ($(".product-load-more .list-product:hidden").length == 0) {
+                $(".infinitpagin").html('<div class="btn loadMore">no more products</div>');
+            }
+        });
+
+        console.log('filterProductText');
+        console.log(this.filterProductText);    
+    },
+    updated() {
+        $(".product-load-more .item").slice(0, 21).show();
         $(".loadMore").on('click', function (e) {
             e.preventDefault();
             $(".product-load-more .item:hidden").slice(0, 4).slideDown();
@@ -151,5 +239,8 @@ export default {
 <style scoped>
     .grid-products .item .product-image {
         height: 300px;
+    }
+    .vue-star-rating {
+        justify-content: space-around;    
     }
 </style>
