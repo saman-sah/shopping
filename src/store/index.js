@@ -10,6 +10,7 @@ export default createStore({
     toggle_quickview_modal: false,
     quickviewProduct: null,
     singleProduct: null,  
+    filterProductText: '',
     body: document.getElementById('ss_shopping_body'),       
     route_details:{},
     loading_products: true,
@@ -27,8 +28,6 @@ export default createStore({
   mutations: {
     LOAD_POSTS(state, data) {
       state.posts= data.posts;
-      // console.log('state.posts');
-      // console.log(state.posts);
     },
     LOAD_PRODUCTS(state, data) {
       state.products= data.products;
@@ -45,8 +44,6 @@ export default createStore({
     },
     LOAD_PRODUCTS_CATEGORIES(state, productCategories) {
       state.productCategories= productCategories;
-      // console.log('state.productCategories');
-      // console.log(state.productCategories);
     },
     GET_SINGLE_PRODUCT(state, singleProduct) {
       var slug = singleProduct.title.toLowerCase().replace(/[^\w-]+/g, '-');
@@ -56,24 +53,24 @@ export default createStore({
       singleProduct.discount= discount.toFixed(2);
       singleProduct.totalPrice= total.toFixed(2);
       state.singleProduct= singleProduct;
-      console.log(singleProduct);
     },
     SET_QUICKVIEW_PRODUCT(state, product) {
-      console.log('setquick vue product');
-      console.log(product);
       state.quickviewProduct= product;      
     },
     SHOW_QUICKVIE_MODAL(state) {
-      console.log('toggle_quickview_modal');
       state.toggle_quickview_modal= !state.toggle_quickview_modal
-      console.log(state.toggle_quickview_modal);
       state.body.classList.add('overflowhidden-body');
     },
     CLOSE_QUICKVIE_MODAL(state) {
       state.toggle_quickview_modal= false;
       state.quickviewProduct= null;
       state.body.classList.remove('overflowhidden-body');
-    }
+    },
+    FILTER_PRODUCT_TEXT(state, txt) {
+      state.filterProductText= txt;
+      console.log('state.filterProductText');
+      console.log(state.filterProductText);
+    },
   },
 
 
@@ -82,7 +79,6 @@ export default createStore({
   // ---------------   Actions   --------------------
   actions: {
     loadPosts({commit}){
-      // console.log('actionsssssssss');
       axios.get('https://dummyjson.com/posts',  {
         headers: {
           Accept: "application/json",
@@ -93,7 +89,6 @@ export default createStore({
       })
     },
     loadProducts({commit}){
-      // console.log('actionsssssssss');
       axios.get('https://dummyjson.com/products',  {
         headers: {
           Accept: "application/json",
@@ -104,7 +99,6 @@ export default createStore({
       })
     },
     loadProductsCategories({commit}){
-      // console.log('actionsssssssss');
       axios.get('https://dummyjson.com/products/categories',  {
         headers: {
           Accept: "application/json",
@@ -115,8 +109,6 @@ export default createStore({
       })
     },
     getSingleProduct({commit}, productId) {
-      console.log('getSingleProduct Actionnnnnnn');
-      console.log(productId);
       axios.get('https://dummyjson.com/products/'+ productId,  {
         headers: {
           Accept: "application/json",
@@ -124,6 +116,16 @@ export default createStore({
       })
       .then(response=> {
         commit('GET_SINGLE_PRODUCT', response.data)
+      })
+    },
+    getProductsofCategory({commit}, category) {
+      axios.get('https://dummyjson.com/products/category/'+ category,  {
+        headers: {
+          Accept: "application/json",
+        }
+      })
+      .then(response=> {
+        commit('LOAD_PRODUCTS', response.data)
       })
     }
   },

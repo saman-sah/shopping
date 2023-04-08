@@ -39,7 +39,9 @@
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
-                                    <span class="filters-toolbar__product-count">Showing: 15 Results</span>
+                                    <input v-model="filterProductText"
+                                    id="input_shoppage_search_products" 
+                                    type="text" placeholder="Search Products">
                                 </div>
                                 <div class="col-4 col-md-4 col-lg-4 text-right">
                                     <div class="filters-toolbar__item">
@@ -86,7 +88,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import ShopSidebar from '../components/shop/ShopSidebar.vue'
 import ShopProduct from '../components/shop/ShopProduct.vue'
 export default {
@@ -98,6 +100,37 @@ export default {
         ...mapState([
             'products',
         ]),
+        filterProductText: {
+            get () {
+                return this.$store.state.filterProductText
+            },
+            set (value) {
+                this.$store.commit('FILTER_PRODUCT_TEXT', value)
+            }
+        }
+    },
+    mounted() {
+        console.log(this.$route.params.category);
+        let category= this.$route.params.category;
+        if(category) {
+            if(category== 'All Categories') {
+                this.loadProducts
+            }else{
+                this.getProductsofCategory(category)
+            }
+            
+        }else {
+            this.loadProducts
+        }
+    },
+    updated() {
+        
+    },
+    methods: {
+        ...mapActions({
+            getProductsofCategory: 'getProductsofCategory',
+            loadProducts: 'loadProducts'
+        }),
     },
 }
 </script>

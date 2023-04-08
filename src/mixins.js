@@ -25,11 +25,6 @@ export default {
   },      
   mounted() {        
       // this.route_details= this.$route;
-      // console.log("=============================");
-      // console.log(this.posts);
-      console.log('this.toggle_quickview_modal');
-      console.log(this.toggle_quickview_modal);
-      // console.log(toggle_quickview_modal);
   },
   updated() {
       // this.route_details= this.$route;

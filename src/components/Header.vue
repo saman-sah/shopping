@@ -64,10 +64,13 @@
                                             <ul class="grid">
                                                 <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Product Page</a>
                                                     <ul class="subLinks">
+                                                        <li class="lvl-2">
+                                                            <router-link to="/shop"  @click="loadProducts" class="site-nav lvl-2">All Categories</router-link>
+                                                        </li>
                                                         <li class="lvl-2" 
-                                                        v-for="(cat, index) in $store.state.productCategories" 
+                                                        v-for="(category, index) in productCategories" 
                                                         :key="index">
-                                                            <a href="#" class="site-nav lvl-2">{{ cat }}</a>
+                                                            <router-link :to="'/shop/'+category" @click="getProductsofCategory(category)" class="site-nav lvl-2">{{ category }}</router-link>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -329,7 +332,19 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
+    computed: {
+        ...mapState([
+            'productCategories',
+        ])
+    },
+    methods: {
+        ...mapActions({
+            getProductsofCategory: 'getProductsofCategory',
+            loadProducts: 'loadProducts'
+        }),
+    },
 }
 </script>
 
