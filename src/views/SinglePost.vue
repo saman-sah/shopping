@@ -10,31 +10,26 @@
         <!--End Breadcrumbs-->
 		<div class="page-title"><h1>Blog Single Detail Page</h1></div>
         <div class="container">
-			<div class="article"> 
+			<div class="article" v-if="singlePost"> 
 				<!-- Article Image --> 
-				<div class="article_featured-image"><img class="blur-up ls-is-cached lazyloaded" data-src="assets/images/blog/117x490.jpg" src="assets/images/blog/117x490.jpg" alt=""></div> 
-				<h1><a href="blog-left-sidebar.html">It's all about how you wear</a></h1>
+				<div class="article_featured-image">
+					<img class="blur-up ls-is-cached lazyloaded" data-src="assets/images/blog/117x490.jpg" src="assets/images/blog/117x490.jpg" alt="">
+				</div> 
+				<h1>{{ singlePost.title }}</h1>
 				<ul class="publish-detail">                      
-					<li><i class="anm anm-user-al" aria-hidden="true"></i> Posted by: Crish Jonas</li>
-					<li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02">May 02, 2017</time></li>
+					<li>
+						<i class="anm anm-user-al" aria-hidden="true"></i> 
+						Posted by: {{ singlePost.userId }}
+					</li>
+					<li>
+						<i class="icon anm anm-clock-r"></i> 
+						<time datetime="2017-05-02">May 02, 2017</time>
+					</li>
 					<li><i class="icon anm anm-comments-l"></i> <a href="#"> 0 comments</a></li>
 				</ul>
 				<hr>
 				<div class="rte">
-					<p>Cras quis neque urna. Pellentesque mollis, dui nec elementum elementum, ipsum quam suscipit ligula, sit amet lobortis dolor sem sed neque. Vivamus consequat est non sodales efficitur. Aliquam sodales eleifend sodales. Aliquam auctor ipsum quis nisl facilisis, at convallis mauris iaculis. Duis eleifend, magna ac convallis blandit, dui dui auctor leo, sed tincidunt nisi mauris ut nulla. Praesent porttitor dui ac turpis commodo porttitor. Integer ligula nisi, bibendum non sem at, porta condimentum dui.</p>
-					<p>On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de.</p>
-					<blockquote>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. &nbsp;</blockquote>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					<h3>Sample Text Listing</h3>
-					<ul class="list-items">
-						<li>Donec et lacus mattis ipsum feugiat interdum non id sapien.</li>
-						<li>Quisque et mauris eget nisi vestibulum rhoncus molestie a ante.</li>
-						<li>Curabitur pulvinar ex at tempus sodales.</li>
-						<li>Mauris efficitur magna quis lectus lobortis venenatis.</li>
-						<li>Nunc id enim eget augue molestie lobortis in a purus.</li>
-					</ul>
-					<h3>Donec maximus quam at lectus bibendum, non suscipit nunc tristique.</h3>
-					<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+					<p>{{ singlePost.body }}</p>
 				</div>
 				<hr>
 				<div class="social-sharing">
@@ -165,8 +160,33 @@
 </template>
 
 <script>
+import { mapActions,mapMutations,mapGetters, mapState } from "vuex";
 export default {
-
+	mounted() {
+		console.log('this.singlePost');
+		console.log(this.singlePost);
+        var postId=this.$route.params.id
+		console.log(postId);
+        if(this.singlePost == null) {
+            this.getSinglePost(postId)
+        }
+	},
+	computed: {
+        ...mapState([
+            'singlePost'
+        ]),
+        // Getters into computed
+        ...mapGetters([
+        ])
+    },
+    methods: {
+        ...mapMutations({
+            
+        }),
+        ...mapActions({
+            getSinglePost: 'getSinglePost'
+        })
+    },
 }
 </script>
 

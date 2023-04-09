@@ -10,6 +10,7 @@ export default createStore({
     toggle_quickview_modal: false,
     quickviewProduct: null,
     singleProduct: null,  
+    singlePost: null,
     filterProductText: '',
     productsBrand:[],
     selectedBrandProducts:[],
@@ -28,8 +29,23 @@ export default createStore({
 
   // ---------------   Mutations   --------------------
   mutations: {
-    LOAD_POSTS(state, data) {
+    LOAD_POSTS(state, data) {      
       state.posts= data.posts;
+      state.posts.forEach(post => {
+        var slug = post.title.toLowerCase().replace(/[^\w-]+/g, '-');
+        post.slug=slug;
+        post.image="https://source.unsplash.com/random/1024x520"
+      }); 
+      console.log('postsssssssssssssssssss');
+      console.log(state.posts);
+    },
+    GET_SINGLE_POST(state, post) {
+      state.singlePost= post;
+      console.log('get single post');
+      console.log(state.singlePost);
+    },
+    GET_POSTS_COMMENTS(state, comments) {
+
     },
     LOAD_PRODUCTS(state, data) {
       state.products= data.products;
@@ -95,6 +111,17 @@ export default createStore({
         commit('LOAD_POSTS', response.data)
       })
     },
+    getSinglePost({commit}, postId){
+      console.log('action single post');
+      axios.get('https://dummyjson.com/posts/'+ postId,  {
+        headers: {
+          Accept: "application/json",
+        }
+      })
+      .then(response=> {
+        commit('GET_SINGLE_POST', response.data)
+      })
+    },    
     loadProducts({commit}){
       axios.get('https://dummyjson.com/products',  {
         headers: {
