@@ -314,7 +314,7 @@ label { margin-bottom:3px; }
 	#siteNav > li > a:hover:hover,
 	#siteNav > li > a:hover { color:#f77575; }
 	
-	#siteNav > li .megamenu { opacity:0; visibility:hidden; padding:30px; width:100%; position:absolute; top:59px; left:0; z-index:999; background-color:#fff; box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.3); -webkit-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.3); pointer-events:none; -ms-transition:all 0.3s ease; -webkit-transition:all 0.3s ease; transition:all 0.3s ease; max-height:600px; overflow:auto; box-shadow:0px 0px 15px rgba(0,0,0,0.1); -webkit-box-shadow:0px 0px 15px rgba(0,0,0,0.1); }
+	#siteNav > li .megamenu { opacity:0; visibility:hidden; padding:30px; width:60%; position:absolute; top:59px; left:20%; z-index:999; background-color:#fff; box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.3); -webkit-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.3); pointer-events:none; -ms-transition:all 0.3s ease; -webkit-transition:all 0.3s ease; transition:all 0.3s ease; max-height:600px; overflow:auto; box-shadow:0px 0px 15px rgba(0,0,0,0.1); -webkit-box-shadow:0px 0px 15px rgba(0,0,0,0.1); }
 	#siteNav > li .megamenu ul { padding:0; list-style:none; }
 	#siteNav > li:hover > .megamenu { top:40px; opacity:1; visibility:visible; pointer-events:visible; }
 	#siteNav > li .megamenu li.lvl-1 { margin-bottom:30px; }
@@ -357,7 +357,7 @@ label { margin-bottom:3px; }
 	#siteNav .menu-brand-logo { width:50%; float:left; padding-right:10px; }
 	#siteNav .menu-brand-logo a { display:block; margin-bottom:10px; border:1px solid #ddd; }
 	#siteNav .menu-brand-logo a:hover { border-color:#000; }
-	#siteNav .menu-brand-logo a img { display:inline-block; vertical-align:middle; }
+	#siteNav .menu-brand-logo a img { display:inline-block; vertical-align:middle; width: 150px; height: 150px; }
 
 }
 

@@ -44,9 +44,9 @@
                 <!--Mobile Icons-->
                 <!--Desktop Logo-->
                 <div class="logo col-4 col-sm-4 col-md-4 col-lg-2 align-self-center">
-                    <a href="index.html">
-                        <img src="assets/images/avon-logo.svg" alt="Avone Multipurpose Html Template" title="Avone Multipurpose Html Template" />
-                    </a>
+                    <router-link to="/">
+                        <img src="assets/images/avon-logo.svg" alt="Samman's shopping website" title="Samman's shopping website" />
+                    </router-link>
                 </div>
                 <!--End Desktop Logo-->
                 <div class="col-1 col-sm-1 col-md-1 col-lg-8 align-self-center d-menu-col">
@@ -62,7 +62,7 @@
                                     <ul class="grid mmWrapper">
                                         <li class="grid__item one-whole">
                                             <ul class="grid">
-                                                <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Product Page</a>
+                                                <li class="grid__item lvl-1 col-md-6 col-lg-6"><h4 class="site-nav lvl-1 menu-title">Shop Page</h4>
                                                     <ul class="subLinks">
                                                         <li class="lvl-2">
                                                             <router-link to="/shop"  @click="loadProducts" class="site-nav lvl-2">All Categories</router-link>
@@ -74,16 +74,28 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">Top Brands</a>
+                                                <li class="grid__item lvl-1 col-md-6 col-lg-6"><h4 class="site-nav lvl-1 menu-title">Top Brands</h4>
                                                     <div class="menu-brand-logo">
-                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
+                                                        <router-link @click="getProductsofCategory('womens-dresses')" to="/shop/womens-dresses">
+                                                            <img src="https://source.unsplash.com/random/150x150/?fashion" alt=""/>
+                                                        </router-link>
+                                                        <router-link @click="getProductsofCategory('smartphones')" to="/shop/smartphones">
+                                                            <img src="https://source.unsplash.com/random/150x150/?smartphone" alt=""/>
+                                                        </router-link>
+                                                        <router-link @click="getProductsofCategory('laptops')" to="/shop/laptops">
+                                                            <img src="https://source.unsplash.com/random/150x150/?laptop" alt=""/>
+                                                        </router-link>
                                                     </div>
                                                     <div class="menu-brand-logo">
-                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
-                                                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt=""/></a>
+                                                        <router-link @click="getProductsofCategory('furniture')" to="/shop/furniture">
+                                                            <img src="https://source.unsplash.com/random/150x150/?furniture" alt=""/>
+                                                        </router-link>
+                                                        <router-link @click="getProductsofCategory('sunglasses')" to="/shop/sunglasses">
+                                                            <img src="https://source.unsplash.com/random/150x150/?sunglasses" alt=""/>
+                                                        </router-link>
+                                                        <router-link @click="getProductsofCategory('skincare')" to="/shop/skincare">
+                                                            <img src="https://source.unsplash.com/random/150x150/?skincare" alt=""/>
+                                                        </router-link>
                                                     </div>
                                                 </li>
                                             </ul>
