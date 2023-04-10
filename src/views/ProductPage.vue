@@ -71,16 +71,16 @@
                                                 :rounded-corners="true"
                                                 :padding="2"
                                                 />
-                                                <span class="spr-badge-caption">6 reviews</span>
+                                                <!-- <span class="spr-badge-caption">6 reviews</span> -->
                                             </a>
                                         </div>
-                                        <div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div>
+                                        <!-- <div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div> -->
                                         <div class="product-stock"> 
                                             <span v-if="singleProduct.stock > 0" class="instock">In Stock</span> 
                                             <span v-else class="outstock hide">Unavailable</span> 
                                         </div>
                                     </div>
-                                    <p class="product-single__price product-single__price-product-template">
+                                    <p class="product-single__price product-single__price-product-template mt-4">
                                         <template v-if="singleProduct.discountPercentage > 0">
                                             <span class="visually-hidden">Regular price</span>
                                             <s id="ComparePrice-product-template">
@@ -109,8 +109,9 @@
                                           
                                     </p>
                                 </div>
-                                <div class="product-single__description rte">
-                                    {{ singleProduct.description }}                                </div>
+                                <div class="product-single__description rte mt-4">
+                                    {{ singleProduct.description }}
+                                </div>
                                 <form method="post" action="" class="product-form product-form-product-template hidedropdown">                                                                      
                                     <p class="infolinks">
                                         <a class="wishlist add-to-wishlist" href="my-wishlist.html" title="Add to Wishlist"><i class="icon anm anm-heart-l" aria-hidden="true"></i> <span>Add to Wishlist</span></a>
@@ -133,27 +134,31 @@
                                                 <span>Add to cart</span>
                                             </button>
                                         </div>
-                                        <div class="agree-check">
-                                            <input type="checkbox" name="tearm" id="prTearm" class="checkbox" value="tearm" required="">
-                                            <label for="prTearm"><span class="checkbox"></span> I agree with the terms and conditions</label>
-                                        </div>
-                                        <div class="buy-it-btn">
-                                            <button type="button" class="btn" disabled="disabled">Buy it now</button>
-                                        </div>
                                     </div>
                                     <!-- End Product Action -->
                                 </form>
-                                <p id="freeShipMsg" class="freeShipMsg" data-price="199"><i class="fa fa-truck" aria-hidden="true"></i> Getting Closer! Only <b class="freeShip"><span class="money" data-currency-usd="$199.00" data-currency="USD">$199.00</span></b> Away From <b>FREE SHIPPING!</b></p>
+                                <!-- <p id="freeShipMsg" class="freeShipMsg mt-4" data-price="199"><i class="fa fa-truck" aria-hidden="true"></i> Getting Closer! Only <b class="freeShip"><span class="money" data-currency-usd="$199.00" data-currency="USD">$199.00</span></b> Away From <b>FREE SHIPPING!</b></p>
                                 <p class="shippingMsg"><i class="fa fa-clock-o" aria-hidden="true"></i> Estimated Delivery Between <b id="fromDate">Wed. May 1</b> and <b id="toDate">Tue. May 7</b>.</p>
                                 <div class="userViewMsg" data-user="20" data-time="11000">
                                     <i class="fa fa-users" aria-hidden="true"></i> <strong class="uersView">14</strong> People are Looking for this Product
-                                </div>
-                                <!-- <div class="trustseal-img"><img src="assets/images/checkout-cards.png" alt=""></div> -->
-                                <div class="type-product">
+                                </div> -->
+                                <!-- <div class="type-product">
                                     <span>Type:</span> <a href="#">Dress</a>
+                                </div> -->
+                                <div v-if="Array.isArray(singleProduct.category) "
+                                class="category-products-list mt-4">
+                                    <span>Category:</span> 
+                                    <router-link v-for="(category, index) in singleProduct.category" 
+                                    :to="'/shop/'+ category"
+                                    :key="index" class="ml-2">
+                                        {{ category }}
+                                    </router-link> 
                                 </div>
-                                <div class="category-products-list">
-                                    <span>Category:</span> <a href="#">All Products</a>, <a href="#">All Products</a>, <a href="#">Hot Collection</a>, <a href="#">New Arrivals</a>, <a href="#">Women</a>  
+                                <div v-else class="category-products-list mt-4">
+                                    <span>Category:</span> 
+                                    <router-link :to="'/shop/'+ singleProduct.category" class="ml-2">
+                                        {{ singleProduct.category }}
+                                    </router-link> 
                                 </div>
                             </div>
                         </div>

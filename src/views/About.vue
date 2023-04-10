@@ -20,7 +20,7 @@
             </div>
         	<div class="row d-flex align-items-center">
             	<div class="col-12 col-sm-12 col-md-6 col-lg-6 pt-2 pb-4">
-                	<img src="assets/images/our-mission.jpg" alt=""/>
+                	<img src="https://source.unsplash.com/random/700x400/?about-us-page" alt=""/>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 pl-5 pr-5">
                 	<h3><b>Our Mission</b></h3>
@@ -33,12 +33,12 @@
                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             	<div class="col-12 col-sm-12 col-md-6 col-lg-6 pt-4 pb-4">
-                	<img src="assets/images/our-vision.jpg" alt=""/>
+                	<img src="https://source.unsplash.com/random/700x400/?about-page" alt=""/>
                 </div>
             </div>
             <div class="row d-flex align-items-center">
             	<div class="col-12 col-sm-12 col-md-6 col-lg-6 pt-2 pb-4">
-                	<img src="assets/images/the-founder.jpg" alt=""/>
+                	<img src="https://source.unsplash.com/random/700x400/?about-us" alt=""/>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 pl-5 pr-5">
                 	<h3><b>The Founder</b></h3>

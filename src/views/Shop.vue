@@ -23,7 +23,12 @@
 				<div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
                     <div class="page-title"><h1>Shop Left Sidebar</h1></div>
                     <div class="category-banner">
-						<img src="https://source.unsplash.com/random/1920x500/?fashion" data-src="assets/images/collection-banner/collection-banner.jpg" alt="">
+						<img v-if="this.$route.params.category"
+                        :src="'https://source.unsplash.com/random/1920x500/?'+this.$route.params.category" 
+                        :data-src="'https://source.unsplash.com/random/1920x500/?'+this.$route.params.category" alt="">
+						<img v-else
+                        src="https://source.unsplash.com/random/1920x500/?fashion" 
+                        data-src="https://source.unsplash.com/random/1920x500/?fashion" alt="">
 					</div>
 					<div class="category-description">
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
