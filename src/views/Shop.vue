@@ -75,6 +75,11 @@
                             </div>
                         </div>
                         <!--End Product Grid-->
+
+                        <!-- list-view-product -->
+                        <!-- <list-view-product></list-view-product> -->
+                        <!-- End list-view-product -->
+
                         <!--Load More Button-->
                         <div class="infinitpaginOuter">
                             <div class="infinitpagin">	
@@ -95,10 +100,12 @@
 import { mapActions, mapState } from "vuex";
 import ShopSidebar from '../components/shop/ShopSidebar.vue'
 import ShopProduct from '../components/shop/ShopProduct.vue'
+import ListViewProducts from '../components/shop/ListViewProducts.vue'
 export default {
     components: {
         'shop-sidebar': ShopSidebar,
         'shop-product': ShopProduct,       
+        'list-view-product': ListViewProducts,       
     },
     computed: {
         ...mapState([
