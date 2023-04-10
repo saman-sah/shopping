@@ -38,6 +38,24 @@
 
 <script>
 export default {
+  mounted() {
+    $('.quotes-slider').slick({
+			dots: false,
+			infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: true,
+		});
+  },
+  updated() {
+    $('.quotes-slider').slick({
+			dots: false,
+			infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: true,
+		});
+  },
 
 }
 </script>

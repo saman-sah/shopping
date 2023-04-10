@@ -6,22 +6,22 @@
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="logo-bar">
                     <div class="logo-bar__item">
-                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt="" title="" /></a>
+                        <a href="#;"><img src="https://source.unsplash.com/random/143x73/?logo-brand" alt="" title="" /></a>
                     </div>
                     <div class="logo-bar__item">
-                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt="" title="" /></a>
+                        <a href="#;"><img src="https://source.unsplash.com/random/143x73/?logo-brand" alt="" title="" /></a>
                     </div>
                     <div class="logo-bar__item">
-                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt="" title="" /></a>
+                        <a href="#;"><img src="https://source.unsplash.com/random/143x73/?logo-brand" alt="" title="" /></a>
                     </div>
                     <div class="logo-bar__item">
-                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt="" title="" /></a>
+                        <a href="#;"><img src="https://source.unsplash.com/random/143x73/?logo-brand" alt="" title="" /></a>
                     </div>
                     <div class="logo-bar__item">
-                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt="" title="" /></a>
+                        <a href="#;"><img src="https://source.unsplash.com/random/143x73/?logo-brand" alt="" title="" /></a>
                     </div>
                     <div class="logo-bar__item">
-                        <a href="#;"><img src="assets/images/logo/brandlogo1.png" alt="" title="" /></a>
+                        <a href="#;"><img src="https://source.unsplash.com/random/143x73/?logo-brand" alt="" title="" /></a>
                     </div>
                 </div>
                     </div>
@@ -33,7 +33,72 @@
 
 <script>
 export default {
-
+    mounted() {    
+        // Logo Bar Slider
+        $('.logo-bar').slick({
+			dots: false,
+			infinite: true,
+			slidesToShow: 6,
+			slidesToScroll: 1,
+			arrows: true,
+			responsive: [
+			{
+			  breakpoint: 1024,
+			  settings: {
+				slidesToShow: 4,
+				slidesToScroll: 1
+			  }
+			},
+			{
+			  breakpoint: 600,
+			  settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1
+			  }
+			},
+			{
+			  breakpoint: 480,
+			  settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1
+			  }
+			}
+			]
+		});
+    },
+    updated() {    
+        // Logo Bar Slider
+        $('.logo-bar').slick({
+			dots: false,
+			infinite: true,
+			slidesToShow: 6,
+			slidesToScroll: 1,
+			arrows: true,
+			responsive: [
+			{
+			  breakpoint: 1024,
+			  settings: {
+				slidesToShow: 4,
+				slidesToScroll: 1
+			  }
+			},
+			{
+			  breakpoint: 600,
+			  settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1
+			  }
+			},
+			{
+			  breakpoint: 480,
+			  settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1
+			  }
+			}
+			]
+		});
+    },
 }
 </script>
 

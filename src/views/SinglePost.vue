@@ -4,7 +4,13 @@
         <!--Breadcrumbs-->
         <div class="breadcrumbs-wrapper">
         	<div class="container">
-            	<div class="breadcrumbs"><a href="index.html" title="Back to the home page">Home</a> <span aria-hidden="true">|</span> <span>Blog Single Detail Page</span></div>
+            	<div class="breadcrumbs">
+                    <router-link to="/" title="Back Home Page">Home</router-link> 
+                    <span aria-hidden="true">|</span> 
+                    <router-link to="/shop" title="Back Shop Page">Blog</router-link> 
+                    <span aria-hidden="true">|</span> 
+                    <span v-if="singlePost">{{ singlePost.title }}</span>
+                </div>
             </div>
         </div>
         <!--End Breadcrumbs-->
@@ -13,7 +19,10 @@
 			<div class="article" v-if="singlePost"> 
 				<!-- Article Image --> 
 				<div class="article_featured-image">
-					<img class="blur-up ls-is-cached lazyloaded" data-src="assets/images/blog/117x490.jpg" src="assets/images/blog/117x490.jpg" alt="">
+					<img class="blur-up ls-is-cached lazyloaded" 
+					data-src="https://source.unsplash.com/random/1170x490/?blog-post" 
+					src="https://source.unsplash.com/random/1170x490/?blog-post" 
+					alt="">
 				</div> 
 				<h1>{{ singlePost.title }}</h1>
 				<ul class="publish-detail">                      
@@ -63,7 +72,7 @@
 					<ol class="comments-list comments-list--level--0">
 						<li class="comments-list__item">
 							<div class="comment">
-								<div class="comment__avatar"><img src="assets/images/avatar-img.jpg" alt=""></div>
+								<div class="comment__avatar"><img src="https://source.unsplash.com/random/200x200/?avatar-user" alt=""></div>
 								<div class="comment__content">
 									<div class="comment__header">
 										<div class="comment__author">Jessica Moore</div>
@@ -77,7 +86,7 @@
 								<ol class="comments-list comments-list--level--1">
 									<li class="comments-list__item">
 										<div class="comment">
-											<div class="comment__avatar"><img src="assets/images/avatar-img1.jpg" alt=""></div>
+											<div class="comment__avatar"><img src="https://source.unsplash.com/random/200x200/?user" alt=""></div>
 											<div class="comment__content">
 												<div class="comment__header">
 													<div class="comment__author">Adam Taylor</div>
@@ -90,7 +99,7 @@
 									</li>
 									<li class="comments-list__item">
 										<div class="comment">
-											<div class="comment__avatar"><img src="assets/images/avatar-img2.jpg" alt=""></div>
+											<div class="comment__avatar"><img src="https://source.unsplash.com/random/200x200/?avatar" alt=""></div>
 											<div class="comment__content">
 												<div class="comment__header">
 													<div class="comment__author">Helena Garcia</div>
@@ -106,7 +115,7 @@
 						</li>
 						<li class="comments-list__item">
 							<div class="comment">
-								<div class="comment__avatar"><img src="assets/images/avatar-img.jpg" alt=""></div>
+								<div class="comment__avatar"><img src="https://source.unsplash.com/random/200x200/?avatar-user" alt=""></div>
 								<div class="comment__content">
 									<div class="comment__header">
 										<div class="comment__author">Ryan Ford</div>

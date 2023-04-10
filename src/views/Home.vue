@@ -9,7 +9,7 @@
                         <div class="details">
                             <div class="inner">
                                 <h3 class="collection-grid-item__title">New Arrivals</h3>
-                                <a class="btn" href="#">View Collection</a>
+                                <router-link class="btn" to="/shop/womens-dresses">View Collection</router-link>
                             </div>
                         </div>
                     </div>
@@ -18,7 +18,7 @@
                         <div class="details">
                             <div class="inner">
                                 <h3 class="collection-grid-item__title">Back in Stock</h3>
-                                <a class="btn" href="#">View Collection</a>
+                                <router-link class="btn" to="/shop/smartphones">View Collection</router-link>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <div class="details">
                             <div class="inner">
                                 <h3 class="collection-grid-item__title">Shop Denims</h3>
-                                <a class="btn" href="#">View Collection</a>
+                                <router-link class="btn" to="/shop/womens-dresses">View Collection</router-link>
                             </div>
                         </div>
                     </div>
@@ -134,83 +134,44 @@ import NewArrival from '../components/home/NewArrivals.vue'
 import Testimonial from '../components/home/Testimonial.vue'
 import BrandLogo from '../components/home/BrandLogo.vue'
 export default {
-  name: 'Home',
-  components: {
-    'new-arrivals': NewArrival,
-    'testimonial': Testimonial,
-    'brand-logo': BrandLogo
-  },
-  
-
-
-
-
+    name: 'Home',
+    components: {
+        'new-arrivals': NewArrival,
+        'testimonial': Testimonial,
+        'brand-logo': BrandLogo
+    },
     mounted() {
         // Product Slider
         $('.productSlider').slick({
-		dots: false,
-		infinite: true,
-		slidesToShow: 4,
-		slidesToScroll: 1,
-		arrows: true,
-		responsive: [
-		{
-		  breakpoint: 1024,
-		  settings: {
-			slidesToShow: 3,
-			slidesToScroll: 1
-		  }
-		},
-		{
-		  breakpoint: 767,
-		  settings: {
-			slidesToShow: 2,
-			slidesToScroll: 1
-		  }
-		},
-		{
-		  breakpoint: 480,
-		  settings: {
-			slidesToShow: 1,
-			slidesToScroll: 1
-		  }
-		}
-		]
-	
-	  });
-
-
-// Logo Bar Slider
-$('.logo-bar').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 6,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
+            dots: false,
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+	    });
 
 
 
@@ -218,7 +179,7 @@ $('.logo-bar').slick({
 
 
 
-// Home Slider
+        // Home Slider
         $('.home-slideshow-carousel').slick({
 			dots: false,
 			infinite: true,
@@ -229,32 +190,74 @@ $('.logo-bar').slick({
 			lazyLoad: 'ondemand',
 			responsive: [
                 {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
                 },
                 {
-                breakpoint: 999,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
+                    breakpoint: 999,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
                 },
                 {
-                breakpoint: 767,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
                 },
                 {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
                 }
+			]
+		});
+    },
+    updated() {
+        // Home Slider
+        $('.home-slideshow-carousel').slick({
+			dots: false,
+			infinite: true,
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			fade: false,
+			arrows: true,
+			lazyLoad: 'ondemand',
+			responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 999,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
                 }
 			]
 		});

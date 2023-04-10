@@ -13,31 +13,46 @@
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                         <h4 class="h4">Informations</h4>
                         <ul>
-                            <li><a href="aboutus-style1.html">About us</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Terms &amp; condition</a></li>
-                            <li><a href="my-account.html">My Account</a></li>
+                            <li><router-link to="/about">About us</router-link></li>
+                            <li><router-link to="/contact">Contact Us</router-link></li>
+                            <li><router-link to="/blog">Blog</router-link></li>
+                            <li><router-link to="#">FAQ's</router-link></li>
+                            <li><router-link to="login.html">Login</router-link></li>                            
                         </ul>
                     </div>
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                         <h4 class="h4">Customer Services</h4>
-                        <ul>
-                            <li><a href="#">Request Personal Data</a></li>
-                            <li><a href="faqs-style1.html">FAQ's</a></li>
-                            <li><a href="contact-style1.html">Contact Us</a></li>
-                            <li><a href="#">Orders and Returns</a></li>
-                            <li><a href="#">Support Center</a></li>
+                        <ul>                        
+                            <li><router-link to="#">Privacy policy</router-link></li>
+                            <li><router-link to="#">Terms &amp; condition</router-link></li>
+                            <li><router-link to="my-account.html">My Account</router-link></li>
+                            <li><router-link to="#">Orders and Returns</router-link></li>
+                            <li><router-link to="#">Support Center</router-link></li>
                         </ul>
                     </div>
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 social-col">
                         <h4 class="h4">Stay Connected</h4>
                         <ul class="list--inline social-icons">
-                            <li><a href="#" target="_blank"><i class="icon icon-facebook"></i> Facebook</a></li>
-                            <li><a href="#" target="_blank"><i class="icon icon-twitter"></i> Twitter</a></li>
-                            <li><a href="#" target="_blank"><i class="icon icon-pinterest"></i> Pinterest</a></li>
-                            <li><a href="#" target="_blank"><i class="icon icon-instagram"></i> Instagram</a></li>
-                            <li><a href="#" target="_blank"><i class="icon icon-youtube"></i> Youtube</a></li>
+                            <li>
+                                <a href="https://github.com/saman-sah" target="_blank">
+                                    <i class="icon icon-github"></i> Github
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/saman-sahraei-91a9b118a/" target="_blank">
+                                    <i class="icon icon-linkedin"></i> Linkedin
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/saman__sahraei/" target="_blank">
+                                    <i class="icon icon-instagram"></i> Instagram
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/@saman__sahraei" target="_blank">
+                                    <i class="icon icon-youtube"></i> Youtube
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-3 newsletter-col">
@@ -61,9 +76,6 @@
         </div>
         <div class="footer-bottom clearfix">
             <div class="container-fluid">
-                <div class="payment-icons">
-                    <img src="assets/images/footer-payment.png" alt="Payment Cards" title="Payment Cards" />
-                </div>
                 <div class="copytext">
                     &copy; 2020 Avone. All Rights Reserved.
                 </div>
