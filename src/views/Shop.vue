@@ -1,10 +1,14 @@
 <template>
-   <div id="page-content">        
+    <div id="page-content">        
         <!--Body Container-->
         <!--Breadcrumbs-->
         <div class="breadcrumbs-wrapper">
         	<div class="container">
-            	<div class="breadcrumbs"><a href="index.html" title="Back to the home page">Home</a> <span aria-hidden="true">|</span> <span>Shop Left Sidebar</span></div>
+            	<div class="breadcrumbs">
+                    <router-link to="/" title="Back Home Page">Home</router-link> 
+                    <span aria-hidden="true">|</span> 
+                    <span>Shop Page</span>
+                </div>
             </div>
         </div>
         <!--End Breadcrumbs-->
@@ -19,7 +23,7 @@
 				<div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
                     <div class="page-title"><h1>Shop Left Sidebar</h1></div>
                     <div class="category-banner">
-						<img src="assets/images/collection-banner/collection-banner.jpg" data-src="assets/images/collection-banner/collection-banner.jpg" alt="">
+						<img src="https://source.unsplash.com/random/1920x500/?fashion" data-src="assets/images/collection-banner/collection-banner.jpg" alt="">
 					</div>
 					<div class="category-description">
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
@@ -99,6 +103,7 @@ export default {
     computed: {
         ...mapState([
             'products',
+            'breadcrumb'
         ]),
         filterProductText: {
             get () {
@@ -115,8 +120,10 @@ export default {
         if(category) {
             if(category== 'All Categories') {
                 this.loadProducts
+                this.breadcrumb= 'Shop Page'
             }else{
                 this.getProductsofCategory(category)
+                this.breadcrumb= category
             }
             
         }else {
