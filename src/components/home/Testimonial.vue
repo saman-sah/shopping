@@ -39,22 +39,10 @@
 <script>
 export default {
   mounted() {
-    $('.quotes-slider').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			arrows: true,
-		});
+    this.$customJS.testimonial_slider();
   },
   updated() {
-    $('.quotes-slider').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			arrows: true,
-		});
+    this.$customJS.testimonial_slider();
   },
 
 }

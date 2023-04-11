@@ -169,13 +169,10 @@
 </template>
 
 <script>
-import { mapActions,mapMutations,mapGetters, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
 	mounted() {
-		console.log('this.singlePost');
-		console.log(this.singlePost);
-        var postId=this.$route.params.id
-		console.log(postId);
+        var postId=this.$route.params.id;
         if(this.singlePost == null) {
             this.getSinglePost(postId)
         }
@@ -184,14 +181,8 @@ export default {
         ...mapState([
             'singlePost'
         ]),
-        // Getters into computed
-        ...mapGetters([
-        ])
     },
     methods: {
-        ...mapMutations({
-            
-        }),
         ...mapActions({
             getSinglePost: 'getSinglePost'
         })

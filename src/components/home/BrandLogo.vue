@@ -33,72 +33,12 @@
 
 <script>
 export default {
-    mounted() {    
-        // Logo Bar Slider
-        $('.logo-bar').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 6,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
-    },
-    updated() {    
-        // Logo Bar Slider
-        $('.logo-bar').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 6,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
-    },
+    mounted() {
+		this.$customJS.logo_slider();
+	},
+    updated() {
+		this.$customJS.logo_slider();
+	},
 }
 </script>
 
