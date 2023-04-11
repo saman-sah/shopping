@@ -34,7 +34,7 @@ export default createStore({
       state.posts.forEach(post => {
         var slug = post.title.toLowerCase().replace(/[^\w-]+/g, '-');
         post.slug=slug;
-        post.image="https://source.unsplash.com/random/1024x520"
+        post.image="https://source.unsplash.com/random/1024x520/?blog-post"
       }); 
       console.log('postsssssssssssssssssss');
       console.log(state.posts);

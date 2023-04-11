@@ -187,45 +187,12 @@ export default {
       }
     },
     mounted() {
-        $(".product-load-more .item").slice(0, 21).show();
-        $(".loadMore").on('click', function (e) {
-            e.preventDefault();
-            $(".product-load-more .item:hidden").slice(0, 4).slideDown();
-            if ($(".product-load-more .item:hidden").length == 0) {
-                $(".infinitpagin").html('<div class="btn loadMore">no more products</div>');
-            }
-        });
-  
-        $(".product-load-more .list-product").slice(0, 7).show();
-        $(".loadMore").on('click', function (e) {
-            e.preventDefault();
-            $(".product-load-more .list-product:hidden").slice(0, 5).slideDown();
-            if ($(".product-load-more .list-product:hidden").length == 0) {
-                $(".infinitpagin").html('<div class="btn loadMore">no more products</div>');
-            }
-        });
-
-        console.log('filterProductText');
-        console.log(this.filterProductText);    
+        this.$customJS.load_more();
+        this.$customJS.load_more_listview(); 
     },
     updated() {
-        $(".product-load-more .item").slice(0, 21).show();
-        $(".loadMore").on('click', function (e) {
-            e.preventDefault();
-            $(".product-load-more .item:hidden").slice(0, 4).slideDown();
-            if ($(".product-load-more .item:hidden").length == 0) {
-                $(".infinitpagin").html('<div class="btn loadMore">no more products</div>');
-            }
-        });
-  
-        $(".product-load-more .list-product").slice(0, 7).show();
-        $(".loadMore").on('click', function (e) {
-            e.preventDefault();
-            $(".product-load-more .list-product:hidden").slice(0, 5).slideDown();
-            if ($(".product-load-more .list-product:hidden").length == 0) {
-                $(".infinitpagin").html('<div class="btn loadMore">no more products</div>');
-            }
-        });
+        this.$customJS.load_more();
+        this.$customJS.load_more_listview();   
     },
     methods: {
         ...mapMutations({
