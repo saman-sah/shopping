@@ -10,10 +10,10 @@
             @click="getSingleProduct(product.id)" 
             class="product-img">
                 <!-- image -->
-                <img class="primary blur-up lazyload" :data-src="product.thumbnail" :src="product.thumbnail" alt="" title="">
+                <img class="primary blur-up lazyload" :data-src="product.images[0]" :src="product.images[0]" alt="" title="">
                 <!-- End image -->
                 <!-- Hover image -->
-                <img class="hover blur-up lazyload" :data-src="product.thumbnail" :src="product.thumbnail" alt="" title="">
+                <img class="hover blur-up lazyload" :data-src="product.images[1]" :src="product.images[1]" alt="" title="">
                 <!-- End hover image -->
                 <!-- product label -->
                 <div class="product-labels"><span class="lbl on-sale">Sale</span></div>
@@ -71,7 +71,10 @@
         <div class="product-details text-center">
             <!-- product name -->
             <div class="product-name">
-                <a href="product-layout1.html">{{ product.title }}</a>
+                <router-link :to="'/product/'+product.id+'/'+ product.slug"
+                @click="getSingleProduct(product.id)">
+                    {{ product.title }}
+                </router-link>
             </div>
             <!-- End product name -->
             <!-- product price -->
@@ -82,18 +85,18 @@
             <!--Product Review-->
             <div class="product-review">
                 <star-rating
-                    v-model:rating="product.rating"
-                    active-color="#ffb503"
-                    inactive-color="#ffffff"
-                    :increment="0.1"
-                    :border-width="2"
-                    border-color="#ffb503"
-                    :star-size="14"
-                    :read-only="true"
-                    :show-rating="false"
-                    :rounded-corners="true"
-                    :padding="2"
-                    />
+                v-model:rating="product.rating"
+                active-color="#ffb503"
+                inactive-color="#ffffff"
+                :increment="0.1"
+                :border-width="2"
+                border-color="#ffb503"
+                :star-size="14"
+                :read-only="true"
+                :show-rating="false"
+                :rounded-corners="true"
+                :padding="2"
+                />
             </div>
             <!--End Product Review-->
         </div>

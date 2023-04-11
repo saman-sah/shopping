@@ -115,7 +115,6 @@ export default {
     computed: {
         ...mapState([
             'products',
-            'breadcrumb'
         ]),
         filterProductText: {
             get () {

@@ -3,3 +3,6 @@
     height: 100vh;    
     overflow: hidden;
 }
+.related-product.grid-products .item .product-image {
+    height: 300px;
+}
