@@ -1,5 +1,5 @@
 <template>
-  <div id="page-content">        
+  <div id="page-content" class="blog-page blog-sidebar-page">        
     <!--Body Container-->
     <!--Breadcrumbs-->
     <div class="breadcrumbs-wrapper">
@@ -93,9 +93,6 @@ export default {
     'blog-sidebar': BlogSidebar
   },
   mounted() {
-    this.$customJS.load_more_post();
-  },
-  updated() {
     this.$customJS.load_more_post();
   },
 }

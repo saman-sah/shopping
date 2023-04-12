@@ -33,12 +33,11 @@
 
 <script>
 export default {
-    mounted() {
-		this.$customJS.logo_slider();
-	},
-    updated() {
-		this.$customJS.logo_slider();
-	},
+    mounted() {  
+        this.$nextTick(function() {
+            this.$customJS.logo_slider();      
+        })  
+    },
 }
 </script>
 

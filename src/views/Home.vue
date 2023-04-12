@@ -1,5 +1,5 @@
 <template>   
-    <div id="page-content">        
+    <div id="page-content" class="template-index index-demo3">        
     	<!--Home slider-->
         <div class="container-fluid">       
             <div class="slideshow slideshow-wrapper slideshow-carousel">
@@ -141,12 +141,10 @@ export default {
         'brand-logo': BrandLogo
     },
     mounted() {
-        this.$customJS.home_slider_carousel();
-        this.$customJS.product_slider();
-    },
-    updated() {
-        this.$customJS.home_slider_carousel();
-        this.$customJS.product_slider();
+        this.$nextTick(function() {
+            this.$customJS.home_slider_carousel();            
+        })
+        
     },
 }
 </script>

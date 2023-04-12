@@ -1,5 +1,5 @@
 <template>
-    <div id="page-content">     
+    <div id="page-content" class="faqs-style1 faq-page">     
         <!--Body Container-->
         <!--Breadcrumbs-->
         <div class="breadcrumbs-wrapper">

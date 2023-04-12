@@ -188,11 +188,7 @@ export default {
     },
     mounted() {
         this.$customJS.load_more();
-        this.$customJS.load_more_listview(); 
-    },
-    updated() {
-        this.$customJS.load_more();
-        this.$customJS.load_more_listview();   
+        // this.$customJS.load_more_listview(); 
     },
     methods: {
         ...mapMutations({
