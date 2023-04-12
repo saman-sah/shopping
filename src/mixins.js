@@ -1,6 +1,7 @@
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import QuickViewProduct from '@/components/modal/QuickView.vue'
+import MiniCart from '@/components/modal/MiniCart.vue'
 // import loginForm from './components/modals/login.vue';
 import _ from 'lodash';
 import { mapActions,mapMutations,mapGetters, mapState } from "vuex";
@@ -8,7 +9,8 @@ export default {
   components: {
       'header-component': Header,
       'footer-component': Footer,
-      'guci-view-product': QuickViewProduct
+      'quick-view-product': QuickViewProduct,
+      'mini-cart-modal': MiniCart
   },
   computed: {
     ...mapState([
