@@ -112,6 +112,9 @@
                             <li class="lvl1 parent dropdown">
                                 <router-link to="/contact">Contact <i class="anm anm-angle-down-l"></i></router-link>                          
                             </li>                        
+                            <li class="lvl1 parent dropdown">
+                                <router-link to="/faq">Faq <i class="anm anm-angle-down-l"></i></router-link>                          
+                            </li>                        
                       </ul>
                     </nav>
                     <!--End Desktop Menu-->
@@ -163,7 +166,7 @@
                     </div>
                     <div id="settingsBox">
                     	<div class="customer-links">
-                        	<p><a href="login.html" class="btn">Login</a></p>
+                        	<p><a href="#" class="btn">Login</a></p>
                             <p class="text-center">New User? <a href="register.html" class="register">Create an Account</a></p>
                             <p class="text-center">Default welcome msg!</p>
                         </div>
@@ -301,8 +304,8 @@
         </li>
         <li class="lvl1 parent megamenu"><a href="about-us.html">Pages <i class="anm anm-plus-l"></i></a>
           <ul>
-          	<li><a href="login.html" class="site-nav">Login</a></li>
-			<li><a href="my-account.html" class="site-nav">My Account</a></li>
+          	<li><a href="#" class="site-nav">Login</a></li>
+			<li><a href="#" class="site-nav">My Account</a></li>
             <li><a href="aboutus-style1.html" class="site-nav">About Us <i class="anm anm-plus-l"></i></a>
                 <ul class="dropdown">
                     <li><a href="aboutus-style1.html" class="site-nav">About Us Style1</a></li>
