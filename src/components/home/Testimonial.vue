@@ -38,11 +38,10 @@
 
 <script>
 export default {
-  mounted() {
-    this.$customJS.testimonial_slider();
-  },
-  updated() {
-    this.$customJS.testimonial_slider();
+  mounted() {  
+    this.$nextTick(function() {
+      this.$customJS.testimonial_slider();
+    })  
   },
 
 }

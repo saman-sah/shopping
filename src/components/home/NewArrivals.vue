@@ -129,8 +129,11 @@ export default {
     components: {
         StarRating
     },
-    mounted(){
-        this.$customJS.product_slider();
+    mounted() {
+        this.$nextTick(function() {
+            this.$customJS.product_slider();            
+        })
+        
     },
     updated(){
         this.$customJS.product_slider();

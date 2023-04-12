@@ -293,7 +293,7 @@
 			lazyLoad: 'ondemand'
 		  });
 	  }
-	  home_slider();
+	//   home_slider();
 	  
 	  function home_slider_carousel(){
 		 $('.home-slideshow-carousel').slick({
@@ -336,7 +336,7 @@
 			]
 		 });
 	  }
-	  home_slider_carousel();
+	//   home_slider_carousel();
 	
 	// Full Size Banner on the Any Screen
 	$(window).resize(function() {
@@ -402,7 +402,7 @@
 	
 	  });
 	}
-	product_slider();
+	// product_slider();
 	
 	/* 11.5 Products Slider Style2 3 Items */
 	function product_slider1(){
@@ -765,7 +765,7 @@
 			]
 		});
 	}
-	logo_slider();
+	// logo_slider();
 	
 	/* 11.12 Testimonial Slider */
 	function testimonial_slider(){
@@ -777,7 +777,7 @@
 			arrows: true,
 		});
 	}
-	testimonial_slider();
+	// testimonial_slider();
 	
 	/*-----------------------------------
 	  12. Sidebar Categories Level links

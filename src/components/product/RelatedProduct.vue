@@ -123,9 +123,6 @@ export default {
     mounted() {
         this.$customJS.product_slider_ppage();
     },
-    updated() {
-        this.$customJS.product_slider_ppage();
-    },
     methods: {
         ...mapMutations({
             showQuickviewModal: 'SHOW_QUICKVIE_MODAL',

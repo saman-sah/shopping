@@ -9,11 +9,6 @@
 import myMixin from './mixins';
 export default {
   mixins: [ myMixin ],
-  mounted() {
-    const mainJs= document.createElement("script");
-    mainJs.setAttribute("src", "../assets/js/main.js");
-    document.body.appendChild(mainJs);
-  },
 }
 </script>
 

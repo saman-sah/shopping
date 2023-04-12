@@ -1,5 +1,5 @@
 <template>
-    <div id="page-content">        
+    <div id="page-content" class="contact-us-page2">        
         <!--Body Container-->
         <!--Breadcrumbs-->
         <div class="breadcrumbs-wrapper">

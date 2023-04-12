@@ -1,6 +1,6 @@
 <template>
     
-    <div id="page-content">        
+    <div id="page-content" class="about-style about-style-1">        
         <!--Body Container-->
         <!--Breadcrumbs-->
         <div class="breadcrumbs-wrapper">
