@@ -17,7 +17,7 @@
                             <li><router-link to="/contact">Contact Us</router-link></li>
                             <li><router-link to="/blog">Blog</router-link></li>
                             <li><router-link to="#">FAQ's</router-link></li>
-                            <li><router-link to="login.html">Login</router-link></li>                            
+                            <li><router-link to="#">Login</router-link></li>                            
                         </ul>
                     </div>
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
@@ -25,7 +25,7 @@
                         <ul>                        
                             <li><router-link to="#">Privacy policy</router-link></li>
                             <li><router-link to="#">Terms &amp; condition</router-link></li>
-                            <li><router-link to="my-account.html">My Account</router-link></li>
+                            <li><router-link to="#">My Account</router-link></li>
                             <li><router-link to="#">Orders and Returns</router-link></li>
                             <li><router-link to="#">Support Center</router-link></li>
                         </ul>

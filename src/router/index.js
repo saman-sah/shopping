@@ -63,6 +63,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
   },
+  {
+    path: '/faq',
+    name: 'faq',
+    // route level code-splitting
+    // this generates a separate chunk (faq.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "faq" */ '../views/Faq.vue')
+  },
 ]
 
 const router = createRouter({
