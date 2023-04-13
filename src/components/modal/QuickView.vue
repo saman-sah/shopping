@@ -3,7 +3,8 @@
 	<div class="loadingBox"><div class="anm-spin"><i class="anm anm-spinner4"></i></div></div>
 	<div class="modalOverly" @click.self="closeQuickviewModal"></div>
     <div id="quickView-modal" class="mfp-with-anim">
-		<button title="Close (Esc)" type="button" class="mfp-close">×</button>
+		<button @click.self="closeQuickviewModal"
+        title="Close (Esc)" type="button" class="mfp-close">×</button>
 		<div class="row quickview-row">
 			<div class="col-12 col-sm-6 col-md-6 col-lg-6 left-section-images">
 				<div id="slider">
@@ -182,5 +183,8 @@ export default {
 #quickView-modal .sort-description {
     height: 135px;
 	overflow-y: auto;
+}
+#quickView-modal .mfp-close {
+    color: #545454;
 }
 </style>

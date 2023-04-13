@@ -161,16 +161,26 @@
                     </div>
                     <!--End Search-->
                     <!--Setting Dropdown-->
-                    <div class="setting-link iconset">
-                    	<i class="icon icon-settings"></i>
-                    </div>
-                    <div id="settingsBox">
-                    	<div class="customer-links">
-                        	<p><a href="#" class="btn">Login</a></p>
-                            <p class="text-center">New User? <a href="register.html" class="register">Create an Account</a></p>
-                            <p class="text-center">Default welcome msg!</p>
+                    <div class="login-register-icon">
+                        <div @click="showLoginModal" class="setting-link iconset">
+                            <i class="icon icon-user"></i>
                         </div>
-                   	</div>
+                    </div>
+                    
+                    <!-- <template>
+                        <div class="setting-link iconset">
+                            <i class="icon icon-user"></i>
+                        </div>
+                        <div id="settingsBox">
+                            <div class="customer-links">
+                                <p><router-link to="#" class="btn">Profile</router-link></p>
+                                <p><router-link to="#" class="btn">Account</router-link></p>
+                                <p><router-link to="#" class="btn">Dashboard</router-link></p>
+                                <p><router-link to="#" class="btn">Orders</router-link></p>
+                            </div>
+                        </div>
+                    </template> -->
+                    
                     <!--End Setting Dropdown-->
                     <!--Wishlist-->
                     <div class="wishlist-link iconset">
@@ -347,14 +357,20 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 export default {
+    mounted() {
+        this.$customJS.setting_box();
+    },
     computed: {
         ...mapState([
             'productCategories',
         ])
     },
     methods: {
+        ...mapMutations({
+            showLoginModal: 'SHOW_LOGIN_MODAL',
+        }),
         ...mapActions({
             getProductsofCategory: 'getProductsofCategory',
             loadProducts: 'loadProducts'
