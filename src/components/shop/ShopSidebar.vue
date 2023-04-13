@@ -33,10 +33,20 @@
 								<div id="slider-range"></div>
 								<div class="row">
 									<div class="col-6">
-										<p class="no-margin"><input id="amount" type="text"></p>
+										<p class="no-margin">
+											<input :value="filterPrice.min" 
+											@input="updateMinPriceFilter" 
+											id="min_price_filter" type="number">
+											<!-- <input v-model="filterPrice.min" id="min_price_filter" type="number"> -->
+										</p>
 									</div>
-									<div class="col-6 text-right margin-25px-top">
-										<button class="btn btn-secondary btn--small">filter</button>
+									<div class="col-6">
+										<p class="no-margin">
+											<input :value="filterPrice.max" 
+											@input="updateMaxPriceFilter" 
+											id="min_price_filter" type="number">
+											<!-- <input v-model="filterPrice.max" id="max_price_filter" type="number"> -->
+										</p>
 									</div>
 								</div>
 							</form>
@@ -351,9 +361,10 @@ export default {
         ...mapState([
             'productCategories',
 			'productsBrand',
+			'filterPrice'
         ]),
 		selectedBrandProducts: {
-            get () {
+            get () {				
                 return this.$store.state.selectedBrandProducts
             },
             set (value) {
@@ -362,6 +373,12 @@ export default {
         }
     },
     methods: {
+		updateMinPriceFilter(e) {
+			this.$store.commit('UPDATE_MIN_PRICE_FILTER', e.target.value);
+		},
+		updateMaxPriceFilter(e) {
+			this.$store.commit('UPDATE_MAX_PRICE_FILTER', e.target.value)
+		},
         ...mapActions({
             getProductsofCategory: 'getProductsofCategory',
             loadProducts: 'loadProducts'

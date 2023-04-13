@@ -14,6 +14,10 @@ export default createStore({
         singlePost: null,
         filterProductText: "",
         productsBrand: [],
+        filterPrice: {
+            min: 0,
+            max: 20000
+        },
         selectedBrandProducts: [],
         body: document.getElementById("ss_shopping_body"),
         route_details: {},
@@ -99,6 +103,16 @@ export default createStore({
             state.filterProductText = txt;
             console.log("state.filterProductText");
             console.log(state.filterProductText);
+        },
+        UPDATE_MIN_PRICE_FILTER(state, minPrice) {
+            state.filterPrice.min= parseInt(minPrice)
+            console.log("state.filterPrice");
+            console.log(state.filterPrice);
+        },
+        UPDATE_MAX_PRICE_FILTER(state, maxPrice) {
+            state.filterPrice.max= parseInt(maxPrice)
+            console.log("state.filterPrice");
+            console.log(state.filterPrice);
         },
         SELECTED_BRAND_PRODUCTS(state, brand) {
             state.selectedBrandProducts = brand;
