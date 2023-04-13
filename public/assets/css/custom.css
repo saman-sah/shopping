@@ -6,3 +6,6 @@
 .related-product.grid-products .item .product-image {
     height: 300px;
 }
+.login-register-icon {
+    display: inline-block;    
+}

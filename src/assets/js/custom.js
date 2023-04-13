@@ -1,4 +1,13 @@
 export default {
+  setting_box(){
+		$(".setting-link").on("click", function() {
+		  	$("#settingsBox").toggleClass("active");
+		});
+		$("body").on("click", function(e) {
+			var t = $(e.target);
+			t.parents().is("#settingsBox") || t.parents().is(".setting-link") || t.is(".setting-link") || $("#settingsBox").removeClass("active")
+		});
+	},
   home_slider_carousel(){
       $('.home-slideshow-carousel').slick({
           dots: false,
