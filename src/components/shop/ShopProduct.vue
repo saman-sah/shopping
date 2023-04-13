@@ -115,7 +115,8 @@ export default {
         ...mapState([
             'products',
             'filterProductText',
-            'selectedBrandProducts'
+            'selectedBrandProducts',
+            'filterPrice'
         ]),
         ...mapGetters([
             
@@ -123,11 +124,11 @@ export default {
         filteredProducts() {
             var count= 0;
             var Prdcts= [];
-            // var prices= [];  
+            var prices= [];  
             var productsTitles= [];
-            // Prdcts= this.products.filter((element)=>{
-            //     prices.push(element.price);
-            // })
+            Prdcts= this.products.filter((element)=>{
+                prices.push(element.price);
+            })
 
 
 
@@ -165,22 +166,31 @@ export default {
 
         
             // let max_pr_price= Math.max(...prices)
+            // this.updateMaxPriceFilter(max_pr_price);
             // this.range_min_price=0;
             // if(this.range_max_price!= max_pr_price){          
-            // this.range_max_price= Math.max(...prices)
+            //     this.range_max_price= Math.max(...prices)
             // }
             // if(this.selected_min_price== null || this.selected_max_price== null){
             // this.selected_min_price= this.range_min_price;
             // this.selected_max_price= this.range_max_price
             // }
-            // // if(this.selected_min_price!= this.range_min_price || this.selected_max_price!= this.range_max_price){
-            // Prdcts= Prdcts.filter((element)=>{
-            //     if(element.price >= this.selected_min_price && element.price <= this.selected_max_price) {
-            //     return true
-            //     }
-                
-            // })
+            // if(this.selected_min_price!= this.range_min_price || this.selected_max_price!= this.range_max_price){
+            //     Prdcts= Prdcts.filter((element)=>{
+            //         if(element.price >= this.selected_min_price && element.price <= this.selected_max_price) {
+            //         return true
+            //         }
+                    
+            //     })
             // }      
+            if(this.filterPrice.min!= 0 || this.filterPrice.max!= 20000){
+                Prdcts= Prdcts.filter((element)=>{
+                    if(element.totalPrice >= this.filterPrice.min && element.totalPrice <= this.filterPrice.max) {
+                        return true
+                    }
+                    
+                })
+            }      
             console.log('products---------------------------------------------------');  
             console.log(Prdcts);  
             return Prdcts;
@@ -202,6 +212,9 @@ export default {
             this.showQuickviewModal();
             this.setQuickviewProduct(product);
         },
+        updateMaxPriceFilter(maxPrice) {
+			this.$store.commit('UPDATE_MAX_PRICE_FILTER', maxPrice)
+		},
     },
 }
 </script>
