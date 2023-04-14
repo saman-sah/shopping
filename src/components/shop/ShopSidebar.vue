@@ -35,7 +35,7 @@
 									<div class="col-6">
 										<p class="no-margin">
 											<input :value="filterPrice.min" 
-											@input="updateMinPriceFilter" 
+											@input="updateMinPriceFilter($event.target.value)" 
 											id="min_price_filter" type="number">
 											<!-- <input v-model="filterPrice.min" id="min_price_filter" type="number"> -->
 										</p>
@@ -43,10 +43,23 @@
 									<div class="col-6">
 										<p class="no-margin">
 											<input :value="filterPrice.max" 
-											@input="updateMaxPriceFilter" 
+											@input="updateMaxPriceFilter($event.target.value)" 
 											id="min_price_filter" type="number">
 											<!-- <input v-model="filterPrice.max" id="max_price_filter" type="number"> -->
 										</p>
+									</div>
+									<div class="col-md-12 mt-4">
+										<MultiRangeSlider
+											baseClassName="multi-range-slider"
+											:min="0"
+											:max="maxProdcutPrices"
+											:step="1"
+											:ruler="false"
+											:label="true"
+											:minValue="filterPrice.min"
+											:maxValue="filterPrice.max"
+											@input="UpdateValues"
+										/>
 									</div>
 								</div>
 							</form>
@@ -356,12 +369,17 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
+import MultiRangeSlider from "multi-range-slider-vue";
 export default {
+	components: {
+		MultiRangeSlider
+	},
 	computed: {
         ...mapState([
             'productCategories',
 			'productsBrand',
-			'filterPrice'
+			'filterPrice',
+			'maxProdcutPrices'
         ]),
 		selectedBrandProducts: {
             get () {				
@@ -373,11 +391,16 @@ export default {
         }
     },
     methods: {
-		updateMinPriceFilter(e) {
-			this.$store.commit('UPDATE_MIN_PRICE_FILTER', e.target.value);
+		UpdateValues(e) {
+			this.updateMinPriceFilter(e.minValue)
+			this.updateMaxPriceFilter(e.maxValue) 
 		},
-		updateMaxPriceFilter(e) {
-			this.$store.commit('UPDATE_MAX_PRICE_FILTER', e.target.value)
+		updateMinPriceFilter(value) {
+			this.$store.commit('UPDATE_MIN_PRICE_FILTER', value);
+
+		},
+		updateMaxPriceFilter(value) {
+			this.$store.commit('UPDATE_MAX_PRICE_FILTER', value);
 		},
         ...mapActions({
             getProductsofCategory: 'getProductsofCategory',
@@ -388,5 +411,11 @@ export default {
 </script>
 
 <style>
-
+.multi-range-slider {
+  border: none;
+  box-shadow: none;
+}
+.multi-range-slider .bar-inner {
+    background-color: #000000;
+}
 </style>
