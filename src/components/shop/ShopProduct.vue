@@ -124,13 +124,7 @@ export default {
         filteredProducts() {
             var count= 0;
             var Prdcts= [];
-            var prices= [];  
             var productsTitles= [];
-            Prdcts= this.products.filter((element)=>{
-                prices.push(element.price);
-            })
-
-
 
             // Filter By Search Text
             let txt =this.filterProductText.toLowerCase();
@@ -157,32 +151,11 @@ export default {
                 }
             }
         
-
             // Filter By Brands
             if(this.selectedBrandProducts.length !=0) {
                 return Prdcts.filter(prdct=>  this.selectedBrandProducts.includes(prdct.brand))                
             }
-
-
-        
-            // let max_pr_price= Math.max(...prices)
-            // this.updateMaxPriceFilter(max_pr_price);
-            // this.range_min_price=0;
-            // if(this.range_max_price!= max_pr_price){          
-            //     this.range_max_price= Math.max(...prices)
-            // }
-            // if(this.selected_min_price== null || this.selected_max_price== null){
-            // this.selected_min_price= this.range_min_price;
-            // this.selected_max_price= this.range_max_price
-            // }
-            // if(this.selected_min_price!= this.range_min_price || this.selected_max_price!= this.range_max_price){
-            //     Prdcts= Prdcts.filter((element)=>{
-            //         if(element.price >= this.selected_min_price && element.price <= this.selected_max_price) {
-            //         return true
-            //         }
-                    
-            //     })
-            // }      
+    
             if(this.filterPrice.min!= 0 || this.filterPrice.max!= 20000){
                 Prdcts= Prdcts.filter((element)=>{
                     if(element.totalPrice >= this.filterPrice.min && element.totalPrice <= this.filterPrice.max) {

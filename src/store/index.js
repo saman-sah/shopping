@@ -18,6 +18,7 @@ export default createStore({
             min: 0,
             max: 20000
         },
+        maxProdcutPrices: 2000,
         selectedBrandProducts: [],
         body: document.getElementById("ss_shopping_body"),
         route_details: {},
@@ -51,6 +52,7 @@ export default createStore({
         LOAD_PRODUCTS(state, data) {
             state.products = data.products;
             var brands = [];
+            var prices= [];
             state.products.forEach((product) => {
                 var slug = product.title.toLowerCase().replace(/[^\w-]+/g, "-");
                 product.slug = slug;
@@ -60,8 +62,11 @@ export default createStore({
                 product.discount = discount.toFixed(2);
                 product.totalPrice = total.toFixed(2);
                 brands.push(product.brand);
+                prices.push(product.price);
             });
             state.productsBrand = [...new Set(brands)];
+            state.filterPrice.max= Math.max(...prices)
+            state.maxProdcutPrices= Math.max(...prices)
         },
         LOAD_PRODUCTS_CATEGORIES(state, productCategories) {
             state.productCategories = productCategories;
