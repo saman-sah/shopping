@@ -43,7 +43,6 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 pl-5 pr-5">
                 	<h3><b>The Founder</b></h3>
                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <a href="#" class="btn btn--secondary btn--large"> Read More </a>
                 </div>
             </div>
         </div><!--End Body Container-->

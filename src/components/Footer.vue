@@ -87,7 +87,9 @@
 
 <script>
 export default {
-
+    mounted() {
+        this.$customJS.footer_dropdown();
+    },
 }
 </script>
 
