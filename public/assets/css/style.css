@@ -2319,7 +2319,7 @@ ol#compare-items li .btn-remove1 { position:absolute; right:5px; top:5px; }
 .compare-page2 .table .grid-link__title { margin-bottom:10px; }
 
 /* My Account Pages */
-.login-page .box { margin-bottom:30px; }
+/* .login-page .box { margin-bottom:30px; } */
 .login-page .box h3, .register-page .box h3 { font-size:16px; font-weight:bold; text-transform:uppercase; margin:20px 0; }
 .login-page form .required, .register-page .required { color:#F00; }
 

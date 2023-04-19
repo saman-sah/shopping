@@ -177,26 +177,5 @@ export default {
 </script>
 
 <style>
-#login_register_link,
-#forget_password_link {
-    cursor: pointer;
-}
-.login-page {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.login-modal-container {
-    z-index: 999;
-    display: flex;
-    position: relative;
-    background: #fff;
-    width: 40%;
-    justify-content: center;
-    margin: auto;
-    padding: 3em;
-    margin-top: 5em;
-}
+
 </style>
