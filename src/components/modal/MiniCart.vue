@@ -69,7 +69,7 @@
                             <span>Total:</span>
                             <span class="product-price">$93.13</span>
                         </div>
-                        <button type="button" class="btn proceed-to-checkout">Proceed to Checkout</button>
+                        <router-link to="/checkout" class="btn proceed-to-checkout">Proceed to Checkout</router-link>
                         <button type="button" class="btn btn-secondary cart-btn">View Cart</button>
                     </div>
                 </div>
