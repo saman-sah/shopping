@@ -160,8 +160,10 @@
                     <!--End Setting Dropdown-->
                     <!--Wishlist-->
                     <div class="wishlist-link iconset">
-                        <i class="icon anm anm-heart-l"></i>
-                        <span class="wishlist-count">0</span>
+                        <router-link to="/wishlist">
+                            <i class="icon anm anm-heart-l"></i>
+                            <span class="wishlist-count">0</span>
+                        </router-link>
                     </div>
                     <!--End Wishlist-->
                     <!--Minicart Dropdown-->
