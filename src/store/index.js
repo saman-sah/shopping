@@ -1,5 +1,16 @@
 import { createStore } from "vuex";
 import axios from "axios";
+import { 
+    auth, 
+    db, 
+    ref, 
+    onValue, 
+    set,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    updateProfile,
+    signOut
+} from '../firebase'
 
 export default createStore({
     state: {
@@ -18,6 +29,8 @@ export default createStore({
             min: 0,
             max: 20000
         },
+        currentUser: {},
+        userInfo: {},
         maxProdcutPrices: 2000,
         selectedBrandProducts: [],
         body: document.getElementById("ss_shopping_body"),
@@ -123,6 +136,26 @@ export default createStore({
             state.selectedBrandProducts = brand;
             console.log(state.selectedBrandProducts);
         },
+        //SetUser 
+        SET_USER(state, user) {
+            state.currentUser= user;
+            state.toggle_login_modal = false;
+            state.body.classList.remove("overflowhidden-body");
+            console.log(state.currentUser);
+        },
+        //End--------- SetUser 
+        
+        SET_USER_INFO(state, userInfo) {
+            state.userInfo= userInfo;
+            console.log('userInfo');
+            console.log(state.userInfo);
+        },
+        
+        // ClearUser 
+        CLEAR_USER(state) {
+            state.currentUser= null;
+        }, 
+        //End--------- ClearUser 
     },
 
     // ---------------   Actions   --------------------
@@ -193,7 +226,110 @@ export default createStore({
                 .then((response) => {
                     commit("LOAD_PRODUCTS", response.data);
                 });
+        },        
+        register({  commit }, userData) {
+            createUserWithEmailAndPassword(auth, userData.email, userData.password)
+            .then(response=> {
+                let userId= auth.currentUser.uid
+                set(ref(db, 'users/'+ userId), {
+                    firstName: userData.fname,
+                    lastName: userData.lname,
+                    email: userData.email,
+                    phone: 0,
+                    address: {
+                        address: "",
+                        city: "",
+                        postalCode: "",
+                        state: ""
+                    },
+                    wishlist: [1,2,3],
+                    orders: {
+
+                    },
+                    cart: {
+
+                    },
+                });                 
+                commit("SET_USER", response.user);
+            })
+            .catch(error=> {
+                switch (error.code) {
+                    case 'auth/email-already-in-use':
+                      alert("Email already in use")
+                      break;
+                    case 'auth/invalid-email':
+                      alert("Invalid Email")
+                      break;
+                    case 'auth/operation-not-allowed':
+                      alert("Operation not allowes")
+                      break;
+                    case 'auth/weak-password':
+                      alert("Week Password")
+                      break;
+                  
+                    default:
+                      alert("Something went Wrong")
+                      
+                  }
+                  return
+            })
+            
         },
+        login({ commit }, userData) {
+            signInWithEmailAndPassword(auth, userData.email, userData.password)
+            .then(response=> {
+                commit("SET_USER", response.user);
+                let userId= auth.currentUser.uid
+                onValue(ref(db, 'users/'+ userId), (snapshot) => {
+                    const userInfo = snapshot.val();
+                    commit('SET_USER_INFO', userInfo)
+                });
+            })
+            .catch(error=> {
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        alert("User not Found")
+                        break;
+                    case 'auth/wrong-password':
+                        alert("Wrong Password")
+                        break;
+                    
+                    default:
+                        alert("Something went Wrong")                      
+                  }
+                  return
+            })
+            
+        },
+
+        //Logout Firebase Auth
+        logOut({ commit }) {
+            console.log('logout');
+            signOut(auth).then(res=> {
+                commit("CLEAR_USER");
+            })    
+        },
+        //End--------- Logout Firebase Auth
+        
+        // Check User Logged In
+        handleAuthStateChange({commit}) {
+            console.log('fetch userrrrrrr');
+            auth.onAuthStateChanged(user=> {
+                if(user) {
+                    commit("SET_USER", user);
+                    let userId= auth.currentUser.uid
+                    onValue(ref(db, 'users/'+ userId), (snapshot) => {
+                        const userInfo = snapshot.val();
+                        commit('SET_USER_INFO', userInfo)
+                    });
+                }else {
+                    console.log('user not logged in');
+                    commit("CLEAR_USER");
+                }
+              })
+        },
+        //End--------- Check User Logged In
+      
     },
 
     // ---------------   Modules   --------------------

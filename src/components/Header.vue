@@ -137,9 +137,20 @@
                     </div>
                     <!--End Search-->
                     <!--Setting Dropdown-->
-                    <div class="login-register-icon">
+                    <div v-if="currentUser" class="login-register-icon">
+                        <div class="dropdown">
+                            
+                            <button class="dropdown-toggle" type="button" id="dropdownUserMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="icon icon-user"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownUserMenuButton">
+                                <span class="dropdown-item" @click="logOut">Logout</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else class="login-register-icon">
                         <div @click="showLoginModal" class="setting-link iconset">
-                            <i class="icon icon-user"></i>
+                            <img src="@/assets/images/login.png" alt="">
                         </div>
                     </div>
                     
@@ -227,6 +238,11 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from "vuex";
+import { 
+    db,
+    set,
+    ref
+} from '../firebase'
 export default {
     mounted() {
         this.$customJS.setting_box();
@@ -235,6 +251,7 @@ export default {
     computed: {
         ...mapState([
             'productCategories',
+            'currentUser'
         ])
     },
     methods: {
@@ -243,7 +260,8 @@ export default {
         }),
         ...mapActions({
             getProductsofCategory: 'getProductsofCategory',
-            loadProducts: 'loadProducts'
+            loadProducts: 'loadProducts',
+            logOut: 'logOut'
         }),
     },
 }

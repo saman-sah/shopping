@@ -11,7 +11,20 @@
 }
 
 
-
+#dropdownUserMenuButton {
+    font-size: 18px;
+    border: none;
+    vertical-align: middle;
+}
+.login-register-icon img {
+    width: 20px;
+}
+.login-register-icon .dropdown-menu span {
+    cursor: pointer;
+}
+.login-register-icon .dropdown-toggle::after {
+    vertical-align: middle;
+}
 /* Login - Register Modal */
 #login_register_link,
 #forget_password_link {
