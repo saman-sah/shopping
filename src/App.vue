@@ -7,8 +7,17 @@
     <login-modal v-if="toggle_login_modal" />
 </template>
 <script>
+import { mapActions } from 'vuex';
 import myMixin from "./mixins";
 export default {
     mixins: [myMixin],
+    beforeMount() {
+        this.fetchUser();
+    },
+    methods: {
+        ...mapActions({
+            fetchUser: 'handleAuthStateChange'
+        })
+    },
 };
 </script>

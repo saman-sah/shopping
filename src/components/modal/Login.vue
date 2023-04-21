@@ -13,7 +13,8 @@
                 </div>
                     <div class="mb-4">
                         <form v-if="toggle_login_register"
-                        method="post" action="" id="CustomerLoginForm" 
+                        @submit.prevent="login(formData)"
+                        method="post" id="CustomerLoginForm" 
                         accept-charset="UTF-8" class="contact-form" >
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12" >
@@ -22,14 +23,15 @@
                                             <span class="required" >*</span >
                                             </label>
                                         <input
-                                            type="email"
-                                            name="customer[email]"
-                                            placeholder=""
-                                            id="CustomerEmail"
-                                            class=""
-                                            autocorrect="off"
-                                            autocapitalize="off"
-                                            autofocus
+                                        v-model="formData.email"
+                                        type="email"
+                                        name="customer[email]"
+                                        placeholder=""
+                                        id="CustomerEmail"
+                                        class=""
+                                        autocorrect="off"
+                                        autocapitalize="off"
+                                        autofocus
                                         />
                                     </div>
                                 </div>
@@ -39,22 +41,22 @@
                                             <span class="required">*</span>
                                         </label>
                                         <input
-                                            type="password"
-                                            value=""
-                                            name="customer[password]"
-                                            placeholder=""
-                                            id="CustomerPassword"
-                                            class=""
+                                        v-model="formData.password"
+                                        type="password"
+                                        name="customer[password]"
+                                        placeholder=""
+                                        id="CustomerPassword"
+                                        class=""
                                         />
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12" >
-                                    <input type="submit" class="btn mb-3" 
-                                    :value="toggle_login_register== true ? 'Login' : 'Register'" />
+                                    <input type="submit" class="btn mb-3" value="Login" />
                                 </div>
                             </div>
                         </form>
                         <form v-else
+                        @submit.prevent="register(formData)"
                         method="post" action="" id="CustomerLoginForm" 
                         accept-charset="UTF-8" class="contact-form" >
                             <div class="row">
@@ -62,16 +64,17 @@
                                     <div class="form-group">
                                         <label for="CustomerFname" >First Name
                                             <span class="required" >*</span >
-                                            </label>
+                                        </label>
                                         <input
-                                            type="text"
-                                            name="customer[fname]"
-                                            placeholder=""
-                                            id="CustomerFname"
-                                            class=""
-                                            autocorrect="off"
-                                            autocapitalize="off"
-                                            autofocus
+                                        v-model="formData.fname"
+                                        type="text"
+                                        name="customer[fname]"
+                                        placeholder=""
+                                        id="CustomerFname"
+                                        class=""
+                                        autocorrect="off"
+                                        autocapitalize="off"
+                                        autofocus
                                         />
                                     </div>
                                 </div>
@@ -81,14 +84,14 @@
                                             <span class="required" >*</span >
                                             </label>
                                         <input
-                                            type="text"
-                                            name="customer[lname]"
-                                            placeholder=""
-                                            id="CustomerLname"
-                                            class=""
-                                            autocorrect="off"
-                                            autocapitalize="off"
-                                            autofocus
+                                        v-model="formData.lname"
+                                        type="text"
+                                        name="customer[lname]"
+                                        placeholder=""
+                                        id="CustomerLname"
+                                        class=""
+                                        autocorrect="off"
+                                        autocapitalize="off"
                                         />
                                     </div>
                                 </div>
@@ -98,14 +101,14 @@
                                             <span class="required" >*</span >
                                             </label>
                                         <input
-                                            type="email"
-                                            name="customer[email]"
-                                            placeholder=""
-                                            id="CustomerEmail"
-                                            class=""
-                                            autocorrect="off"
-                                            autocapitalize="off"
-                                            autofocus
+                                        v-model="formData.email"
+                                        type="email"
+                                        name="customer[email]"
+                                        placeholder=""
+                                        id="CustomerEmail"
+                                        class=""
+                                        autocorrect="off"
+                                        autocapitalize="off"
                                         />
                                     </div>
                                 </div>
@@ -115,18 +118,17 @@
                                             <span class="required">*</span>
                                         </label>
                                         <input
-                                            type="password"
-                                            value=""
-                                            name="customer[password]"
-                                            placeholder=""
-                                            id="CustomerPassword"
-                                            class=""
+                                        v-model="formData.password"
+                                        type="password"
+                                        name="customer[password]"
+                                        placeholder=""
+                                        id="CustomerPassword"
+                                        class=""
                                         />
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12" >
-                                    <input type="submit" class="btn mb-3" 
-                                    :value="toggle_login_register== true ? 'Login' : 'Register'" />
+                                    <input type="submit" class="btn mb-3" value="Register" />
                                 </div>
                             </div>                            
                         </form>
@@ -158,11 +160,12 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapMutations, mapState, mapActions } from "vuex";
 export default {
     data() {
         return {
-            toggle_login_register: true
+            toggle_login_register: true,
+            formData:{},
         }
     },
     computed: {
@@ -171,6 +174,10 @@ export default {
     methods: {
         ...mapMutations({
             closeLoginModal: "CLOSE_LOGIN_MODAL",
+        }),
+        ...mapActions({
+            register: 'register',
+            login: 'login'
         }),
     },
 };
