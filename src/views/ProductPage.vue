@@ -113,10 +113,29 @@
                                     {{ singleProduct.description }}
                                 </div>
                                 <form method="post" action="" class="product-form product-form-product-template hidedropdown">                                                                      
-                                    <p class="infolinks">
-                                        <a class="wishlist add-to-wishlist" href="my-wishlist.html" title="Add to Wishlist"><i class="icon anm anm-heart-l" aria-hidden="true"></i> <span>Add to Wishlist</span></a>
-                                        <a href="#ShippingInfo" class="mfp btn shippingInfo"><i class="anm anm-paper-l-plane"></i> Delivery &amp; Returns</a>
-                                        <a href="#productInquiry" class="emaillink btn"> <i class="anm anm-envelope-l"></i> Enquiry</a>
+                                    <p class="infolinks" v-if="currentUser">
+                                        <button v-if="wishlistIds && wishlistIds.includes(singleProduct.id)"
+                                        @click="toggleWishlist(singleProduct.id)"
+                                        class="wishlist add-to-wishlist"
+                                        title="Remove from Wishlist">
+                                            <i class="icon anm anm-heart" aria-hidden="true"></i> 
+                                            <span>Remove from Wishlist</span>
+                                        </button>
+                                        <button v-else
+                                        @click="toggleWishlist(singleProduct.id)"
+                                        class="wishlist add-to-wishlist"
+                                        title="Add to Wishlist">
+                                            <i class="icon anm anm-heart-l" aria-hidden="true"></i> 
+                                            <span>Add to Wishlist</span>
+                                        </button>
+                                    </p>
+                                    <p class="infolinks" v-else>
+                                        <button 
+                                        class="wishlist add-to-wishlist"
+                                        title="Login">
+                                            <i class="icon anm anm-heart-l" aria-hidden="true"></i> 
+                                            <span>Login</span>
+                                        </button>
                                     </p>
                                     <!-- Product Action -->
                                     <div class="product-action clearfix">
@@ -218,18 +237,27 @@ export default {
     },
     computed: {
         ...mapState([
-            'singleProduct'
+            'singleProduct',
+            'currentUser',
+            'userInfo'
         ]),
         // Getters into computed
         ...mapGetters([
-        ])
+        ]),
+        wishlistIds() {
+            if(this.userInfo.wishlist){
+                return this.userInfo.wishlist.productIds;
+            }
+            return false
+        }
     },
     methods: {
         ...mapMutations({
             
         }),
         ...mapActions({
-            getSingleProduct: 'getSingleProduct'
+            getSingleProduct: 'getSingleProduct',
+            toggleWishlist: 'toggleWishlist'
         })
     },
 }

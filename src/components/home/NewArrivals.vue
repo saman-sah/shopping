@@ -10,7 +10,8 @@
                     <!-- start product image -->
                     <div class="product-image">
                         <!-- start product image -->
-                        <a href="product-layout1.html" class="product-img">
+                        <router-link :to="'/product/'+product.id+'/'+ product.slug"
+                        @click="getSingleProduct(product.id)"  class="product-img">
                             <!-- image -->
                             <img class="primary blur-up lazyload" :data-src="product.images[0]" :src="product.images[0]" alt="" title="">
                             <!-- End image -->
@@ -20,7 +21,7 @@
                             <!-- product label -->
                             <div class="product-labels"><span class="lbl on-sale">Sale</span></div>
                             <!-- End product label -->
-                        </a>
+                        </router-link>
                         <!-- end product image -->
                         
                         <!--Product Button-->
@@ -44,13 +45,27 @@
                                     </a>
                                     <!--End Quick View Button-->
                                 </li>
-                                <li>
+                                <li >
                                     <!--Wishlist Button-->
-                                    <div class="wishlist-btn">
-                                        <a class="btn-icon wishlist add-to-wishlist btn-square" href="wishlist.html">
+                                    <div v-if="currentUser" class="wishlist-btn">
+                                        <button v-if="wishlistIds && wishlistIds.includes(product.id)"
+                                        class="btn-icon wishlist add-to-wishlist btn-square"
+                                        @click="toggleWishlist(product.id)">
+                                            <i class="icon anm anm-heart"></i>
+                                            <span class="tooltip-label">Remove from Wishlist</span>
+                                        </button>
+                                        <button v-else 
+                                        @click="toggleWishlist(product.id)"
+                                        class="btn-icon wishlist add-to-wishlist btn-square">
                                             <i class="icon anm anm-heart-l"></i>
                                             <span class="tooltip-label">Add To Wishlist</span>
-                                        </a>
+                                        </button>
+                                    </div>
+                                    <div v-else class="wishlist-btn">
+                                        <button class="btn-icon wishlist add-to-wishlist btn-square" disabled>
+                                            <i class="icon anm anm-heart-l"></i>
+                                            <span class="tooltip-label">Login</span>
+                                        </button>
                                     </div>
                                     <!--End Wishlist Button-->
                                 </li>
@@ -75,7 +90,10 @@
                         
                         <!-- product name -->
                         <div class="product-name">
-                            <a href="product-layout1.html">{{ product.title }}</a>
+                            <router-link :to="'/product/'+product.id+'/'+ product.slug"
+                            @click="getSingleProduct(product.id)">
+                                {{ product.title }}
+                            </router-link>
                         </div>
                         <!-- End product name -->
                         
@@ -101,17 +119,7 @@
                             :padding="2"
                             />
                         </div>
-                        <!--End Product Review-->
-                        
-                        <!--Color Variant -->
-                        <!-- <ul class="swatches">
-                            <li class="swatch small rounded navy"><span class="tooltip-label">Navy</span></li>
-                            <li class="swatch small rounded green"><span class="tooltip-label">Green</span></li>
-                            <li class="swatch small rounded gray"><span class="tooltip-label">Gray</span></li>
-                            <li class="swatch small rounded aqua"><span class="tooltip-label">Aqua</span></li>
-                            <li class="swatch small rounded orange"><span class="tooltip-label">Orange</span></li>
-                        </ul> -->
-                        <!-- End Variant -->
+                        <!--End Product Review-->                                               
                     </div>
                     <!-- End product details -->
                 </div>
@@ -125,19 +133,37 @@
 
 <script>
 import StarRating from 'vue-star-rating'
+import { mapActions, mapState } from 'vuex';
 export default {
     components: {
         StarRating
     },
+    computed: {
+        ...mapState([
+            'currentUser',
+            'userInfo'
+        ]),
+        wishlistIds() {
+            if(this.userInfo.wishlist){
+                return this.userInfo.wishlist.productIds;
+            }
+            return false
+        }
+    },
     mounted() {
         this.$nextTick(function() {
             this.$customJS.product_slider();            
-        })
-        
+        })        
     },
-    updated(){
-        this.$customJS.product_slider();
-    }
+    updated() {
+        // this.$customJS.product_slider();
+    },
+    methods: {
+        ...mapActions({
+            getSingleProduct: 'getSingleProduct',
+            toggleWishlist: 'toggleWishlist'
+        }),
+    },
 }
 </script>
 
