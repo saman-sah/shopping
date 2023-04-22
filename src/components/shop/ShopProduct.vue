@@ -45,10 +45,26 @@
                     <li>
                         <!--Wishlist Button-->
                         <div class="wishlist-btn">
-                            <a class="btn-icon wishlist add-to-wishlist" href="my-wishlist.html">
-                                <i class="icon anm anm-heart-l"></i>
-                                <span class="tooltip-label">Add To Wishlist</span>
-                            </a>
+                            <template v-if="currentUser">
+                                <button v-if="wishlistIds && wishlistIds.includes(product.id)"
+                                @click="toggleWishlist(product.id)"
+                                class="btn-icon wishlist add-to-wishlist">
+                                    <i class="icon anm anm-heart"></i>
+                                    <span class="tooltip-label">Remove from Wishlist</span>
+                                </button>
+                                <button v-else
+                                @click="toggleWishlist(product.id)"
+                                class="btn-icon wishlist add-to-wishlist">
+                                    <i class="icon anm anm-heart-l"></i>
+                                    <span class="tooltip-label">Add To Wishlist</span>
+                                </button>
+                            </template>
+                            <template v-else>
+                                <button class="btn-icon wishlist add-to-wishlist" disabled>
+                                    <i class="icon anm anm-heart-l"></i>
+                                    <span class="tooltip-label">Login</span>
+                                </button>
+                            </template>
                         </div>
                         <!--End Wishlist Button-->
                     </li>
@@ -116,7 +132,9 @@ export default {
             'products',
             'filterProductText',
             'selectedBrandProducts',
-            'filterPrice'
+            'filterPrice',
+            'currentUser',
+            'userInfo'
         ]),
         ...mapGetters([
             
@@ -167,7 +185,13 @@ export default {
             console.log('products---------------------------------------------------');  
             console.log(Prdcts);  
             return Prdcts;
-      }
+        },
+        wishlistIds() {
+            if(this.userInfo.wishlist){
+                return this.userInfo.wishlist.productIds;
+            }
+            return false
+        }
     },
     mounted() {
         this.$customJS.load_more();
@@ -179,7 +203,8 @@ export default {
             setQuickviewProduct :'SET_QUICKVIEW_PRODUCT'
         }),
         ...mapActions({
-            getSingleProduct: 'getSingleProduct'
+            getSingleProduct: 'getSingleProduct',
+            toggleWishlist: 'toggleWishlist'
         }),
         showQuickViewModal(product) {
             this.showQuickviewModal();

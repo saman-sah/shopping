@@ -1,15 +1,16 @@
 import * as firebase from "firebase/app";
 import { 
-        getAuth,
-        createUserWithEmailAndPassword,
-        signInWithEmailAndPassword,
-        updateProfile,
-        signOut 
-    } from "firebase/auth";
-import { getDatabase, 
-        ref, 
-        onValue, 
-        set } from "firebase/database";
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut 
+} from "firebase/auth";
+import { 
+  getDatabase, 
+  ref, 
+  onValue, 
+  set
+} from "firebase/database";
 
 
 const firebaseConfig = {
@@ -31,6 +32,5 @@ export {
     set,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    updateProfile,
     signOut
 }

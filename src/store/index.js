@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import axios from "axios";
+import _ from 'lodash';
 import { 
     auth, 
     db, 
@@ -8,8 +9,7 @@ import {
     set,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    updateProfile,
-    signOut
+    signOut,
 } from '../firebase'
 
 export default createStore({
@@ -242,7 +242,9 @@ export default createStore({
                         postalCode: "",
                         state: ""
                     },
-                    wishlist: [1,2,3],
+                    wishlist: {
+                        productIds:[]
+                    },
                     orders: {
 
                     },
@@ -329,7 +331,18 @@ export default createStore({
               })
         },
         //End--------- Check User Logged In
-      
+        
+        toggleWishlist({ state }, productId) {
+            if(state.userInfo.wishlist) {
+                var productIds = _.xor(state.userInfo.wishlist.productIds, [productId])                  
+            }else {
+                var productIds= [productId]
+            }
+            let userId= auth.currentUser.uid;
+            set(ref(db, 'users/'+ userId + '/wishlist'), {
+                productIds
+            });
+        },
     },
 
     // ---------------   Modules   --------------------
