@@ -126,7 +126,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this.$route.params.category);
         let category= this.$route.params.category;
         if(category) {
             if(category== 'All Categories') {

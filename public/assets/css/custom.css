@@ -49,6 +49,11 @@
     margin-top: 5em;
 }
 
+.remove-product-wishlist  span{
+    padding: 0.5em;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 1024px) {
     .login-modal-container {
         width: 60%;

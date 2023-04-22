@@ -225,7 +225,6 @@ export default {
         'product-details-tabs': ProductDetailsTabs
     },
     mounted() {
-        console.log(this.singleProduct);
         var productId=this.$route.params.id
         if(this.singleProduct == null) {
             this.getSingleProduct(productId)

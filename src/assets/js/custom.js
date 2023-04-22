@@ -272,7 +272,6 @@ export default {
   },
   /* 11.12 Testimonial Slider */
 	testimonial_slider(){
-    console.log('custom testimonial');
 		$('.quotes-slider').slick({
 			dots: false,
 			infinite: true,
