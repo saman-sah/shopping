@@ -181,9 +181,7 @@ export default {
                     }
                     
                 })
-            }      
-            console.log('products---------------------------------------------------');  
-            console.log(Prdcts);  
+            }
             return Prdcts;
         },
         wishlistIds() {

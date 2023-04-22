@@ -7,16 +7,27 @@
     <login-modal v-if="toggle_login_modal" />
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import myMixin from "./mixins";
 export default {
     mixins: [myMixin],
     beforeMount() {
         this.fetchUser();
     },
+    computed: {
+        ...mapState([
+            'currentUser'
+        ])
+    },
+    watch: {
+        currentUser() {
+            this.getWishlistIds();  
+        }
+    },
     methods: {
         ...mapActions({
-            fetchUser: 'handleAuthStateChange'
+            fetchUser: 'handleAuthStateChange',
+            getWishlistIds: 'getWishlistIds'
         })
     },
 };

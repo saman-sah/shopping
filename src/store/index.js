@@ -29,6 +29,7 @@ export default createStore({
             min: 0,
             max: 20000
         },
+        wishlistProducts:{},
         currentUser: {},
         userInfo: {},
         maxProdcutPrices: 2000,
@@ -53,13 +54,9 @@ export default createStore({
                 post.image =
                     "https://source.unsplash.com/random/1024x520/?blog-post";
             });
-            console.log("postsssssssssssssssssss");
-            console.log(state.posts);
         },
         GET_SINGLE_POST(state, post) {
             state.singlePost = post;
-            console.log("get single post");
-            console.log(state.singlePost);
         },
         GET_POSTS_COMMENTS(state, comments) {},
         LOAD_PRODUCTS(state, data) {
@@ -109,7 +106,6 @@ export default createStore({
             state.body.classList.remove("overflowhidden-body");
         },
         SHOW_LOGIN_MODAL(state) {
-            console.log('show login modal');
             state.toggle_login_modal = true;
             state.body.classList.add("overflowhidden-body");
         },
@@ -119,36 +115,26 @@ export default createStore({
         },
         FILTER_PRODUCT_TEXT(state, txt) {
             state.filterProductText = txt;
-            console.log("state.filterProductText");
-            console.log(state.filterProductText);
         },
         UPDATE_MIN_PRICE_FILTER(state, minPrice) {
             state.filterPrice.min= parseInt(minPrice)
-            console.log("state.filterPrice");
-            console.log(state.filterPrice);
         },
         UPDATE_MAX_PRICE_FILTER(state, maxPrice) {
             state.filterPrice.max= parseInt(maxPrice)
-            console.log("state.filterPrice");
-            console.log(state.filterPrice);
         },
         SELECTED_BRAND_PRODUCTS(state, brand) {
             state.selectedBrandProducts = brand;
-            console.log(state.selectedBrandProducts);
         },
         //SetUser 
         SET_USER(state, user) {
             state.currentUser= user;
             state.toggle_login_modal = false;
             state.body.classList.remove("overflowhidden-body");
-            console.log(state.currentUser);
         },
         //End--------- SetUser 
         
         SET_USER_INFO(state, userInfo) {
             state.userInfo= userInfo;
-            console.log('userInfo');
-            console.log(state.userInfo);
         },
         
         // ClearUser 
@@ -156,6 +142,12 @@ export default createStore({
             state.currentUser= null;
         }, 
         //End--------- ClearUser 
+
+        WISHLIST_PRODUCTS(state, wishlistIds) {
+            state.wishlistProducts= state.products.filter((item)=> {
+                return wishlistIds.includes(item.id)
+            })
+        }
     },
 
     // ---------------   Actions   --------------------
@@ -172,7 +164,6 @@ export default createStore({
                 });
         },
         getSinglePost({ commit }, postId) {
-            console.log("action single post");
             axios
                 .get("https://dummyjson.com/posts/" + postId, {
                     headers: {
@@ -185,7 +176,7 @@ export default createStore({
         },
         loadProducts({ commit }) {
             axios
-                .get("https://dummyjson.com/products", {
+                .get("https://dummyjson.com/products?limit=100", {
                     headers: {
                         Accept: "application/json",
                     },
@@ -306,7 +297,6 @@ export default createStore({
 
         //Logout Firebase Auth
         logOut({ commit }) {
-            console.log('logout');
             signOut(auth).then(res=> {
                 commit("CLEAR_USER");
             })    
@@ -315,7 +305,6 @@ export default createStore({
         
         // Check User Logged In
         handleAuthStateChange({commit}) {
-            console.log('fetch userrrrrrr');
             auth.onAuthStateChanged(user=> {
                 if(user) {
                     commit("SET_USER", user);
@@ -325,7 +314,6 @@ export default createStore({
                         commit('SET_USER_INFO', userInfo)
                     });
                 }else {
-                    console.log('user not logged in');
                     commit("CLEAR_USER");
                 }
               })
@@ -343,6 +331,14 @@ export default createStore({
                 productIds
             });
         },
+
+        getWishlistIds({ commit }) {
+            let userId= auth.currentUser.uid
+            onValue(ref(db, 'users/' + userId + '/wishlist'), (snapshot) => {
+                const data = snapshot.val();
+                commit("WISHLIST_PRODUCTS", data.productIds);
+            });
+        }
     },
 
     // ---------------   Modules   --------------------
