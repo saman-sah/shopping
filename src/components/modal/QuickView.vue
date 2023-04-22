@@ -102,8 +102,28 @@
 						</div>
 					</div>
 				</form>
-				<div class="wishlist-btn">
-					<a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist"><i class="icon anm anm-heart-l" aria-hidden="true"></i> <span>Add to Wishlist</span></a>
+				<div v-if="currentUser" class="wishlist-btn">
+					<button v-if="wishlistIds && wishlistIds.includes(quickviewProduct.id)"
+					@click="toggleWishlist(quickviewProduct.id)"
+					class="wishlist add-to-wishlist"  
+					title="Remove from Wishlist">
+						<i class="icon anm anm-heart" aria-hidden="true"></i> 
+						<span>Remove Wishlist</span>
+					</button>
+					<button v-else
+					@click="toggleWishlist(quickviewProduct.id)"
+					class="wishlist add-to-wishlist"  
+					title="Add to Wishlist">
+						<i class="icon anm anm-heart-l" aria-hidden="true"></i> 
+						<span>Add to Wishlist</span>
+					</button>
+				</div>
+				<div v-else class="wishlist-btn">
+					<button class="wishlist add-to-wishlist"  
+					title="Add to Wishlist" disabled>
+						<i class="icon anm anm-heart-l" aria-hidden="true"></i> 
+						<span>Login</span>
+					</button>
 				</div>
 				<div class="share-icon">
 					<span>Share:</span>
@@ -122,7 +142,7 @@
 </template>
 
 <script>
-import { mapActions,mapMutations,mapGetters, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 import StarRating from 'vue-star-rating'
 export default {
 	components: {
@@ -131,11 +151,23 @@ export default {
 	computed: {
         ...mapState([
             'quickviewProduct',
+			'currentUser',
+            'userInfo'
         ]),
+		wishlistIds() {
+            if(this.userInfo.wishlist){
+                return this.userInfo.wishlist.productIds;
+            }
+            return false
+        }
     },
 	methods: {
         ...mapMutations({
             closeQuickviewModal: 'CLOSE_QUICKVIE_MODAL'
+        }),
+		...mapActions({
+            getSingleProduct: 'getSingleProduct',
+            toggleWishlist: 'toggleWishlist'
         }),
     },
 }
