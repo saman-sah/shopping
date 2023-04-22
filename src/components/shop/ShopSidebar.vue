@@ -164,15 +164,6 @@
 												<i class="font-13 fa fa-star-o"></i>
 											</div>
 											<!--End Product Review-->
-											<!--Color Variant -->
-											<ul class="swatches">
-												<li class="swatch small rounded navy"><span class="tooltip-label">Navy</span></li>
-												<li class="swatch small rounded green"><span class="tooltip-label">Green</span></li>
-												<li class="swatch small rounded gray"><span class="tooltip-label">Gray</span></li>
-												<li class="swatch small rounded aqua"><span class="tooltip-label">Aqua</span></li>
-												<li class="swatch small rounded orange"><span class="tooltip-label">Orange</span></li>
-											</ul>
-											<!-- End Variant -->
 										</div>
 										<!-- End product details -->
 									</div>
@@ -257,12 +248,6 @@
 										</div>
 										<!--End Product Review-->
 										<!-- Color Variant -->
-										<ul class="swatches">
-											<li class="swatch small rounded black"><span class="tooltip-label">Black</span></li>
-											<li class="swatch small rounded navy"><span class="tooltip-label">Navy</span></li>
-											<li class="swatch small rounded purple"><span class="tooltip-label">Purple</span></li>
-										</ul>
-										<!-- End Variant -->
 									</div>
 									<!-- End product details -->
 								</div>
@@ -346,13 +331,6 @@
 												<i class="font-13 fa fa-star-o"></i>
 											</div>
 											<!--End Product Review-->
-										   <!-- Color Variant -->
-											<ul class="swatches">
-												<li class="swatch small rounded red"><span class="tooltip-label">red</span></li>
-												<li class="swatch small rounded orange"><span class="tooltip-label">orange</span></li>
-												<li class="swatch small rounded yellow"><span class="tooltip-label">yellow</span></li>
-											</ul>
-											<!-- End Variant -->
 										</div>
 										<!-- End product details -->
 									</div>

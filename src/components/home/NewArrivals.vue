@@ -156,7 +156,9 @@ export default {
         })        
     },
     updated() {
-        // this.$customJS.product_slider();
+        this.$nextTick(function() {
+            this.$customJS.product_slider();            
+        })  
     },
     methods: {
         ...mapActions({
