@@ -17,7 +17,14 @@
                             <li><router-link to="/contact">Contact Us</router-link></li>
                             <li><router-link to="/blog">Blog</router-link></li>
                             <li><router-link to="#">FAQ's</router-link></li>
-                            <li><router-link to="#">Login</router-link></li>                            
+                            <li v-if="currentUser && currentUser.auth"
+                            class="login-logout-links">
+                                <span @click="logOut">LogOut</span>                                
+                            </li>                            
+                            <li v-else
+                            class="login-logout-links">
+                                <span @click="showLoginModal">Login</span>                                
+                            </li>                            
                         </ul>
                     </div>
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
@@ -86,13 +93,26 @@
 </template>
 
 <script>
+import { mapActions, mapMutations, mapState } from "vuex";
 export default {
     mounted() {
         this.$customJS.footer_dropdown();
     },
+    computed: {
+        ...mapState([
+            'currentUser',
+        ])
+    },
+    methods: {
+        ...mapMutations({
+            showLoginModal: 'SHOW_LOGIN_MODAL',
+        }),
+        ...mapActions({
+            logOut: 'logOut'
+        }),
+    },
 }
 </script>
-
 <style>
 
 </style>
