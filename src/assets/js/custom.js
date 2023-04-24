@@ -339,5 +339,15 @@ export default {
               $(".infinitpagin").html('<div class="btn loadMore">no more products</div>');
           }
       });
-  }
+  },
+  sidebar_dropdown_filters(){
+		$(".sidebar_categories .sub-level a").on("click", function() {
+			$(this).toggleClass('active');
+			$(this).next(".sublinks").slideToggle("slow");
+		}); 
+    $(".filter-widget .widget-title").on("click", function () {
+      $(this).next().slideToggle('300');
+      $(this).toggleClass("active");
+    });
+	}
 }
