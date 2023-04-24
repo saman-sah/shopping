@@ -49,6 +49,10 @@
     margin-top: 5em;
 }
 
+.footer-links .login-logout-links span {
+    cursor: pointer;
+}
+
 .remove-product-wishlist  span{
     padding: 0.5em;
     cursor: pointer;
