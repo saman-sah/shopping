@@ -139,9 +139,11 @@ export default {
         }else {
             this.loadProducts
         }
+        this.$nextTick(function() {
+            this.$customJS.sidebar_dropdown_filters();           
+        })          
     },
     updated() {
-        
     },
     methods: {
         ...mapActions({
