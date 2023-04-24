@@ -144,6 +144,7 @@
                                 <i class="icon icon-user"></i>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownUserMenuButton">
+                                <router-link class="dropdown-item" to="/account">Acount</router-link>
                                 <span class="dropdown-item" @click="logOut">Logout</span>
                             </div>
                         </div>
@@ -238,11 +239,6 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from "vuex";
-import { 
-    db,
-    set,
-    ref
-} from '../firebase'
 export default {
     mounted() {
         this.$customJS.setting_box();

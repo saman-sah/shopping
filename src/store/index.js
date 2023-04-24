@@ -223,10 +223,12 @@ export default createStore({
             .then(response=> {
                 let userId= auth.currentUser.uid
                 set(ref(db, 'users/'+ userId), {
-                    firstName: userData.fname,
-                    lastName: userData.lname,
-                    email: userData.email,
-                    phone: 0,
+                    profile: {
+                        firstName: userData.fname,
+                        lastName: userData.lname,
+                        email: userData.email,
+                        phone: 0,
+                    },                    
                     address: {
                         address: "",
                         city: "",
