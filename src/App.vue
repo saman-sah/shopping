@@ -20,8 +20,10 @@ export default {
         ])
     },
     watch: {
-        currentUser() {
-            this.getWishlistIds();  
+        currentUser(user) {
+            if(user && user.auth) {
+                this.getWishlistIds();  
+            }
         }
     },
     methods: {
