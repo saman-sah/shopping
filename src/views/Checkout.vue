@@ -325,8 +325,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-
+    computed: {
+        ...mapState([
+            'currentUser'
+        ])
+    },
+    watch: {
+        currentUser: {
+            handler(user) {
+                if(!user.auth) { 
+                    this.$router.push('/')
+                }
+            },
+            immediate: true,
+            deep: true
+        }
+    },
 }
 </script>
 

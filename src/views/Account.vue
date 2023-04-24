@@ -56,7 +56,9 @@
                                 Account details
                             </router-link>
                         </li>
-                        <li><a class="nav-link" href="login.html">logout</a></li>
+                        <li>
+                            <router-link to="/" class="nav-link" @click="logOut">logout</router-link>
+                        </li>
                     </ul>
                     <!-- End Nav tabs -->
                 </div>
@@ -103,6 +105,17 @@ export default {
         }
         if(this.userInfo) {
             this.tempUserInfo= this.userInfo
+        }        
+    },
+    watch: {
+        currentUser: {
+            handler(user) {
+                if(!user.auth) { 
+                    this.$router.push('/')
+                }
+            },
+            immediate: true,
+            deep: true
         }
     },
     methods: {

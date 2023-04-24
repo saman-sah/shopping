@@ -139,7 +139,8 @@ export default createStore({
         
         // ClearUser 
         CLEAR_USER(state) {
-            state.currentUser= null;
+            state.currentUser= {};
+            state.userInfo= {};
         }, 
         //End--------- ClearUser 
 

@@ -1,3 +1,4 @@
+import { getAuth } from 'firebase/auth'
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
@@ -77,7 +78,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (checkout.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "checkout" */ '../views/Checkout.vue')
+    component: () => import(/* webpackChunkName: "checkout" */ '../views/Checkout.vue'),
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/wishlist',
@@ -85,7 +89,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (wishlist.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "wishlist" */ '../views/Wishlist.vue')
+    component: () => import(/* webpackChunkName: "wishlist" */ '../views/Wishlist.vue'),
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/cart',
@@ -101,13 +108,28 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (account.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue')
+    component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue'),
+    meta: {
+      requireAuth: true
+    }
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+router.beforeEach((to, from, next)=> {
+  if(to.matched.some((record)=> record.meta.requireAuth)) {
+    if(getAuth().currentUser) {
+      next();
+    }else {
+      alert("you have to login");
+      next("/")
+    }
+  }else {
+    next();
+  }
 })
 
 export default router

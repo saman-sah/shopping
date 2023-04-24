@@ -137,7 +137,7 @@
                     </div>
                     <!--End Search-->
                     <!--Setting Dropdown-->
-                    <div v-if="currentUser" class="login-register-icon">
+                    <div v-if="currentUser && currentUser.auth" class="login-register-icon">
                         <div class="dropdown">
                             
                             <button class="dropdown-toggle" type="button" id="dropdownUserMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -171,10 +171,10 @@
                     
                     <!--End Setting Dropdown-->
                     <!--Wishlist-->
-                    <div class="wishlist-link iconset">
+                    <div v-if="currentUser && currentUser.auth" class="wishlist-link iconset">
                         <router-link to="/wishlist">
                             <i class="icon anm anm-heart-l"></i>
-                            <span class="wishlist-count">0</span>
+                            <span class="wishlist-count">{{ wishlistProducts.length }}</span>
                         </router-link>
                     </div>
                     <!--End Wishlist-->
@@ -247,7 +247,8 @@ export default {
     computed: {
         ...mapState([
             'productCategories',
-            'currentUser'
+            'currentUser',
+            'wishlistProducts'
         ])
     },
     methods: {

@@ -80,8 +80,20 @@ import { mapActions, mapState } from 'vuex'
 export default {
     computed: {
         ...mapState([
-            'wishlistProducts'
+            'wishlistProducts',
+            'currentUser'
         ])
+    },
+    watch: {
+        currentUser: {
+            handler(user) {
+                if(!user.auth) { 
+                    this.$router.push('/')
+                }
+            },
+            immediate: true,
+            deep: true
+        }
     },
     methods: {
         ...mapActions({
