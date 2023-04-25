@@ -113,6 +113,14 @@ const routes = [
       requireAuth: true
     }
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    // route level code-splitting
+    // this generates a separate chunk (not-found.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "not-found" */ '../views/NotFound.vue'),
+  },
 ]
 
 const router = createRouter({
