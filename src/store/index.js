@@ -1,6 +1,8 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import _ from 'lodash';
+import {useToast} from 'vue-toast-notification';
+const $toast = useToast();
 import { 
     auth, 
     db, 
@@ -145,9 +147,11 @@ export default createStore({
         //End--------- ClearUser 
 
         WISHLIST_PRODUCTS(state, wishlistIds) {
-            state.wishlistProducts= state.products.filter((item)=> {
-                return wishlistIds.includes(item.id)
-            })
+            if(state.products.length) {
+                state.wishlistProducts= state.products.filter((item)=> {
+                    return wishlistIds.includes(item.id)
+                })
+            }                        
         }
     },
 
@@ -281,6 +285,13 @@ export default createStore({
                     commit('SET_USER_INFO', userInfo)
                 });
             })
+            .then(res=> {
+                $toast.open({ 
+                    message: 'Your Log In', 
+                    type: 'success', 
+                    position: 'top' 
+                }); 
+            })
             .catch(error=> {
                 switch (error.code) {
                     case 'auth/user-not-found':
@@ -302,7 +313,13 @@ export default createStore({
         logOut({ commit }) {
             signOut(auth).then(res=> {
                 commit("CLEAR_USER");
-            })    
+            }).then(res=> {
+                $toast.open({ 
+                    message: 'Your Log Out', 
+                    type: 'error', 
+                    position: 'top' 
+                }); 
+            })  
         },
         //End--------- Logout Firebase Auth
         
@@ -323,16 +340,30 @@ export default createStore({
         },
         //End--------- Check User Logged In
         
-        toggleWishlist({ state }, productId) {
+        toggleWishlist({ state }, payload) {
+            
             if(state.userInfo.wishlist) {
-                var productIds = _.xor(state.userInfo.wishlist.productIds, [productId])                  
+                var productIds = _.xor(state.userInfo.wishlist.productIds, [payload.productId])                  
             }else {
-                var productIds= [productId]
+                var productIds= [payload.productId]
             }
             let userId= auth.currentUser.uid;
             set(ref(db, 'users/'+ userId + '/wishlist'), {
                 productIds
             });
+            if(payload.action== 'Add') {
+                $toast.open({ 
+                    message: 'Add product to wishlist', 
+                    type: 'success', 
+                    position: 'top' 
+                });
+            }else {
+                $toast.open({ 
+                    message: 'Remove product to wishlist', 
+                    type: 'error', 
+                    position: 'top' 
+                });
+            }            
         },
 
         getWishlistIds({ commit }) {

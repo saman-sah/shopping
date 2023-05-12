@@ -45,15 +45,15 @@
                     <li>
                         <!--Wishlist Button-->
                         <div class="wishlist-btn">
-                            <template v-if="currentUser">
+                            <template v-if="currentUser && currentUser.auth">
                                 <button v-if="wishlistIds && wishlistIds.includes(product.id)"
-                                @click="toggleWishlist(product.id)"
+                                @click="toggleWishlist({productId:product.id, action:'Remove'})"
                                 class="btn-icon wishlist add-to-wishlist">
                                     <i class="icon anm anm-heart"></i>
                                     <span class="tooltip-label">Remove from Wishlist</span>
                                 </button>
                                 <button v-else
-                                @click="toggleWishlist(product.id)"
+                                @click="toggleWishlist({productId:product.id, action: 'Add'})"
                                 class="btn-icon wishlist add-to-wishlist">
                                     <i class="icon anm anm-heart-l"></i>
                                     <span class="tooltip-label">Add To Wishlist</span>
