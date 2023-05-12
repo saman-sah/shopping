@@ -113,7 +113,7 @@
                                     {{ singleProduct.description }}
                                 </div>
                                 <form method="post" action="" class="product-form product-form-product-template hidedropdown">                                                                      
-                                    <p class="infolinks" v-if="currentUser">
+                                    <p class="infolinks" v-if="currentUser && currentUser.auth">
                                         <button v-if="wishlistIds && wishlistIds.includes(singleProduct.id)"
                                         @click="toggleWishlist(singleProduct.id)"
                                         class="wishlist add-to-wishlist"

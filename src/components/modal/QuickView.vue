@@ -102,7 +102,7 @@
 						</div>
 					</div>
 				</form>
-				<div v-if="currentUser" class="wishlist-btn">
+				<div v-if="currentUser && currentUser.auth" class="wishlist-btn">
 					<button v-if="wishlistIds && wishlistIds.includes(quickviewProduct.id)"
 					@click="toggleWishlist(quickviewProduct.id)"
 					class="wishlist add-to-wishlist"  

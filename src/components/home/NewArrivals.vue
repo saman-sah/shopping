@@ -47,7 +47,7 @@
                                 </li>
                                 <li >
                                     <!--Wishlist Button-->
-                                    <div v-if="currentUser" class="wishlist-btn">
+                                    <div v-if="currentUser && currentUser.auth" class="wishlist-btn">
                                         <button v-if="wishlistIds && wishlistIds.includes(product.id)"
                                         class="btn-icon wishlist add-to-wishlist btn-square"
                                         @click="toggleWishlist(product.id)">
