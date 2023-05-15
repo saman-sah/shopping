@@ -14,12 +14,12 @@ import {
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAlJB-xFStR7P4bRgDKaqmf4ieybdmu8Rw",
+  apiKey: "",
   authDomain: "saman-shopping.firebaseapp.com",
   projectId: "saman-shopping",
   storageBucket: "saman-shopping.appspot.com",
-  messagingSenderId: "621035079842",
-  appId: "1:621035079842:web:f1103876ac29d2a745affb"
+  messagingSenderId: "",
+  appId: ""
 };
 let firebaseApp = firebase.initializeApp(firebaseConfig);
 let auth= getAuth(firebaseApp);
